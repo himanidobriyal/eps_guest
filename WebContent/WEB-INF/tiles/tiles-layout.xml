@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="/jsp/tilesDef/layout.jsp">
+	<!-- 	<put-attribute name="title" value="" /> -->
+		<put-attribute name="header" value="" />
+		<put-attribute name="top" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	<definition name="home.definition" template="/jsp/tilesDef/homeLayout.jsp">
+	 	<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp/common/irepsHeader.jsp" />
+		<put-attribute name="top" value="/jsp/common/irepsTopStrip.jsp" />
+		<put-attribute name="left" value="/jsp/common/railwayUserLeftNav.jsp" />
+		<put-attribute name="body" value="" /> 
+		<put-attribute name="right" value="/jsp/common/railwayUserRightNav.jsp" /> 
+	    <put-attribute name="footer" value="/jsp/common/irepsFooter.jsp" />
+	</definition>
+	<definition name="form.definition" template="/jsp/tilesDef/formLayout.jsp">
+	 	<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp/common/irepsHeader.jsp" />
+		<put-attribute name="top" value="/jsp/common/irepsTopStrip.jsp" />
+		<put-attribute name="body" value="" /> 
+	   <put-attribute name="footer" value="/jsp/common/irepsFooter.jsp" />
+	</definition>
+	<definition name="popup.definition" template="/jsp/tilesDef/popupLayout.jsp">
+	 	<put-attribute name="title" value="" />
+		<put-attribute name="body" value="" /> 
+	</definition>
+	<definition name="home.section" template="/jsp/tilesDef/sectionUpdateLayout.jsp">
+	 	<put-attribute name="content" value="" />
+	</definition>
+	<definition name="newForm.definition" template="/jsp/tilesDef/newFormLayout.jsp">
+	 	<put-attribute name="title" value="" />
+		<put-attribute name="body" value="" /> 
+	</definition>
+	<definition name="anonymous.definition" template="/jsp/tilesDef/anonymousLayout.jsp">
+	 	<put-attribute name="title" value="" />
+		<put-attribute name="body" value="" /> 
+	</definition>
+	<definition name="noHeaderFooter.definition" template="/jsp/tilesDef/noHeaderFooter.jsp">
+	 	<put-attribute name="title" value="" />
+		<put-attribute name="body" value="" /> 
+	</definition>
+
+	
+</tiles-definitions>

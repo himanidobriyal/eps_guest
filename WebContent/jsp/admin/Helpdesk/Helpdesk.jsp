@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IREPS Helpdesk</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/accessibility/accessibility.css">
+<script src="${pageContext.request.contextPath}/assets/accessibility/accessibility.js" defer></script>	
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+.ireps-header {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					background-color: #0b253f;
+					padding: 40px 20px;
+					color: white;
+				}
+
+				.left-section {
+					display: flex;
+					align-items: center;
+					gap: 15px;
+					height: 50px;
+				}
+
+				.center-section {
+					text-align: center;
+					flex: 1;
+					transform: translateX(-70px);
+				}
+
+				.main-title {
+					font-size: 30px;
+					font-weight: 500;
+				}
+
+				.sub-title {
+					color: #ffd700;
+					font-size: 28px;
+					font-weight: bold;
+				}
+
+				.right-section {
+    display: flex;
+    flex-direction: column;  /* stack dropdown and HOME vertically */
+    align-items: flex-end;   /* align both to the right */
+    font-size: 16px;
+    color: white;
+    margin-right: 20px;
+    gap: 8px; /* space between dropdown and HOME */
+}
+
+				.right-section label {
+					color: white;
+					font-weight: 500;
+					margin-right: 8px;
+				}
+
+				.language-dropdown {
+					background-color: #0b253f;
+					color: white;
+					border: 1px solid #ccc;
+					padding: 6px 12px;
+					border-radius: 4px;
+					font-size: 16px;
+					appearance: none;
+					cursor: pointer;
+					}
+					.lang-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.icon-row {
+    display: flex;
+    gap: 10px;  /* ✅ spacing between home & logout */
+    position: relative;
+    top: 40px;  /* ✅ jahan aapka home icon placed hai */
+}
+
+.home-icon,
+.logout-icon {
+    font-size: 26px;
+    color: white;
+    background-color: #0000B;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.main-container {
+   flex: 1;
+    max-width: 100%;
+    margin: 0;  /* 12px 0px se change karo */
+    padding: 0;
+    overflow-y: auto;
+
+}
+
+.content-wrapper {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 20px 40px 20px;
+    min-height: 500px;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    margin-bottom: 25px;
+}
+
+.section-header {
+    background: white;
+    color: #2c5aa0;
+    text-align: center;
+    position: relative;
+    border-bottom: 3px solid #2c5aa0;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.content {
+    padding: 20px;
+    color: #333;
+}
+
+.content ol li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.highlight {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.highlight:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.contact-info p {
+    margin-bottom: 8px;
+}
+
+.small-note {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.helpdesk-section {
+    border-left: 4px solid #ffc107;
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+.helpdesk-section h6 {
+    margin-bottom: 12px;
+}
+
+.helpdesk-section p {
+    margin-bottom: 8px;
+}
+
+.footer {
+position: sticky;
+    bottom: 0;
+    z-index: 999;
+    background-color: #05173c;
+    color: white;
+    text-align: center;
+    padding: 16px 10px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+}
+
+.footer img {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.footer-text {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .ireps-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .center-section {
+        transform: translateX(0);
+    }
+    
+    .main-title {
+        font-size: 24px;
+    }
+    
+    .sub-title {
+        font-size: 22px;
+    }
+    
+    .right-section {
+        align-items: center;
+        margin-right: 0;
+    }
+    
+    .content-wrapper {
+        padding: 0 15px 40px 15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="ireps-header">
+    <div class="left-section">
+    
+        <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="Logo">
+    </div>
+    <div class="center-section">
+        <div class="main-title">Government eMarketplace</div>
+        <div class="sub-title">Indian Railways E-Procurement System</div>
+    </div>
+    <div class="right-section">
+        <div class="lang-container">
+            <label for="language">Select Your Language</label>
+            <select id="language" class="language-dropdown">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+            </select>
+        </div>
+      <div class="icon-row">
+        <a href="${pageContext.request.contextPath}/logon" class="home-icon">
+    <i class="fa-solid fa-house"></i>
+</a>
+ <a href="${pageContext.request.contextPath}/logon" class="logout-icon" onclick="logoutNow()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+</div>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="content-wrapper">
+        <form method="get" action="#">
+
+            <!-- Helpdesk Information -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="bi bi-question-circle"></i> Helpdesk
+                </div>
+                <div class="content">
+                    <ol class="mb-0">
+                        <li>
+                            User Manuals are available for different modules of IREPS. These manuals can be accessed through
+                            Learning Center links available on IREPS Home Page, Bidders' Home Page, and Railway Users' Home Page.
+                            Some manuals require login. You are advised to go through these manuals before approaching Helpdesk.
+                            <a href="#" class="highlight">Click Here</a> to go to Learning Centre.
+                        </li>
+                        <li class="mt-2">
+                            Please approach the tendering department for any Tender or Contract specific clarifications.
+                            Helpdesk will assist only for system-specific issues like payments, bid submission, viewing of documents,
+                            login issues, registration issues, etc.
+                        </li>
+                        <li class="mt-2">
+                            You may click on any link on this page (shown in blue color) for assistance or information.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Helpdesk Options -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="bi bi-headset"></i> Helpdesk Options
+                </div>
+                <div class="content">
+
+                    <!-- IREPS Helpdesk -->
+                    <div class="helpdesk-section">
+                        <h6><strong>IREPS Helpdesk</strong> <span class="text-muted">(for IREPS related queries)</span></h6>
+                        <p><a href="#" class="highlight">Ask a Question</a> – A Query ID will be generated for each query submitted.</p>
+                        <p><a href="#" class="highlight">View Reply to Question</a> – Requires Query ID and Email ID.</p>
+                        <p><a href="#" class="highlight">Request for Change of Digital Signing Certificate</a> – New DSC client name must match user account.</p>
+
+                        <div class="contact-info">
+                            <p><strong>Telephonic Assistance:</strong> <span class="text-primary">011-41385200</span> (10 lines)</p>
+                            <p><strong>Timings:</strong> 08:00 AM – 07:00 PM</p>
+                            <p class="small-note">(Not available on Sundays and Gazetted Holidays.) <a href="#" class="highlight">Click Here</a> to view holidays.</p>
+                        </div>
+                    </div>
+
+                    <!-- SBI Helpdesk -->
+                    <div class="helpdesk-section">
+                        <h6><strong>SBI Helpdesk</strong> <span class="text-muted">(for SBI payments related queries)</span></h6>
+                        <p><strong>For SBI Netbanking:</strong></p>
+                        <p class="ms-3 mb-0">
+                            022-27566066, 022-27566067, 022-27560137, 022-27566501<br>
+                            Email: <a href="mailto:inb.cinb@sbi.co.in" class="highlight">inb.cinb@sbi.co.in</a>
+                        </p>
+
+                        <p class="mt-3"><strong>For SBIePay:</strong></p>
+                        <p class="ms-3 mb-0">
+                            022-27523618 <span class="small-note">(Timings: 24x7x365)</span><br>
+                            Email: <a href="mailto:sbiepay@sbi.co.in" class="highlight">sbiepay@sbi.co.in</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+    <img src="${pageContext.request.contextPath}/assets/images/stqc.png" alt="STQC">
+    <img src="${pageContext.request.contextPath}/assets/images/cris.png" alt="CRIS">
+    <div class="footer-text">
+        Centre For Railway Information Systems, Designed, Developed and Hosted by CRIS &nbsp;
+        <strong>Version 7.1.0</strong>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

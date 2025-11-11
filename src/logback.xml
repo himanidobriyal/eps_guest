@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+ <!--  <property name="DEV_HOME" value="/opt/jblogs/saleBidderSpringLogs"/>   -->  <!-- prod/trial -->
+  <property name="DEV_HOME" value="/opt/jblogs/saleBidderUATSpringLogs" /> 
+ <!-- uat --> 
+<!-- <property name="DEV_HOME" value="D:/piyush/local_log/saleBidder/log" />  -->
+   
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{dd-MM-yyyy HH:mm:ss} %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+	
+	
+	<appender name="FILE-AUDIT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/saleBidder.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				 %d{dd-MM-yyyy HH:mm:ss} [%X{userName}] [%X{remoteIp}] %c{1}:%L - %m%n 
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/saleBidder.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>90MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+	</appender>
+    <logger name="com.ireps" level="debug" additivity="false">
+		<appender-ref ref="FILE-AUDIT" />
+	</logger>
+		
+	<root level="error">
+		<appender-ref ref="FILE-AUDIT" />
+	</root>
+	
+	
+	<root level="error">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

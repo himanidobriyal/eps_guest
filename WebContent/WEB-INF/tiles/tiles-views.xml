@@ -1,0 +1,1670 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="contact" extends="base.definition">
+		<put-attribute name="title" value="Contact Manager" />
+		<put-attribute name="body" value="/jsp/contact.jsp" />
+	</definition>
+	<definition name="logon" extends="base.definition">
+		<put-attribute name="title" value="Login-IREPS eAuction" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/logonBody.jsp" />
+	</definition>
+	<definition name="attachCertificate"
+		extends="base.definition">
+		<put-attribute name="title"
+			value="Attach Digital Certificate" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/attachLoginCertificate.jsp" />
+	</definition>
+
+	<definition name="homePage" extends="home.definition">
+		<put-attribute name="title" value="e-Auction Home Page" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/homePageBody.jsp" />
+	</definition>
+
+	<definition name="createLot" extends="newForm.definition">
+		<put-attribute name="title" value="CreateLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/CreateLot.jsp" />
+	</definition>
+
+
+	<definition name="ShowtmsLot" extends="newForm.definition">
+		<put-attribute name="title" value="CreateLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/CreatetmsLot.jsp" />
+	</definition>
+	<definition name="ChooseCatalogToClose"
+		extends="newForm.definition">
+		<put-attribute name="title" value="chooseCatalog" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ChooseCatalogToClose.jsp" />
+	</definition>
+
+
+	<definition name="autoCloseCatalogue"
+		extends="newForm.definition">
+		<put-attribute name="title" value="closecatalog" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/autoCloseCatalog.jsp" />
+	</definition>
+
+	<definition name="decidedCloseCatalogDetail"
+		extends="newForm.definition">
+		<put-attribute name="title" value="closecatalog" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/decidedCloseCatalogDetails.jsp" />
+	</definition>
+
+	<definition name="CloseCatalog" extends="newForm.definition">
+		<put-attribute name="title" value="CloseCatalog" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/CloseCatalog.jsp" />
+	</definition>
+	<!-- <definition name="CloseCatalog" extends="newForm.definition"> <put-attribute 
+		name="title" value="closecatalog" /> <put-attribute name="body" value="/jsp/eAuction/decidedCloseCatalogDetails.jsp" 
+		/> </definition> -->
+
+	<definition name="createtmsLotform"
+		extends="newForm.definition">
+		<put-attribute name="title" value="CreateLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createTMSlotForm.jsp" />
+	</definition>
+
+	<definition name="searchLot1" extends="newForm.definition">
+		<put-attribute name="title" value="Lot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/SearchLot.jsp" />
+	</definition>
+
+	<definition name="createSro" extends="newForm.definition">
+		<put-attribute name="title" value="Lot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createsro.jsp" />
+	</definition>
+	<definition name="srocreated" extends="popup.definition">
+		<put-attribute name="title"
+			value="Delivery/Sale Release Order" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/SROcreated.jsp" />
+	</definition>
+
+	<definition name="createSROAmendment"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="Lot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createSROAmendement.jsp" />
+	</definition>
+
+
+
+
+	<definition name="search" extends="newForm.definition">
+		<put-attribute name="title" value="Lot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/search.jsp" />
+	</definition>
+	<definition name="searchBiddder"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Lot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/SearchBidder.jsp" />
+	</definition>
+
+	<definition name="createLotTMS" extends="home.definition">
+		<put-attribute name="title" value="Lot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/CreateLotTMS.jsp" />
+	</definition>
+
+	<definition name="viewLotPublish"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Lot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewLotPublish.jsp" />
+	</definition>
+
+	<definition name="error500" extends="popup.definition">
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="body"
+			value="/jsp/error/errorPage.jsp" />
+	</definition>
+
+	<definition name="showEditLot" extends="popup.definition">
+		<put-attribute name="title" value="showLineLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/EditLotBody.jsp" />
+	</definition>
+	<!-- <definition name="showEditLot" extends="newForm.definition"> <put-attribute 
+		name="title" value="showLineLot" /> <put-attribute name="body" value="/jsp/eAuction/EditLotBody.jsp" 
+		/> </definition> -->
+
+	<definition name="viewLot" extends="newForm.definition">
+		<put-attribute name="title" value="viewLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewLot.jsp" />
+	</definition>
+
+	<definition name="learningCenter"
+		extends="newForm.definition">
+		<put-attribute name="title" value="learning" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/LearningCenter.jsp" />
+	</definition>
+
+	<definition name="helpdesk" extends="newForm.definition">
+		<put-attribute name="title" value="helpdesk" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/Helpdesk.jsp" />
+	</definition>
+
+
+	<definition name="viewSearchPage" extends="popup.definition">
+		<put-attribute name="title" value="ViewSearchPage" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewSearchPage.jsp" />
+	</definition>
+	<definition name="viewAuditTrial" extends="popup.definition">
+		<put-attribute name="title" value="View Page" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuditTrail.jsp" />
+	</definition>
+	<definition name="attachLotImage" extends="popup.definition">
+		<put-attribute name="title" value="attach Lot Image" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/AttachLotImage.jsp" />
+	</definition>
+
+	<!-- <definition name="createSchedule" extends="home.definition"> <put-attribute 
+		name="title" value="createSchedule" /> <put-attribute name="body" value="/jsp/eAuction/createSchedule.jsp" 
+		/> </definition> -->
+	<definition name="viewAuctionSchedule"
+		extends="popup.definition">
+		<put-attribute name="title" value="learning" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionSchedule.jsp" />
+	</definition>
+
+	<definition name="lotPublish" extends="newForm.definition">
+		<put-attribute name="title" value="LotPublish" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/LotPublish.jsp" />
+	</definition>
+
+	<definition name="withdrawLotPublish"
+		extends="newForm.definition">
+		<put-attribute name="title" value="withdrawLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/WithdrawLotPublish.jsp" />
+	</definition>
+
+	<definition name="viewLotPublishBidder"
+		extends="newForm.definition">
+		<put-attribute name="title" value="PublishBidder" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewPublishLotBidder.jsp" />
+	</definition>
+
+	<definition name="viewtmsLot" extends="popup.definition">
+		<put-attribute name="title" value="viewTmslot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewTMSlot.jsp" />
+	</definition>
+
+	<definition name="updateManualSoldLot"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="updateManualSoldLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/updateTMSSoldLot.jsp" />
+	</definition>
+	<definition name="viewAuctionUserAction"
+		extends="newForm.definition">
+		<put-attribute name="title" value="ViewEditProfile" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewEditProfile.jsp" />
+	</definition>
+	<definition name="irepsDocuments"
+		extends="newForm.definition">
+		<put-attribute name="title" value="irepsDocuments" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/IrepsDocuments.jsp" />
+	</definition>
+	<definition name="viewSearchAuctionAccount"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewSearchAuctionAccount" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/viewAuctionAccount.jsp" />
+	</definition>
+
+	<definition name="viewMarkUnmark" extends="popup.definition">
+		<put-attribute name="title"
+			value="viewMarkUnmarkDetails" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/Mark-UnmarkDetails.jsp" />
+	</definition>
+
+	<definition name="myAllListBidder"
+		extends="popup.definition">
+		<put-attribute name="title" value="my All List Bidder" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/myDocAllListsBidder.jsp" />
+	</definition>
+
+	<definition name="viewPreferenceHistoryBidder"
+		extends="popup.definition">
+		<put-attribute name="title"
+			value="view Preference HistoryBidder" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/PreferenceHistoryBidder.jsp" />
+	</definition>
+
+	<definition name="viewAutoExtension"
+		extends="popup.definition">
+		<put-attribute name="title" value="view Auto Extension" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewAutoExtension.jsp" />
+	</definition>
+
+	<definition name="printPublishLotDescription"
+		extends="popup.definition">
+		<put-attribute name="title"
+			value="print PublishLot Description" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/PrintPublishLotDescription.jsp" />
+	</definition>
+
+	<definition name="auctionReports"
+		extends="newForm.definition">
+		<put-attribute name="title" value="auctionReports" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/AuctionReports.jsp" />
+	</definition>
+
+	<definition name="eAuctionReports"
+		extends="newForm.definition">
+		<put-attribute name="title" value="eAuctionReports" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/eAuctionReports.jsp" />
+	</definition>
+
+	<definition name="viewConsolidatedReport"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewConsolidatedReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewConsolidatedReport.jsp" />
+	</definition>
+
+	<definition name="taxInvoiceDtls"
+		extends="newForm.definition">
+		<put-attribute name="title" value="taxInvoiceDtls" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/taxInvoiceDtls.jsp" />
+	</definition>
+	<definition name="eCatalogueReports"
+		extends="newForm.definition">
+		<put-attribute name="title" value="catalogueReports" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/catalogueReports.jsp" />
+	</definition>
+	<definition name="viewCatalogueReports"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewCatalogueReports" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewCatalogueReports.jsp" />
+	</definition>
+	<definition name="viewCatalogueReportsOfDisposal"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewCatalogueReportsOfDisposal" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewCatalogueReportsOfDisposal.jsp" />
+	</definition>
+
+
+	<definition name="updateMinIncrementValue"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewMarkUnmarkDetails" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/updateMinIncrementValue.jsp" />
+	</definition>
+
+	<definition name="enterUpdateAllocations"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewMarkUnmarkDetails" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/EnterUpdateAllocations.jsp" />
+	</definition>
+
+	<definition name="enterUpdateBsvInterestRate"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="Update BSV Interest Rate" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/bsvInterestRate.jsp" />
+	</definition>
+
+	<definition name="approveBiddderRegistration"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="approveBiddderRegistration" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/SearchOnlineBidderRegisterationRquest.jsp" />
+	</definition>
+
+	<definition name="showBidderDetails"
+		extends="newForm.definition">
+		<put-attribute name="title" value="showBidderDetails" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/showBidderData.jsp" />
+	</definition>
+
+	<definition name="viewPendingInvoices"
+		extends="newForm.definition">
+		<put-attribute name="title" value="pendingInvoices" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/pendingInvoices.jsp" />
+	</definition>
+
+
+
+	<definition name="liveAuction" extends="newForm.definition">
+		<put-attribute name="title" value="liveAuction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/auctionLive.jsp" />
+	</definition>
+
+	<definition name="corrigendumDetails"
+		extends="newForm.definition">
+		<put-attribute name="title" value="liveAuction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/corrigendumDetails.jsp" />
+	</definition>
+
+
+	<definition name="viewAuctionCatalogue"
+		extends="newForm.definition">
+		<put-attribute name="title" value="liveAuction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionCatalogue.jsp" />
+	</definition>
+
+	<definition name="viewAuditTrail" extends="popup.definition">
+		<put-attribute name="title" value="liveAuction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuditTrail.jsp" />
+	</definition>
+
+	<definition name="viewAuctionRegister"
+		extends="newForm.definition">
+		<put-attribute name="title" value="liveAuction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionRegister.jsp" />
+	</definition>
+
+	<definition name="auctionTabs" extends="newForm.definition">
+		<put-attribute name="title" value="auctionTabs" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/tabs.jsp" />
+	</definition>
+
+
+	<definition name="logoutPage" extends="popup.definition">
+		<put-attribute name="title" value="Logout" />
+		<put-attribute name="body"
+			value="/jsp/error/logoutPage.jsp" />
+	</definition>
+
+
+	<definition name="reservePriceRegister"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Logout" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/reservePriceRegister.jsp" />
+	</definition>
+
+	<definition name="helloo" extends="newForm.definition">
+		<put-attribute name="title" value="helloo" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/hello.jsp" />
+	</definition>
+
+	<definition name="uploadDocuments"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Logout" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/uploadDoc.jsp" />
+	</definition>
+
+	<definition name="hsnValidation"
+		extends="newForm.definition">
+		<put-attribute name="title" value="hsnValidation" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/knowValidHSNCode.jsp" />
+	</definition>
+
+	<definition name="updateHsnCode"
+		extends="newForm.definition">
+		<put-attribute name="title" value="updateHsnCode" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/updateHsnForPublishedLot.jsp" />
+	</definition>
+
+
+
+	<definition name="closedAuctions"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Logout" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/closedAuctions.jsp" />
+	</definition>
+
+	<definition name="invoices" extends="newForm.definition">
+		<put-attribute name="title" value="Logout" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/invoicesDetails.jsp" />
+	</definition>
+
+	<definition name="viewScheduleForAllUnits"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Logout" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewauctionscheduleForAllUnits.jsp" />
+	</definition>
+
+
+	<definition name="viewAndPublishCataegorySequencing"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Logout" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/publishCategorySequencing.jsp" />
+	</definition>
+
+	<definition name="manageDeliveryRequestByRly"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="manageDeliveryRequestByRly" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/manageDeliveryRequestByRlyBody.jsp" />
+	</definition>
+	<definition name="index" extends="newForm.definition">
+		<put-attribute name="title" value="index" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/index.jsp" />
+	</definition>
+	<definition name="index1" extends="newForm.definition">
+		<put-attribute name="title" value="index1" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/index1.jsp" />
+	</definition>
+	<definition name="test1" extends="newForm.definition">
+		<put-attribute name="title" value="test1" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test1.jsp" />
+	</definition>
+	<definition name="test2" extends="newForm.definition">
+		<put-attribute name="title" value="test2" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test2.jsp" />
+	</definition>
+	<definition name="test3" extends="newForm.definition">
+		<put-attribute name="title" value="test3" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test3.jsp" />
+	</definition>
+	<definition name="test4" extends="newForm.definition">
+		<put-attribute name="title" value="test4" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test4.jsp" />
+	</definition>
+	<definition name="Search" extends="newForm.definition">
+		<put-attribute name="title" value="test4" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test4.jsp" />
+	</definition>
+	<definition name="viewSearchUser"
+		extends="newForm.definition">
+		<put-attribute name="title" value="test4" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewSearchUser.jsp" />
+	</definition>
+	<definition name="viewBidderUserDtls"
+		extends="newForm.definition">
+		<put-attribute name="title" value="test4" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewBidderUser.jsp" />
+	</definition>
+	<definition name="editSearchUser"
+		extends="newForm.definition">
+		<put-attribute name="title" value="test4" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editSearchUser.jsp" />
+	</definition>
+
+	<definition name="test5" extends="newForm.definition">
+		<put-attribute name="title" value="test5" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test5.jsp" />
+	</definition>
+
+
+	<definition name="test6" extends="newForm.definition">
+		<put-attribute name="title" value="test6" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test6.jsp" />
+	</definition>
+
+
+	<definition name="test8" extends="newForm.definition">
+		<put-attribute name="title" value="test7" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/test7.jsp" />
+	</definition>
+
+
+
+
+	<definition name="viewLotDetails"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="manageDeliveryRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewLotDetails.jsp" />
+	</definition>
+
+
+
+	<definition name="pendingRailwayUserRequest"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="pendingRailwayUserRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/pendingRailwaqyUserRequest.jsp" />
+	</definition>
+
+	<definition name="lotCreation" extends="newForm.definition">
+		<put-attribute name="title" value="lotCreation" />
+		<put-attribute name="body" value="/jsp/eAuction/lot.jsp" />
+	</definition>
+
+	<definition name="soldLots" extends="newForm.definition">
+		<put-attribute name="title" value="lotCreation" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/soldLots.jsp" />
+	</definition>
+	<definition name="irepsDoc" extends="newForm.definition">
+		<put-attribute name="title"
+			value="pendingRailwayUserRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/irepsDoc.jsp" />
+	</definition>
+	<definition name="rlyDocs" extends="newForm.definition">
+		<put-attribute name="title"
+			value="pendingRailwayUserRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/rlyDocs.jsp" />
+	</definition>
+	<definition name="uploadDocs" extends="newForm.definition">
+		<put-attribute name="title"
+			value="pendingRailwayUserRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/uploadDoc.jsp" />
+	</definition>
+	<definition name="viewDepotCondition"
+		extends="popup.definition">
+		<put-attribute name="title" value="View Depot Condition" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewDepotCondition.jsp" />
+	</definition>
+
+	<definition name="uploadDepotCondDocList"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="pendingRailwayUserRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/uploadDepotCondDocList.jsp" />
+	</definition>
+	<definition name="uploadDocList"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="pendingRailwayUserRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/uploadDocList.jsp" />
+	</definition>
+	<!-- <definition name="viewAuditTrailForSoldLotssss" extends="popup.definition"> 
+		<put-attribute name="viewAuditTrailForSoldLots" value="viewAuditTrailForSoldLots" 
+		/> <put-attribute name="body" value="/jsp/eAuction/viewAuditTrialForSoldLots.jsp" 
+		/> </definition> -->
+	<definition name="CreateViewChallanSheet"
+		extends="popup.definition">
+		<put-attribute name="createChallan"
+			value="createChallan" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createChallan.jsp" />
+	</definition>
+
+	<definition name="viewBidHistoryForSodLots"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="viewBidHistoryForSodLots"
+			value="viewBidHistoryForSodLots" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewBidHistoryForSoldLots.jsp" />
+	</definition>
+
+	<!-- <definition name="viewLotDetailsForSoldLots" extends="popup.definition"> 
+		<put-attribute name="viewLotDetailsForSoldLots" value="viewLotDetailsForSoldLots" 
+		/> <put-attribute name="body" value="/jsp/eAuction/viewLotDetailsForSoldLots.jsp" 
+		/> </definition> -->
+
+	<definition name="createBidSheet" extends="popup.definition">
+		<put-attribute name="title" value="Create BidSheet" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createBidSheet.jsp" />
+	</definition>
+	<definition name="viewBidSheet" extends="popup.definition">
+		<put-attribute name="title" value="View BidSheet" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewBidSheet.jsp" />
+	</definition>
+	<definition name="viewAuctionScheduleForAllUnits"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewAuctionScheduleForAllUnits" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionScheduleForAllUnits.jsp" />
+	</definition>
+	<definition name="scheduleAuditTrail"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="scheduleAuditTrail" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/scheduleAuditTrail.jsp" />
+	</definition>
+	<definition name="viewCTEApprovedTMSLots"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="viewCTEApprovedTMSLots" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewCTEApprovedTMSLots.jsp" />
+	</definition>
+	<definition name="mapAccountingUnit"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Au_code" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/Au_code.jsp" />
+	</definition>
+	<definition name="verifyEscroll"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Au_code" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/verifyEscroll.jsp" />
+	</definition>
+	<definition name="viewAuctionSalesPmtReport"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewAuctionSalesPmtReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionSalesPmtReport.jsp" />
+	</definition>
+	<definition name="viewAuctionSalesPmtReportPdf"
+		extends="popup.definition">
+		<put-attribute name="title"
+			value="viewAuctionSalesPmtReportPdftest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionSalesPmtReportPdf.jsp" />
+	</definition>
+	<definition name="averageRateReport"
+		extends="newForm.definition">
+		<put-attribute name="title" value="averageRateReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/averageRateReport.jsp" />
+	</definition>
+	<definition name="manageSoldLots"
+		extends="newForm.definition">
+		<put-attribute name="title" value="manageSoldLots" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/manageSoldLots.jsp" />
+	</definition>
+
+	<definition name="viewLotDetailsForManageSoldLots"
+		extends="popup.definition">
+		<put-attribute name="title"
+			value="manageDeliveryRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewLotDetailsForManageSoldLots.jsp" />
+	</definition>
+
+
+
+	<definition name="paymentReportOld"
+		extends="newForm.definition">
+		<put-attribute name="title" value="paymentReportOld" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/paymentReportOld.jsp" />
+	</definition>
+	<definition name="paymentSummaryReport"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="paymentSummaryReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/paymentSummaryReport.jsp" />
+	</definition>
+	<definition name="eLienReceipt"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="eLienReceipt" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ELienReceipt.jsp" />
+	</definition>
+	<definition name="lienPaymentEnquiry"
+		extends="newForm.definition">
+		<put-attribute name="title" value="lienPaymentEnquiry" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/lienPaymentEnquiry.jsp" />
+	</definition>
+	<definition name="ViewCategoryHistory"
+		extends="newForm.definition">
+		<put-attribute name="title" value="ViewCategoryHistory" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewCategoryHistory.jsp" />
+	</definition>
+	<definition name="managerSalesReport"
+		extends="newForm.definition">
+		<put-attribute name="title" value="managerSalesReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/managerSalesReport.jsp" />
+	</definition>
+	<definition name="viewSalesSuspenseReport"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="viewSalesSuspenseReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewSalesSuspenseReport.jsp" />
+	</definition>
+	<definition name="bsvInvReport" extends="newForm.definition">
+		<put-attribute name="title" value="bsvInvReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/bsvInvReport.jsp" />
+	</definition>
+	<definition name="bsvInvReportPdf"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="bsvInvReportPdf" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/bsvInvReportPdf.jsp" />
+	</definition>
+	<definition name="editAuctionCatalogue"
+		extends="newForm.definition">
+		<put-attribute name="title" value="editAuctionCatalogue" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editAuctionCatalogue.jsp" />
+	</definition>
+	<definition name="viewPendingActivity"
+		extends="newForm.definition">
+		<put-attribute name="title" value="editAuctionCatalogue" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewPendingActivity.jsp" />
+	</definition>
+
+	<definition name="printCatalogueDescription"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="printCatalogueDescription" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/printCatalogueDescriptionNew.jsp" />
+	</definition>
+	<definition name="viewCreateDepotUser"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewCreateDepotUser" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createDepotUserByDepotAdministratorBody.jsp" />
+	</definition>
+	<definition name="viewBidderDetailsAction"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="viewBidderDetailsAction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewBidderDetailsAction.jsp" />
+	</definition>
+	<definition name="onLineRegisterBybidder"
+		extends="anonymous.definition">
+		<put-attribute name="title"
+			value="onLineRegisterBybidder" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/attachCertificateBidder.jsp" />
+	</definition>
+	<definition name="bidderattachedcertificate"
+		extends="anonymous.definition">
+		<put-attribute name="title"
+			value="bidderattachedcertificate" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/OnLineRegistrationByBidder.jsp" />
+	</definition>
+
+	<definition name="showLotFinal" extends="newForm.definition">
+		<put-attribute name="title" value="showLotFinal" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/showLotFinal.jsp" />
+	</definition>
+	<!-- Added by Shadab -->
+	<definition name="paymentProcessSBI"
+		extends="newForm.definition">
+		<put-attribute name="title" value="paymentProcessSBI" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/paymentProcessSBI.jsp" />
+	</definition>
+	<definition name="applicationError"
+		extends="newForm.definition">
+		<put-attribute name="title" value="applicationError" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/applicationError.jsp" />
+	</definition>
+	<definition name="createReplyForDeliveryRequest"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="createReplyForDeliveryRequest" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/CreateReplyForDeliveryRequest.jsp" />
+	</definition>
+	<definition name="viewDelivReqbyRly"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="viewDelivReqbyRly" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/processRequest.jsp" />
+	</definition>
+	<definition name="deliveryRequestReplyByRly"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="deliveryRequestReplyByRly" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/DeliveryRequestReplyByRlyBody.jsp" />
+	</definition>
+	<definition name="deliveryRequestDraftByRly"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="deliveryRequestDraftByRly" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/DeliveryRequestDraftByRlyBody.jsp" />
+	</definition>
+
+	<definition name="amdSubmittedRly"
+		extends="newForm.definition">
+		<put-attribute name="title" value="amdSubmittedRly" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/amendmentSubmittedByRlyBody.jsp" />
+	</definition>
+	<!-- Added by Shadab -->
+
+
+	<!-- <definition extends="newForm.definition" name="viewInvoice"> <put-attribute 
+		name="viewInvoice" value="viewInvoice" /> <put-attribute name="body" value="/jsp/eAuction/invoiceView.jsp" 
+		/> </definition> -->
+
+
+	<definition extends="newForm.definition" name="viewInvoice">
+		<put-attribute name="viewInvoice" value="viewInvoice" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/invoiceView.jsp" />
+	</definition>
+	<definition extends="newForm.definition" name="invoicePDF">
+		<put-attribute name="invoicePDF" value="viewInvoicePDF" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/invoicePDF.jsp" />
+	</definition>
+	<definition name="verifyCertificate"
+		extends="newForm.definition">
+		<put-attribute name="title" value="verifyCertificate" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/verifyCertificate.jsp" />
+	</definition>
+
+	<definition name="bidderCPCBDtls"
+		extends="newForm.definition">
+		<put-attribute name="title" value="bidderCPCBDtls" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/verifybidderCPCbDetails.jsp" />
+	</definition>
+
+	<!-- Added by Dipti -->
+	<definition name="auctionBuyerLists"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="auctionBuyerLists" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/auctionBuyerLists.jsp" />
+	</definition>
+	<definition name="editAuctionScheduleAuto"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="editAuctionScheduleAuto" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editAuctionScheduleAuto.jsp" />
+	</definition>
+	<definition name="auctionSchedule"
+		extends="newForm.definition">
+		<put-attribute name="title" value="auctionSchedule" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/auctionSchedule.jsp" />
+	</definition>
+	<definition name="generalRemarks"
+		extends="newForm.definition">
+		<put-attribute name="title" value="generalRemarks" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/generalRemarks.jsp" />
+	</definition>
+	<definition name="blockBiddersCreation"
+		extends="newForm.definition">
+		<put-attribute name="title" value="blockBiddersCreation" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/blockBiddersCreation.jsp" />
+	</definition>
+	<definition name="searchbiddertoblock"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="searchbiddertoblock" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/searchbiddertoblock.jsp" />
+	</definition>
+	<definition name="blockedBiddersHistory"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="blockedBiddersHistory" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/blockedBiddersHistory.jsp" />
+	</definition>
+	<definition name="viewBidderUser"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewBidderUser" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/viewBidderUser.jsp" />
+	</definition>
+	<definition name="invoice" extends="newForm.definition">
+		<put-attribute name="title" value="invoice" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/invoice.jsp" />
+	</definition>
+	<definition name="invoiceActionDetails"
+		extends="newForm.definition">
+		<put-attribute name="title" value="invoiceActionDetails" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/invoiceActionDetails.jsp" />
+	</definition>
+	<definition name="searchAccounts"
+		extends="newForm.definition">
+		<put-attribute name="title" value="searchAccounts" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/searchAccounts.jsp" />
+	</definition>
+	<definition name="viewAccount" extends="newForm.definition">
+		<put-attribute name="title" value="viewAccount" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/viewAccount.jsp" />
+	</definition>
+	<definition name="addRemoveVendorUnitsAndMembers"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="addRemoveVendorUnitsAndMembers" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/addRemoveVendorUnitsAndMembers.jsp" />
+	</definition>
+	<definition name="viewAuctionCatalogueLive"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="viewAuctionCatalogueLive" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionCatalogueForLive.jsp" />
+	</definition>
+	<definition name="viewAuctionAccount"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewAuctionAccount" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/ViewAuctionAccount.jsp" />
+	</definition>
+	<definition name="bidderDeRegistration"
+		extends="newForm.definition">
+		<put-attribute name="title" value="bidderDeRegistration" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/bidderDeRegistration.jsp" />
+	</definition>
+	<definition name="editAuctionAccount"
+		extends="newForm.definition">
+		<put-attribute name="title" value="editAuctionAccount" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/editAuctionAccount.jsp" />
+	</definition>
+	<definition name="viewDepartment"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewDepartment" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/viewDepartment.jsp" />
+	</definition>
+	<definition name="viewDepartmentUsers"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewDepartmentUsers" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/viewDepartmentUsers.jsp" />
+	</definition>
+	<definition name="viewAndPrintRP"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewAndPrintRP" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAndPrintRP.jsp" />
+	</definition>
+	<definition name="sendMessage"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="sendMessage" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/sendMessage.jsp" />
+	</definition>
+	<definition name="showSearchScroll"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="showSearchScroll" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/showSearchScroll.jsp" />
+	</definition>
+	<definition name="createAmdForReplyByRlwy"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="createAmdForReplyByRlwy" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createAmdForReplyByRlwy.jsp" />
+	</definition>
+	<definition name="viewDelivReqbalQtybyRly"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewDelivReqbalQtybyRly" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewDeliveryRequestBalQtyByRailway.jsp" />
+	</definition>
+	<definition name="validateFailureBidder"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="validateFailureBidder" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/validateFailureBidder.jsp" />
+	</definition>
+	<definition name="viewUserProfile"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewUserProfile" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/viewUserProfile.jsp" />
+	</definition>
+	<definition name="viewVendorUser"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewVendorUser" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/viewVendorUser.jsp" />
+	</definition>
+	<definition name="signUnsignedChallan"
+		extends="newForm.definition">
+		<put-attribute name="title" value="signUnsignedChallan" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/signUnsignedChallan.jsp" />
+	</definition>
+	<definition name="rejectedLots" extends="newForm.definition">
+		<put-attribute name="title" value="rejectedLots" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/rejectedLots.jsp" />
+	</definition>
+	<definition name="cancelLot"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="cancelLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/cancelLot.jsp" />
+	</definition>
+	<definition name="viewCancelLot"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="viewCancelLot" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewCancelLot.jsp" />
+	</definition>
+	<definition name="verifyEscrollPayment"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="verifyEscrollPayment" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/verifyEscrollPayment.jsp" />
+	</definition>
+	<definition name="eScrollReport"
+		extends="newForm.definition">
+		<put-attribute name="title" value="eScrollReport" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/eScrollReport.jsp" />
+	</definition>
+	<definition name="viewEScrollReports"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewEScrollReports" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewEScrollReports.jsp" />
+	</definition>
+	<definition name="viewGeneralRemarks"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="viewGeneralRemarks" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewGeneralRemarks.jsp" />
+	</definition>
+	<definition name="auctionCatalogueHeader"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="auctionCatalogueHeader" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/auctionCatalogueHeader.jsp" />
+	</definition>
+	<definition name="viewAuctionDepotSearchAcc"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewAuctionDepotSearchAcc" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/viewAuctionDepot.jsp" />
+	</definition>
+	<definition name="viewAuctionDepotUsers"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewAuctionDepotUsers" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/viewAuctionDepotUsers.jsp" />
+	</definition>
+	<definition name="printPublishLotHeader"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title"
+			value="printPublishLotHeader" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/printPublishLotHeader.jsp" />
+	</definition>
+	<definition name="soldRateReport"
+		extends="newForm.definition">
+		<put-attribute name="title" value="soldRateReport" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/soldRateReport.jsp" />
+	</definition>
+	<definition name="emailVerification"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="emailVerificationTitle" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/emailVerification.jsp" />
+	</definition>
+	<definition name="createDirectSaleLot"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="createDirectSaleLotTitle" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createDirectSaleLot.jsp" />
+	</definition>
+	<definition name="deliveryOrerDirectSale"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="deliveryOrerDirectSale" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/deliveryOrerDirectSale.jsp" />
+	</definition>
+	<definition name="createDeliveryOrder"
+		extends="newForm.definition">
+		<put-attribute name="title" value="createDeliveryOrder" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createDeliveryOrder.jsp" />
+	</definition>
+	<definition name="addLotDeliveryOrder"
+		extends="newForm.definition">
+		<put-attribute name="title" value="addLotDeliveryOrder" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/addLotDeliveryOrder.jsp" />
+	</definition>
+	<definition name="editDirectSaleLot"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="editDirectSaleLotTitle" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editDirectSaleLot.jsp" />
+	</definition>
+	<definition name="mySaleOrder" extends="newForm.definition">
+		<put-attribute name="title" value="mySaleOrderTitle" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/mySaleOrder.jsp" />
+	</definition>
+	<!-- for tds ledger -->
+	<definition name="viewTDSLedger"
+		extends="newForm.definition">
+		<put-attribute name="title" value="viewTDSLedger" />
+		<put-attribute name="body"
+			value="/jsp/tds/viewTDSLedger.jsp" />
+	</definition>
+	<definition name="tdsSummary" extends="newForm.definition">
+		<put-attribute name="title" value="tdsSummary" />
+		<put-attribute name="body"
+			value="/jsp/tds/tdsSummaryReport.jsp" />
+	</definition>
+	<definition name="invoiceSummary"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="invoiceSummary" />
+		<put-attribute name="body"
+			value="/jsp/tds/invoiceSummaryReport.jsp" />
+	</definition>
+	<definition name="remarksHistory"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="title" value="remarksHistory" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/remarksHistory.jsp" />
+	</definition>
+	
+	
+	<!-- end by dipti -->
+
+	<definition name="UploadEncrypCertNew"
+		extends="newForm.definition">
+		<put-attribute name="title" value="UploadEncrypCertNew" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/UploadEncrypCertNew.jsp" />
+	</definition>
+	<definition name="CertStoreForDepotAdmin"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="CertStoreForDepotAdmin" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/CertStoreForDepotAdmin.jsp" />
+	</definition>
+	<definition name="AlreadyActiveMeassgeJsp"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="AlreadyActiveMeassgeJsp" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/AlreadyActiveMeassge.jsp" />
+	</definition>
+
+	<definition name="eChangePasswordUserBody"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="eChangePasswordUserBody" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/eChangeMyPassword.jsp" />
+	</definition>
+	<!-- Added By Shweta -->
+	<definition name="rejectedLots" extends="newForm.definition">
+		<put-attribute name="title" value="blockBiddersCreation" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/rejectedLots.jsp" />
+	</definition>
+
+
+	<definition name="viewAuctionDepot"
+		extends="newForm.definition">
+		<put-attribute name="title" value="blockBiddersCreation" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewAuctionDepotBody.jsp" />
+	</definition>
+
+	<definition name="showAuctionUserDepot"
+		extends="newForm.definition">
+		<put-attribute name="title" value="blockBiddersCreation" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/showAuctionUserDepot.jsp" />
+	</definition>
+
+	<!-- <definition name="eAuctionSchedules" extends="newForm.definition"> 
+		<put-attribute name="title" value="printAuctionRegisterBody" /> <put-attribute 
+		name="body" value="/jsp/eAuction/E-AuctionSchedule.jsp" /> </definition> -->
+
+
+	<!-- Added by Owais -->
+	<definition name="showDeRegistartion"
+		extends="newForm.definition">
+		<put-attribute name="title" value="showDeRegistartion" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/ShowDeRegistartion.jsp" />
+	</definition>
+	<definition name="shBidderDeRegistration"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="shBidderDeRegistration" />
+		<put-attribute name="body"
+			value="/jsp/admin/account/shBidderDeRegistration.jsp" />
+	</definition>
+
+	<definition name="viewLastAccountTransAction"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewLastAccountTransAction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewLastAccountTransactionBody.jsp" />
+	</definition>
+	<!-- Added by shweta -->
+
+	<definition name="printAuctionRegisterBody"
+		extends="popup.definition">
+		<put-attribute name="title"
+			value="Print Auction Register" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/printAuctionRegisterBodyNew.jsp" />
+	</definition>
+	<!-- <definition name="printAuctionRegisterBody" extends="newForm.definition"> 
+		<put-attribute name="title" value="printAuctionRegisterBody" /> <put-attribute 
+		name="body" value="/jsp/eAuction/printAuctionRegisterBodyNew.jsp" /> </definition> -->
+	<definition name="eAuctionSchedules"
+		extends="newForm.definition">
+		<put-attribute name="title" value="eAuctionSchedules" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/eAuctionSchedule.jsp" />
+	</definition>
+	<definition name="successNew" extends="popup.definition">
+		<put-attribute name="title"
+			value="New Show Create BidSheet" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/NewShowCreateBidSheet.jsp" />
+	</definition>
+	<definition name="viewNew" extends="popup.definition">
+		<put-attribute name="title" value="view New" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewNew.jsp" />
+	</definition>
+
+	<definition name="editAuctionUserAction"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Edit My Profile" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editMyProfile.jsp" />
+	</definition>
+
+	<definition name="editOwnAuctionUserProfile"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Edit My Profile" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editOwnMyProfile.jsp" />
+	</definition>
+
+	<definition name="viewCompletedActivity"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="viewCompletedActivity" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewCompletedActivity.jsp" />
+	</definition>
+	<definition name="mapAccountingUnitBody"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="mapAccountingUnitBody" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/mapAccountINgUnit.jsp" />
+	</definition>
+	<definition name="viewCatalogAuditTrail"
+		extends="popup.definition">
+		<put-attribute name="title" value="liveAuction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewCatalogAuditTrail.jsp" />
+	</definition>
+	<definition name="editSearchUserDtls"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Edit User " />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editSearchUserDtld.jsp" />
+	</definition>
+	<definition name="editSearchOwnUserDtls"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Edit User " />
+		<put-attribute name="body"
+			value="/jsp/eAuction/editSearchOwnUserDtls.jsp" />
+	</definition>
+	<definition name="viewEditSearchUserDtls"
+		extends="newForm.definition">
+		<put-attribute name="title" value="View Edit User" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewEditSearchUserDtls.jsp" />
+	</definition>
+	<definition name="verifyUserMobileOTP"
+		extends="base.definition">
+		<put-attribute name="title" value="OTP Verification" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/verifyUserMobileOTP.jsp" />
+	</definition>
+
+	<definition name="myAuction" extends="newForm.definition">
+		<put-attribute name="title" value="My Auction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/myAuctionPage.jsp" />
+	</definition>
+	<definition name="error404" extends="popup.definition">
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="body"
+			value="/jsp/error/sessionExpired.jsp" />
+	</definition>
+	<definition name="error500" extends="popup.definition">
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="body"
+			value="/jsp/error/errorPage.jsp" />
+	</definition>
+
+	<definition name="mapHrmsIdLogin"
+		extends="newForm.definition">
+		<put-attribute name="title" value="mapHrmsIdLogin" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/MapHrmsIdLogin.jsp" />
+	</definition>
+	<definition name="bSVPayment" extends="newForm.definition">
+		<put-attribute name="title" value="Bsv Payment" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/bsvPayment.jsp" />
+	</definition>
+
+	<definition name="dashboard" extends="newForm.definition">
+		<put-attribute name="title" value="Bsv Payment" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/dashboard.jsp" />
+	</definition>
+	<definition name="redirectSsopage"
+		extends="newForm.definition">
+		<put-attribute name="title" value="redirect Ssopage" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/rediectSSOpage.jsp" />
+	</definition>
+	<definition name="manualSync" extends="newForm.definition">
+		<put-attribute name="title" value="manualSync" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/manualSync.jsp" />
+	</definition>
+
+	<definition name="viewBidHistory"
+		extends="noHeaderFooter.definition">
+		<put-attribute name="viewBidHistory"
+			value="viewBidHistory" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/viewBidHistory.jsp" />
+	</definition>
+	<definition name="workdoneEauction"
+		extends="newForm.definition">
+		<put-attribute name="title" value="workdoneEauction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/EauctionWorkdone.jsp" />
+	</definition>
+
+	<definition name="eAuctionWrkdone"
+		extends="newForm.definition">
+		<put-attribute name="title" value="workdoneEauction" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/workdoneByCrisEmp.jsp" />
+	</definition>
+	<definition name="releaseHoldLienofbsv"
+		extends="newForm.definition">
+		<put-attribute name="title" value="releaseHoldLienofbsv" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/releaseHoldLienofBSV.jsp" />
+	</definition>
+	<definition name="myDeliveryOrder"
+		extends="newForm.definition">
+		<put-attribute name="title" value="releaseHoldLienofbsv" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/MyDeliveryOrder.jsp" />
+	</definition>
+	<definition name="autherityLetter"
+		extends="newForm.definition">
+		<put-attribute name="title" value="autherityLetter" />
+		<put-attribute name="body"
+			value="/jsp/admin/autherityLetter.jsp" />
+	</definition>
+	<definition name="sbiConnectEnq"
+		extends="newForm.definition">
+		<put-attribute name="title" value="testSync" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/sbiConnectEnquiry.jsp" />
+	</definition>
+	<definition name="lienPaymentEquiry"
+		extends="newForm.definition">
+		<put-attribute name="title" value="testSync" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/lienPaymentEquiry.jsp" />
+	</definition>
+
+	<definition name="uploadContractDetails"
+		extends="newForm.definition">
+		<put-attribute name="title" value="createContractLetter" />
+		<put-attribute name="body"
+			value="/jsp/admin/createContractLetter.jsp" />
+	</definition>
+	<definition name="submittedTdsReport"
+		extends="newForm.definition">
+		<put-attribute name="title" value="submitted Tds Report" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/submittedTdsReport.jsp" />
+	</definition>
+
+	<definition name="sbiDoubleVerification"
+		extends="newForm.definition">
+		<put-attribute name="title" value="testSync" />
+		<put-attribute name="body"
+			value="/jsp/admin/home/sbiDoubleVerification.jsp" />
+	</definition>
+
+	<definition name="submittedTdsReport"
+		extends="newForm.definition">
+		<put-attribute name="title" value="submitted Tds Report" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/submittedTdsReport.jsp" />
+	</definition>
+
+	<definition name="fundtrnasferenquiryresult"
+		extends="newForm.definition">
+		<put-attribute name="title" value="submitted Tds Report" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/fundtrnasferenquiryresult.jsp" />
+	</definition>
+	<definition name="authGenerated"
+		extends="newForm.definition">
+		<put-attribute name="title" value="authGenerated" />
+		<put-attribute name="body"
+			value="/jsp/admin/authLetterGenerated.jsp" />
+	</definition>
+	<definition name="createContractDetailsForDS"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="create Contract Letter For DS" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/createContractDetailsForDS.jsp" />
+	</definition>
+	<definition name="signContractLetter"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="sign Contract Letter For DS" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/signContractDetailsForDS.jsp" />
+	</definition>
+	<definition name="contractGenerated"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="sign Contract Letter For DS" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/contractLetterGenerated.jsp" />
+	</definition>
+	<definition name="searchLotDetails"
+		extends="newForm.definition">
+		<put-attribute name="title" value="search Lot Details" />
+		<put-attribute name="body"
+			value="/jsp/eAuction/searchLotDetails.jsp" />
+	</definition>
+
+	<definition name="deliveryBooking"
+		extends="newForm.definition">
+		<put-attribute name="title" value="Delivery Booking" />
+		<put-attribute name="body"
+			value="/jsp/admin/deliveryBooking.jsp" />
+	</definition>
+	<definition name="signDeliverybooking"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="sign Delivery booking For DS" />
+		<put-attribute name="body"
+			value="/jsp/admin/deliveryBookingSign.jsp" />
+	</definition>
+	<definition name="deliveryBookingGenerated"
+		extends="newForm.definition">
+		<put-attribute name="title"
+			value="Delivery booking For DS Generated" />
+		<put-attribute name="body"
+			value="/jsp/admin/deliverBookingGenearated.jsp" />
+	</definition>
+	<definition name="procurement"
+    extends="base.definition">
+    <put-attribute name="title" value="Procurement Projections" />
+    <put-attribute name="body" value="/jsp/admin/Procurement/procurement.jsp" />
+</definition>
+
+	<definition name="searchtender"
+    extends="base.definition">
+    <put-attribute name="title" value="Search Tender" />
+    <put-attribute name="body" value="/jsp/admin/SearchTender/searchtender.jsp" />
+</definition>
+
+<definition name="itemmaster"
+    extends="base.definition">
+    <put-attribute name="title" value="Item Master" />
+    <put-attribute name="body" value="/jsp/admin/itemmaster/itemmaster.jsp" />
+</definition>
+<definition name="high.definition" extends="base.definition">
+<put-attribute name="title" value="High Value Tender"/>
+<put-attribute name="body" value="/jsp/admin/hightender/hightender.jsp"/>
+</definition>
+<definition name="viewireps.definition" extends="base.definition">
+<put-attribute name="title" value="View Ireps Document"/>
+<put-attribute name="body" value="/jsp/admin/viewireps/viewireps.jsp"/>
+</definition>
+<definition name="goods"
+ extends="base.definition">
+<put-attribute name="title" value="Goods And Services"/>
+<put-attribute name="body" value="/jsp/admin/Goods/goods.jsp"/>
+</definition>
+<definition name="auction.definition" extends="base.definition">
+<put-attribute name="title" value="Auction Leasing"/>
+<put-attribute name="body" value="/jsp/admin/auctionleasing/auction.jsp"/>
+</definition>
+<definition name="purchase.order.search.defination" extends="base.definition">
+<put-attribute name="title" value="Search Purchase Order"/>
+<put-attribute name="body" value="/jsp/admin/SPO/PurchaseOrderSearch.jsp"/>
+</definition>
+<definition name="auctioncorrigendum" extends="popup.definition">
+<put-attribute name="title" value="Auction Corrigendum"/>
+<put-attribute name="body" value="/jsp/admin/auctionleasing/fragments/auctioncorrigendum.jsp"/>
+</definition>
+<definition name="auctioncatalogue" extends="popup.definition">
+<put-attribute name="title" value="Auction Catalogue"/>
+<put-attribute name="body" value="/jsp/admin/auctionleasing/fragments/auctionDetails.jsp"/>
+</definition>
+<definition name="auctiontax" extends="popup.definition">
+<put-attribute name="title" value="Auction Tax"/>
+<put-attribute name="body" value="/jsp/admin/auctionleasing/fragments/auctionTaxes.jsp"/>
+</definition>
+<definition name="auction.schedule.definition" extends="base.definition">
+<put-attribute name="title" value="E-Auction Schedule - IREPS"/>
+<put-attribute name="body" value="jsp/admin/Eauction/auction-schedule.jsp"/>
+</definition>
+<definition name="BannedFirms.definition" extends="base.definition">
+<put-attribute name="title" value="Banned Firms"/>
+<put-attribute name="body" value="/jsp/admin/BannedFirms/BannedFirms.jsp"/>
+</definition>
+<definition name="LearningCenter" extends="base.definition">
+<put-attribute name="title" value="Learning Center"/>
+<put-attribute name="body" value="/jsp/admin/LearningCenter/LearningCenter.jsp"/>
+</definition>
+<definition name="Helpdesktest" extends="base.definition">
+<put-attribute name="title" value="Helpdesk565"/>
+<put-attribute name="body" value="/jsp/admin/Helpdesk/Helpdesk.jsp"/>
+</definition>
+</tiles-definitions>

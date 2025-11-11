@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webappbnd:WebAppBinding xmi:version="2.0"
+	xmlns:xmi="http://www.omg.org/XMI" xmlns:webappbnd="webappbnd.xmi"
+	xmi:id="WebAppBinding_1382953944067" virtualHostName="default_host">
+	<webapp href="WEB-INF/web.xml#WebApp_ID" />
+	
+	<resRefBindings xmi:id="CRISDSResourceRefBinding" jndiName="jdbc/CRIS">
+    <bindingResourceRef href="WEB-INF/web.xml#CRISDSRef"/>
+	</resRefBindings>
+	
+	<resRefBindings xmi:id="EpsVaultDSResourceRefBinding" jndiName="jdbc/epsVault">
+    <bindingResourceRef href="WEB-INF/web.xml#epsVaultRef"/>
+	</resRefBindings>
+	
+	<resRefBindings xmi:id="IRMMSDSResourceRefBinding" jndiName="jdbc/IRMMS">
+    <bindingResourceRef href="WEB-INF/web.xml#IRMMSRef"/>
+	</resRefBindings>
+	
+	<resRefBindings xmi:id="IPASDSResourceRefBinding" jndiName="jdbc/IPAS">
+    <bindingResourceRef href="WEB-INF/web.xml#IPASRef"/>
+	</resRefBindings>
+	
+</webappbnd:WebAppBinding>

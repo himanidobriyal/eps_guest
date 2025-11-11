@@ -1,0 +1,783 @@
+
+/* === Accessibility Panel === */
+.accessibility-widget {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 80px !important;
+  width: 440px !important;
+  max-height: 85vh !important;
+  background: linear-gradient(135deg, #004a99 0%, #003366 100%) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35) !important;
+  z-index: 2147483647 !important;
+  overflow-y: auto !important;
+  opacity: 0 !important;
+  display: none !important;
+  transition: opacity 0.35s ease, width 0.3s ease !important;
+  isolation: isolate !important;
+  will-change: opacity !important;
+  filter: none !important;
+  transform: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 14px !important;
+  line-height: normal !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-align: left !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.accessibility-widget.active {
+  display: block !important;
+  opacity: 1 !important;
+}
+/* Widget inner text stays small & clean */
+.accessibility-widget * {
+  font-size: inherit !important;
+  line-height: 1.4 !important;
+}
+.accessibility-grid button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Icons and labels */
+.btn-icon {
+  font-size: 22px !important;
+}
+
+.btn-status {
+  font-size: 9px !important;
+}
+
+.accessibility-widget select,
+.accessibility-widget label,
+.accessibility-widget .reset-btn,
+.accessibility-widget .report-link {
+  font-size: 12px !important;
+}
+
+.video-tutorial-btn {
+  font-size: 12px !important;
+}
+
+.accessibility-widget h4 {
+  margin: 0 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  padding: 24px 28px !important;
+  border-bottom: none !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background: transparent !important;
+  border-radius: 20px 20px 0 0 !important;
+  cursor: default !important;
+}
+
+.accessibility-widget h4::after {
+  content: '✕' !important;
+  cursor: pointer !important;
+  font-size: 22px !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: rgba(255,255,255,0.15) !important;
+  transition: all 0.2s ease !important;
+  backdrop-filter: blur(10px) !important;
+  flex-shrink: 0 !important;
+}
+
+.accessibility-widget h4::after:hover {
+  background: rgba(255,255,255,0.25) !important;
+  transform: rotate(90deg) !important;
+}
+
+.accessibility-widget::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.accessibility-widget::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+.accessibility-widget::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Video/Tutorial Button */
+.video-tutorial-btn {
+  width: calc(100% - 56px) !important;
+  margin: 0 28px 20px 28px !important;
+  padding: 14px !important;
+  background: white !important;
+  color: #004a99 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+.tutorial-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  background: #004a99 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  font-size: 12px !important;
+}
+
+.video-tutorial-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+  background: #f8f9fa !important;
+}
+
+/* Widget Content Area */
+.widget-content {
+  background: #f8f9fa !important;
+  padding: 28px !important;
+  border-radius: 0 0 20px 20px !important;
+}
+
+/* Toggle for Oversized Widget */
+.widget-toggle {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 20px !important;
+  margin-bottom: 24px !important;
+  background: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+}
+
+.widget-toggle label {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #2c3e50 !important;
+  margin: 0 !important;
+}
+/* === Oversized Widget Effect === */
+.accessibility-widget.oversized {
+  transform: scale(1.15);
+  transform-origin: bottom right;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  z-index: 999999999 !important;
+}
+
+/* Toggle visual feedback */
+#oversizedToggle.active {
+  background: #004a99 !important;
+}
+#oversizedToggle.active::after {
+  left: 29px !important;
+}
+
+.toggle-switch {
+  position: relative !important;
+  width: 56px !important;
+  height: 30px !important;
+  background: #ddd !important;
+  border-radius: 50px !important;
+  cursor: pointer !important;
+  transition: background 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.toggle-switch::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background: white !important;
+  top: 3px !important;
+  left: 3px !important;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+}
+
+.toggle-switch.active {
+  background: #004a99 !important;
+}
+
+.toggle-switch.active::after {
+  left: 29px !important;
+}
+
+/* Grid Layout for Buttons */
+.accessibility-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+  margin-bottom: 24px !important;
+}
+
+/* Individual Accessibility Buttons - CLASSY ELEGANT DESIGN */
+.accessibility-grid button {
+  width: 100% !important;
+  padding: 16px 12px !important;
+  margin: 0 !important;
+  border: 2px solid #e8eaed !important;
+  background: white !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #2c3e50 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-height: 110px !important;
+  position: relative !important;
+  overflow: visible !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+}
+
+.accessibility-grid button:hover {
+  border-color: #004a99 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 74, 153, 0.15) !important;
+  background: #fafbfc !important;
+}
+
+/* Button Icons */
+.btn-icon {
+  font-size: 32px !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 1 !important;
+  transition: transform 0.3s ease !important;
+  opacity: 0.85 !important;
+}
+
+.btn-high-contrast .btn-icon {
+  font-size: 36px !important;
+}
+
+.btn-bigger-text .btn-icon {
+  font-size: 24px !important;
+  font-weight: bold !important;
+}
+
+.btn-text-spacing .btn-icon {
+  font-size: 16px !important;
+  letter-spacing: 2px !important;
+}
+
+.btn-pause-animations .btn-icon {
+  font-size: 36px !important;
+}
+
+.btn-hide-images .btn-icon {
+  filter: grayscale(1) !important;
+}
+
+.btn-dyslexia-friendly .btn-icon {
+  font-size: 26px !important;
+  font-family: 'Comic Sans MS', cursive !important;
+  font-weight: bold !important;
+}
+
+.btn-large-cursor .btn-icon {
+  font-size: 36px !important;
+}
+
+/* Button Labels */
+.btn-label {
+  display: block !important;
+  position: relative !important;
+  z-index: 1 !important;
+  line-height: 1.3 !important;
+}
+
+/* Button Status Badge - ALWAYS VISIBLE */
+.btn-status {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  background: rgba(0,0,0,0.06) !important;
+  color: #6c757d !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  padding: 3px 7px !important;
+  border-radius: 4px !important;
+  letter-spacing: 0.5px !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Active State - ELEGANT DARK BLUE THEME FOR ALL */
+.accessibility-grid button.active {
+  background: linear-gradient(135deg, #004a99 0%, #003366 100%) !important;
+  color: white !important;
+  border-color: #004a99 !important;
+  box-shadow: 0 4px 16px rgba(0, 74, 153, 0.25) !important;
+}
+
+.accessibility-grid button.active .btn-icon {
+  filter: brightness(0) invert(1) !important;
+  transform: scale(1.05) !important;
+  opacity: 1 !important;
+}
+
+.accessibility-grid button.active .btn-status {
+  background: rgba(255,255,255,0.25) !important;
+  color: white !important;
+  opacity: 1 !important;
+}
+
+/* Dropdowns */
+.dropdown-section {
+  background: white !important;
+  padding: 18px !important;
+  border-radius: 12px !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+}
+
+.dropdown-section label {
+  display: block !important;
+  margin: 0 0 8px 0 !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  color: #2c3e50 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.accessibility-widget select {
+  width: 100% !important;
+  padding: 11px 16px !important;
+  margin: 8px 0 0 0 !important;
+  border: 2px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  background: white !important;
+  color: #2c3e50 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232c3e50' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  padding-right: 36px !important;
+}
+
+.accessibility-widget select:hover {
+  border-color: #004a99 !important;
+  box-shadow: 0 2px 8px rgba(0, 74, 153, 0.1) !important;
+}
+
+.accessibility-widget select:focus {
+  outline: none !important;
+  border-color: #004a99 !important;
+  box-shadow: 0 0 0 3px rgba(0, 74, 153, 0.1) !important;
+}
+
+/* Reset Button */
+.reset-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+  color: white !important;
+  border: none !important;
+  margin-top: 24px !important;
+  width: 100% !important;
+  padding: 15px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(220,53,69,0.3) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  display: block !important;
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(220,53,69,0.4) !important;
+}
+
+/* Report Link */
+.report-link {
+  display: block !important;
+  text-align: center !important;
+  color: #004a99 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  margin-top: 16px !important;
+  text-decoration: none !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.report-link:hover {
+  background: rgba(0, 74, 153, 0.05) !important;
+  text-decoration: underline !important;
+}
+
+/* === Accessibility Features === */
+#page-content {
+  width: 100%;
+  min-height: 100vh;
+}
+/* === FULL PAGE HIGH CONTRAST MODES (Fixed) === */
+
+/* 🖤 INVERTED CONTRAST (Black background, white text, yellow links) */
+body.high-contrast-inverted, 
+body.high-contrast-inverted *:not(.accessibility-widget):not(.accessibility-widget *):not(.accessibility-toggle-btn) {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+body.high-contrast-inverted a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+body.high-contrast-inverted button,
+body.high-contrast-inverted input,
+body.high-contrast-inverted select,
+body.high-contrast-inverted textarea {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* 🌑 DARK CONTRAST (Gray background, soft white text, blue links) */
+body.high-contrast-dark, 
+body.high-contrast-dark *:not(.accessibility-widget):not(.accessibility-widget *):not(.accessibility-toggle-btn) {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.high-contrast-dark a {
+  color: #4dabf7 !important;
+  text-decoration: underline !important;
+}
+
+/* ☁️ LIGHT CONTRAST (Light gray background, black text, blue links) */
+body.high-contrast-light, 
+body.high-contrast-light *:not(.accessibility-widget):not(.accessibility-widget *):not(.accessibility-toggle-btn) {
+  background-color: #f5f5f5 !important;
+  color: #1a1a1a !important;
+  border-color: #ccc !important;
+}
+
+body.high-contrast-light a {
+  color: #004a99 !important;
+  text-decoration: underline !important;
+}
+
+/* 🚫 Exclude Widget and Toggle Button from all contrast effects */
+body.high-contrast-inverted .accessibility-widget,
+body.high-contrast-inverted .accessibility-widget *,
+body.high-contrast-inverted .accessibility-toggle-btn,
+body.high-contrast-dark .accessibility-widget,
+body.high-contrast-dark .accessibility-widget *,
+body.high-contrast-dark .accessibility-toggle-btn,
+body.high-contrast-light .accessibility-widget,
+body.high-contrast-light .accessibility-widget *,
+body.high-contrast-light .accessibility-toggle-btn {
+  background-color: initial !important;
+  color: initial !important;
+  border-color: initial !important;
+}
+/* 🌼 Normal / Default Mode */
+body.highlight-links a {
+  background-color: #fffb00 !important;
+  color: #000 !important;
+  padding: 2px 5px !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* 🌙 Dark Contrast Mode */
+body.high-contrast-dark.highlight-links a {
+  background-color: #ffea00 !important;   /* strong yellow */
+  color: #000 !important;
+  border: 1px solid #fff !important;
+  box-shadow: 0 0 6px #fff200 !important;
+}
+
+/* ☀️ Light Contrast Mode */
+body.high-contrast-light.highlight-links a {
+  background-color: #000 !important;      /* solid black box */
+  color: #fff !important;                 /* white text inside */
+  border: 1px solid #333 !important;
+  text-decoration: underline !important;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ⚫ Normal High Contrast (White text on Black) */
+body.high-contrast.highlight-links a {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+  box-shadow: 0 0 5px #fff !important;
+}
+
+/* 🔁 Inverted Contrast Mode (Black text on White) */
+body.high-contrast-inverted.highlight-links a {
+  background-color: #00ffff !important;   /* cyan glow */
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  box-shadow: 0 0 7px #00ffff !important;
+}
+
+/* ♿ Dyslexic Font Combo */
+body.dyslexic-font.highlight-links a {
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+}
+
+
+
+/* === Bigger Text Modes - Optimized === */
+/* === Bigger Text Feature === */
+.bigger-text-light {
+  font-size: 1.02em !important;
+}
+
+.bigger-text-medium {
+  font-size: 1.12em !important;
+}
+
+.bigger-text-heavy {
+  font-size: 1.20em !important;
+}
+
+/* Ensure all text inside body scales */
+.bigger-text-light *,
+.bigger-text-medium *,
+.bigger-text-heavy * {
+  font-size: inherit !important;
+  line-height: 1.4em !important;
+}
+
+/* Text Spacing - Only page content */
+body.text-spacing #page-content * {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.8 !important;
+}
+
+body.text-spacing .accessibility-widget,
+body.text-spacing .accessibility-widget *,
+body.text-spacing .accessibility-toggle-btn {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  line-height: normal !important;
+}
+
+/* Pause Animations - Only page content */
+body.pause-animations #page-content,
+body.pause-animations #page-content *,
+body.pause-animations #page-content *::before,
+body.pause-animations #page-content *::after {
+  animation-play-state: paused !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+body.pause-animations .accessibility-widget,
+body.pause-animations .accessibility-widget *,
+body.pause-animations .accessibility-toggle-btn {
+  animation: initial !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Hide Images */
+body.hide-images #page-content img,
+body.hide-images #page-content picture,
+body.hide-images #page-content video {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Dyslexia Friendly Font - Only page content */
+body.dyslexia-friendly #page-content * {
+  font-family: 'Comic Sans MS', 'Arial', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+body.dyslexia-friendly .accessibility-widget,
+body.dyslexia-friendly .accessibility-widget *,
+body.dyslexia-friendly .accessibility-toggle-btn {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-weight: initial !important;
+}
+
+/* Large Cursor - Only page content */
+body.large-cursor #page-content,
+body.large-cursor #page-content * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill="black" stroke="white" stroke-width="2" d="M5 5 L5 30 L15 20 L20 35 L24 34 L19 19 L32 19 Z"/></svg>') 0 0, auto !important;
+}
+
+body.large-cursor .accessibility-widget,
+body.large-cursor .accessibility-widget *,
+body.large-cursor .accessibility-toggle-btn {
+  cursor: pointer !important;
+}
+
+/* Show Tooltips */
+body.show-tooltips #page-content [title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: #2c3e50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  z-index: 10001;
+  margin-top: 5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Line Height Options - Only page content */
+body.line-height-1_5 #page-content * {
+  line-height: 1.5 !important;
+}
+
+body.line-height-2_0 #page-content * {
+  line-height: 2 !important;
+}
+
+body.line-height-2_5 #page-content * {
+  line-height: 2.5 !important;
+}
+
+body.line-height-1-5 .accessibility-widget,
+body.line-height-1-5 .accessibility-widget *,
+body.line-height-2 .accessibility-widget,
+body.line-height-2 .accessibility-widget *,
+body.line-height-2-5 .accessibility-widget,
+body.line-height-2-5 .accessibility-widget * {
+  line-height: normal !important;
+}
+
+/* Text Align Options - Only page content */
+body.text-align-left #page-content * {
+  text-align: left !important;
+}
+
+body.text-align-center #page-content * {
+  text-align: center !important;
+}
+
+body.text-align-right #page-content * {
+  text-align: right !important;
+}
+
+body.text-align-justify #page-content * {
+  text-align: justify !important;
+}
+
+body.text-align-left .accessibility-widget,
+body.text-align-left .accessibility-widget *,
+body.text-align-center .accessibility-widget,
+body.text-align-center .accessibility-widget *,
+body.text-align-right .accessibility-widget,
+body.text-align-right .accessibility-widget *,
+body.text-align-justify .accessibility-widget,
+body.text-align-justify .accessibility-widget * {
+  text-align: initial !important;
+}
+
+/* Saturation Options - ONLY page content, NOT widget */
+body.saturation-low #page-content {
+  filter: saturate(0.5) !important;
+}
+
+body.saturation-high #page-content {
+  filter: saturate(1.5) !important;
+}
+
+body.saturation-grayscale #page-content {
+  filter: grayscale(100%) !important;
+}
+
+body.saturation-low .accessibility-widget,
+body.saturation-high .accessibility-widget,
+body.saturation-grayscale .accessibility-widget,
+body.saturation-low .accessibility-toggle-btn,
+body.saturation-high .accessibility-toggle-btn,
+body.saturation-grayscale .accessibility-toggle-btn {
+  filter: none !important;
+}
+
+/* Text-to-Speech Active */
+body.text-to-speech-active #page-content,
+body.text-to-speech-active #page-content * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23004a99" viewBox="0 0 24 24" width="32" height="32"><path d="M3 9v6h4l5 5V4L7 9H3zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03z"/><path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>') 0 0, auto !important;
+}
+
+body.text-to-speech-active #page-content ::selection {
+  background: rgba(255, 193, 7, 0.5);
+}
+
+.accessibility-toggle-btn {
+    background-color: #1565d8;
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+}
+.accessibility-toggle-btn i {
+    font-size: 20px;
+}
+
+
+.accessibility-toggle-btn i {
+    color: white;
+    font-size: 28px;
+}
+/* FINAL FIX */
+#accWidget {
+    display: none !important;
+}
+#accWidget.active {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
