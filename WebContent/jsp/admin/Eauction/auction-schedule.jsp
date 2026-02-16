@@ -23,10 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Auction Management | IREPS Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
- <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/accessibility/accessibility.css">
- <script src="${pageContext.request.contextPath}/assets/accessibility/accessibility.js" defer></script>	
     <style>
         * {
             margin: 0;
@@ -35,10 +32,13 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
@@ -47,113 +47,143 @@
             padding: 0 15px;
         }
 
-       .ireps-header {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			background-color: #0b253f;
-			padding: 40px 20px;
-			color: white;
-		}
-
-		.left-section {
-			display: flex;
-			align-items: center;
-			gap: 15px;
-			height: 50px;
-		}
-
-		.center-section {
-			text-align: center;
-			flex: 1;
-			transform: translateX(-70px);
-		}
-
-		.main-title {
-			font-size: 30px;
-			font-weight: 500;
-		}
-
-		.sub-title {
-			color: #ffd700;
-			font-size: 28px;
-			font-weight: bold;
-		}
-
-		.right-section {
-			display: flex;
-			flex-direction: column;  /* stack dropdown and HOME vertically */
-			align-items: flex-end;   /* align both to the right */
-			font-size: 16px;
-			color: white;
-			margin-right: 20px;
-			gap: 8px; /* space between dropdown and HOME */
-		}
-
-		.right-section label {
-			color: white;
-			font-weight: 500;
-			margin-right: 8px;
-		}
-
-		.language-dropdown {
-			background-color: #0b253f;
-			color: white;
-			border: 1px solid #ccc;
-			padding: 6px 12px;
-			border-radius: 4px;
-			font-size: 16px;
-			appearance: none;
-			cursor: pointer;
-		}
-		.lang-container {
-		   display: flex;
-		   align-items: center;
-		   gap: 8px;
-		}
-		.icon-row {
-		  display: flex;
-		  gap: 10px;  /* ✅ spacing between home & logout */
-		  position: relative;
-		 top: 40px;  /* ✅ jahan aapka home icon placed hai */
-		}
-				
-		.home-icon,
-		.logout-icon {
-		  font-size: 26px;
-		  color: white;
-		  background-color: #0000B;
-		  padding: 4px 10px;
-		  border-radius: 4px;
-		  display: inline-flex;
-		  align-items: center;
-		  justify-content: center;
-		  cursor: pointer;
-		  text-decoration: none;
-		}
-				
-        .system-title h1 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1e3a8a;
-            margin-bottom: 4px;
+        /* Header Styles - Matching High Tender */
+        .ireps-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0b253f;
+            padding: 40px 20px;
+            color: white;
         }
 
-        .system-title .subtitle {
-            font-size: 14px;
-            color: #666;
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            height: 50px;
+        }
+
+        .left-section img {
+            height: 80px;
+            width: auto;
+        }
+
+        .center-section {
+            text-align: center;
+            flex: 1;
+            transform: translateX(-70px);
+        }
+
+        .main-title {
+            font-size: 30px;
             font-weight: 500;
         }
 
-        .trial-badge {
-            background: #dc2626;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 14px;
+        .sub-title {
+            color: #ffd700;
+            font-size: 28px;
+            font-weight: bold;
         }
 
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 16px;
+            color: white;
+            margin-right: 20px;
+            gap: 8px;
+        }
+
+        .right-section label {
+            color: white;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        .language-dropdown {
+            background-color: #0b253f;
+            color: white;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-row {
+            display: flex;
+            gap: 10px;
+            position: relative;
+            top: 40px;
+        }
+
+        .home-icon,
+        .logout-icon {
+            font-size: 26px;
+            color: white;
+            background-color: #0000B;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .menu-icon {
+            font-size: 26px;
+            cursor: pointer;
+            margin-left: 15px;
+            color: white;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: #0b253f;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #1e3a8a;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Navigation Tabs */
         .nav-container {
             background: #f8fafc;
             border-bottom: 2px solid #e2e8f0;
@@ -166,6 +196,8 @@
             border: 1px solid #d1d5db;
             border-radius: 0;
             overflow: hidden;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .nav-tab {
@@ -191,17 +223,22 @@
         }
 
         .nav-tab.active {
-            background: #f59e0b;
+            background: #3b82f6;
             color: white;
-            box-shadow: inset 0 -3px 0 0 #d97706;
+            box-shadow: inset 0 -3px 0 0 #2563eb;
         }
 
         .nav-tab i {
             margin-right: 8px;
         }
 
-        .main-content {
-            padding: 20px 0;
+        /* Main Content */
+        .main-container {
+            flex: 1;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
         }
 
         .tab-content {
@@ -212,35 +249,48 @@
             display: block;
         }
 
-        .filter-section {
-            background: white;
-            padding: 25px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
+        /* Search Card */
+        .search-card {
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: visible;
+            max-width: 1400px;
+            width: 100%;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e5e7eb;
-            color: #1e3a8a;
-            font-weight: 700;
-            font-size: 16px;
+            flex-direction: column;
         }
 
-        .section-title i {
-            font-size: 18px;
+        .search-header {
+            background: white;
+            color: #2c5aa0;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #2c5aa0;
         }
 
-        .filter-grid {
+        .search-header h3 {
+            font-size: 28px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            margin: 0;
+            color: #2c5aa0;
+            padding: 20px;
+        }
+
+        .search-content {
+            padding: 20px;
+        }
+
+        /* Form Styles */
+        .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 12px;
         }
 
         .form-group {
@@ -250,108 +300,135 @@
 
         .form-group label {
             font-weight: 600;
-            margin-bottom: 8px;
-            color: #374151;
+            color: #2d3436;
+            margin-bottom: 6px;
             font-size: 14px;
         }
 
+        .required {
+            color: #e17055;
+        }
+
         .form-control {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
+            padding: 10px 14px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
             font-size: 14px;
-            background: white;
+            font-weight: 500;
             transition: all 0.3s ease;
+            background: white;
+            color: #2d3436;
+            min-height: 42px;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #1e3a8a;
-            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+            border-color: #74b9ff;
+            box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.1);
         }
 
-        .form-control:hover {
-            border-color: #9ca3af;
+        select.form-control {
+            appearance: none;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            padding-right: 40px;
         }
 
         .date-range {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .date-separator {
+            font-weight: 600;
+            color: #2d3436;
+            text-align: center;
+            font-size: 14px;
+            background: #f8f9fa;
+            padding: 7px 10px;
+            border-radius: 6px;
         }
 
         .action-buttons {
             display: flex;
-            gap: 10px;
             justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
             flex-wrap: wrap;
-            margin-top: 20px;
         }
 
         .btn {
-            padding: 11px 22px;
+            padding: 12px 36px;
             border: none;
-            border-radius: 4px;
-            font-size: 14px;
+            border-radius: 50px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .btn-primary {
-            background: #1e3a8a;
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #1e40af;
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(116, 185, 255, 0.3);
         }
 
         .btn-secondary {
-            background: #6b7280;
-            color: white;
+            background: transparent;
+            color: #666;
+            border: 2px solid #ddd;
         }
 
         .btn-secondary:hover {
-            background: #4b5563;
+            background: #f5f5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #333;
         }
 
         .btn-success {
-            background: #10b981;
+            background: linear-gradient(45deg, #10b981, #059669);
             color: white;
         }
 
         .btn-success:hover {
-            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
         }
 
         .btn-warning {
-            background: #f59e0b;
+            background: linear-gradient(45deg, #f59e0b, #d97706);
             color: white;
         }
 
         .btn-warning:hover {
-            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
         }
 
+        /* Alert Styles */
         .alert {
             padding: 14px 18px;
-            border-radius: 4px;
+            border-radius: 10px;
             margin-bottom: 20px;
             display: none;
             border-left: 4px solid;
+            align-items: center;
+            gap: 10px;
         }
 
         .alert.active {
             display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .alert-success {
@@ -370,6 +447,7 @@
             font-size: 18px;
         }
 
+        /* Loading Spinner */
         .loading {
             display: none;
             text-align: center;
@@ -396,11 +474,124 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Results Section */
+        .results-section {
+            padding: 20px;
+            background: white;
+            max-width: 1400px;
+            margin: 15px auto 30px auto;
+        }
+
+        .results-header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a4480 50%, #0f3460 100%);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .results-header h3 {
+            font-size: 22px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        .total-count {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Pagination Controls */
+        .pagination-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f2ff 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(42, 82, 152, 0.1);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.1);
+        }
+
+        .results-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .records-per-page {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .records-per-page select {
+            padding: 7px 11px;
+            border: 2px solid #2a5298;
+            border-radius: 8px;
+            background: white;
+            color: #1e3c72;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .pagination-nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-info {
+            font-weight: 600;
+            color: #1e3c72;
+            padding: 7px 13px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            border: 2px solid rgba(42, 82, 152, 0.2);
+        }
+
+        .pagination-btn {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            border: none;
+            padding: 9px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 3px 10px rgba(42, 82, 152, 0.3);
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+        }
+
+        .pagination-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Table Styles */
         .table-wrapper {
             background: white;
-            border-radius: 6px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
             overflow-x: auto;
         }
 
@@ -411,30 +602,42 @@
         }
 
         thead {
-            background: #1e3a8a;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a4480 100%);
         }
 
         th {
-            padding: 14px;
-            text-align: left;
+            padding: 14px 10px;
+            text-align: center;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
             color: white;
-            border-bottom: 2px solid #f59e0b;
+            border: none;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.3px;
         }
 
         tbody tr {
-            border-bottom: 1px solid #f1f5f9;
-            transition: background-color 0.2s ease;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8f9fa;
         }
 
         tbody tr:hover {
-            background: #fef3c7;
+            background: linear-gradient(45deg, #e3f2fd, #f0f8ff);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.15);
         }
 
         td {
-            padding: 14px;
-            font-size: 14px;
+            padding: 12px 10px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 13px;
+            color: #2d3436;
+            text-align: left;
+            vertical-align: middle;
         }
 
         .status-badge {
@@ -470,6 +673,7 @@
         .action-icons {
             display: flex;
             gap: 6px;
+            justify-content: center;
         }
 
         .action-icon {
@@ -478,7 +682,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
             font-size: 14px;
@@ -541,88 +745,86 @@
             opacity: 0.5;
         }
 
-        .content-header {
+        /* Entries and Search Bar */
+        .entries-search-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding: 0 15px;
-            flex-wrap: wrap;
-            gap: 15px;
+            padding: 15px 20px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 10px;
         }
 
-        .entries-section {
+        .entries-control {
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 14px;
+            color: #374151;
         }
 
-        .entries-section select {
+        .entries-control label,
+        .entries-control span {
+            font-weight: 500;
+        }
+
+        .entries-select {
             padding: 6px 10px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
             font-size: 14px;
             background: white;
+            cursor: pointer;
         }
 
-        .search-container {
+        .search-control {
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 14px;
+            color: #374151;
         }
 
-        .search-box {
-            position: relative;
+        .search-control label {
+            font-weight: 500;
         }
 
-        .search-box input {
-            padding: 8px 35px 8px 12px;
+        .search-input {
+            padding: 6px 10px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
             font-size: 14px;
-            width: 250px;
+            width: 200px;
         }
 
-        .search-box input:focus {
+        .search-input:focus {
             outline: none;
-            border-color: #1e3a8a;
-            box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
+            border-color: #74b9ff;
+            box-shadow: 0 0 0 2px rgba(116, 185, 255, 0.1);
         }
 
-        .search-box i {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6b7280;
-        }
-
-        .info-section {
-            padding: 0 15px;
-            margin-bottom: 20px;
-        }
-
-        .entries-info {
+        /* Showing Info */
+        .showing-info {
+            padding: 10px 20px;
             background: #f9fafb;
             border: 1px solid #e5e7eb;
-            padding: 12px;
-            border-radius: 4px;
+            border-top: none;
             font-size: 14px;
             color: #374151;
-            margin-bottom: 15px;
         }
 
+        /* Content Area - Updated */
         .content-area {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 4px;
+            border-top: none;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
 
         .content-message {
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .content-message p {
@@ -635,119 +837,195 @@
             margin-bottom: 0;
         }
 
-        .highlight-text {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            text-align: center;
+        .content-message a {
+            color: #dc2626;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 15px;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
-            border: 2px solid #059669;
+        }
+
+        .content-message a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-text {
+            background: #fff4e6;
+            color: #000;
+            padding: 15px 20px;
+            border-radius: 0;
+            text-align: center;
+            font-weight: 400;
+            font-size: 14px;
+            border: 1px solid #fed7aa;
+            margin-top: 15px;
         }
 
         .highlight-text a {
-            color: #fef3cd;
+            color: #ea580c;
             text-decoration: none;
             font-weight: 700;
-            border-bottom: 2px solid #fef3cd;
-            transition: all 0.3s ease;
         }
 
         .highlight-text a:hover {
-            color: #fff;
-            border-bottom-color: #fff;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            text-decoration: underline;
         }
 
-        .pagination-container {
-            margin-top: 25px;
-            padding: 20px 15px;
-            background: #f9fafb;
-            border-top: 1px solid #e5e7eb;
+        /* Bottom Info Section */
+        .bottom-info-section {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            padding: 20px;
         }
 
-        .pagination {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .entries-info-text {
+        .showing-info-bottom {
+            padding: 10px 0;
             font-size: 14px;
-            color: #6b7280;
+            color: #374151;
+            margin-bottom: 15px;
         }
 
-        .page-controls {
+        .pagination-numbers {
             display: flex;
-            gap: 5px;
+            justify-content: center;
             align-items: center;
+            gap: 5px;
+            padding: 15px 0;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        .page-btn {
-            padding: 8px 12px;
+        .page-num-btn {
+            padding: 6px 12px;
             border: 1px solid #d1d5db;
             background: white;
-            color: #1e3a8a;
+            color: #374151;
             cursor: pointer;
             border-radius: 4px;
             transition: all 0.2s;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .page-num-btn:hover:not(:disabled):not(.active) {
+            background: #f3f4f6;
+        }
+
+        .page-num-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .page-num-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .page-dots {
+            padding: 0 5px;
+            color: #6b7280;
+        }
+
+        .bottom-content-message {
+            padding: 20px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .bottom-content-message p {
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .bottom-content-message p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bottom-content-message a {
+            color: #dc2626;
             text-decoration: none;
+            font-weight: 600;
         }
 
-        .page-btn:hover {
-            background: #1e3a8a;
-            color: white;
-            border-color: #1e3a8a;
+        .bottom-content-message a:hover {
+            text-decoration: underline;
         }
 
-        .page-btn.active {
-            background: #1e3a8a;
-            color: white;
-            border-color: #1e3a8a;
+        .highlight-text-bottom {
+            background: #fff4e6;
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 0;
+            text-align: center;
+            font-weight: 400;
+            font-size: 14px;
+            border: 1px solid #fed7aa;
+            margin-top: 12px;
         }
 
+        .highlight-text-bottom a {
+            color: #ea580c;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .highlight-text-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
         .footer {
-            background: #1f2937;
-            color: #d1d5db;
-            padding: 25px 0;
-            margin-top: 40px;
-        }
-
-        .footer-content {
+            background-color: #05173c;
+            color: white;
+            text-align: center;
+            padding: 16px 10px;
+            font-size: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 12px;
+            width: 100%;
+            margin-top: auto;
         }
 
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+        .footer img {
+            height: 50px;
+            width: auto;
+            vertical-align: middle;
+            object-fit: contain;
         }
 
-        .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
+        .footer-text {
+            margin-left: 10px;
         }
 
-        .footer-links a:hover {
-            color: white;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
+            .ireps-header {
                 flex-direction: column;
-                text-align: center;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .center-section {
+                transform: translateX(0);
+            }
+
+            .main-title {
+                font-size: 24px;
+            }
+
+            .sub-title {
+                font-size: 22px;
+            }
+
+            .right-section {
+                align-items: center;
+                margin-right: 0;
             }
 
             .nav-tabs {
@@ -763,12 +1041,16 @@
                 border-bottom: none;
             }
 
-            .filter-grid {
+            .form-grid {
                 grid-template-columns: 1fr;
             }
 
             .date-range {
                 grid-template-columns: 1fr;
+            }
+
+            .date-separator {
+                display: none;
             }
 
             .action-buttons {
@@ -785,7 +1067,7 @@
             }
 
             td, th {
-                padding: 10px;
+                padding: 10px 6px;
             }
 
             .action-icons {
@@ -799,63 +1081,86 @@
                 font-size: 12px;
             }
 
-            .content-header {
+            .pagination-controls {
                 flex-direction: column;
-                align-items: stretch;
-            }
-
-            .search-box input {
-                width: 100%;
+                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
-<header class="ireps-header">
-    <div class="left-section">
-        <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="Logo">
-    </div>
-    <div class="center-section">
-        <div class="main-title">Government eMarketplace</div>
-        <div class="sub-title">Indian Railways E-Procurement System</div>
-    </div>
-    <div class="right-section">
-        <div class="lang-container">
-            <label for="language">Select Your Language</label>
-            <select id="language" class="language-dropdown">
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-            </select>
+    <!-- Header -->
+    <header class="ireps-header">
+        <div class="left-section">
+            <span class="menu-icon" onclick="openSidebar()">&#9776;</span>
+            <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="Logo">
         </div>
-     <div class="icon-row">
-        <a href="${pageContext.request.contextPath}/logon" class="home-icon">
-    <i class="fa-solid fa-house"></i>
-</a>
- <a href="${pageContext.request.contextPath}/logon" class="logout-icon" onclick="logoutNow()">
-            <i class="fa-solid fa-right-from-bracket"></i>
-        </a>
-</div>
+        <div class="center-section">
+            <div class="main-title">Government eMarketplace</div>
+            <div class="sub-title">Indian Railways E-Procurement System</div>
+        </div>
+        <div class="right-section">
+            <div class="lang-container">
+                <label for="language">Select Your Language</label>
+                <select id="language" class="language-dropdown">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
+            <div class="icon-row">
+                <a href="${pageContext.request.contextPath}/logon" class="home-icon">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <a href="${pageContext.request.contextPath}/logon" class="logout-icon" onclick="logoutNow()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </header>
 
-    </div>
-</header>
+    <!-- Sidebar -->
+<div id="mySidebar" class="sidebar">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
 
+			<a href="javascript:void(0)" onclick="selectOption('hightender', this)">High Value Tenders</a>
+    <a href="javascript:void(0)" onclick="selectOption('searchtender', this)">
+        Search Tender
+        
+    </a>
+
+			<a href="javascript:void(0)" onclick="selectOption('itemmaster', this)">Item Master</a>
+			<a href="javascript:void(0)" onclick="selectOption('projection', this)">Procurement Projection</a>
+			<a href="javascript:void(0)" onclick="selectOption('viewireps', this)">View Ireps Document</a>
+			<a href="javascript:void(0)" onclick="selectOption('goods', this)">Goods and Services</a>
+			<a href="javascript:void(0)" onclick="selectOption('auction', this)">Auction Leasing</a>
+			<a href="javascript:void(0)" onclick="selectOption('SPO', this)">Search Purchase Orders</a>
+			<a href="javascript:void(0)" onclick="selectOption('Eauction', this)">E-Auction System</a>
+			<a href="javascript:void(0)" onclick="selectOption('LearningCenter', this)">Learning Center</a>
+			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)">Banned Firms</a>
+			<a href="javascript:void(0)" onclick="selectOption('Helpdesk', this)">Helpdesk</a>
+			<a href="javascript:void(0)" onclick="selectOption('Bidder', this)">New Bidder(E-Auction Sale)</a>
+			<a href="javascript:void(0)" onclick="selectOption('DepartmentCreation', this)">Department Creation</a>
+			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)"></a>
+		</div>
+
+
+    <!-- Navigation Tabs -->
     <div class="nav-container">
-        <div class="container">
-            <div class="nav-tabs">
-                <div class="nav-tab ${activeTab == 'live' ? 'active' : ''}" onclick="switchTab('live')">
-                    <i class="fas fa-circle"></i> Live Auction
-                </div>
-                <div class="nav-tab ${activeTab == 'forthcoming' ? 'active' : ''}" onclick="switchTab('forthcoming')">
-                    <i class="fas fa-clock"></i> Forthcoming Auction
-                </div>
-                <div class="nav-tab ${activeTab == 'schedule' ? 'active' : ''}" onclick="switchTab('schedule')">
-                    <i class="fas fa-calendar-check"></i> View Schedule
-                </div>
+        <div class="nav-tabs">
+            <div class="nav-tab ${activeTab == 'live' ? 'active' : ''}" onclick="switchTab('live')">
+                <i class="fas fa-circle"></i> Live Auction
+            </div>
+            <div class="nav-tab ${activeTab == 'forthcoming' ? 'active' : ''}" onclick="switchTab('forthcoming')">
+                <i class="fas fa-clock"></i> Forthcoming Auction
+            </div>
+            <div class="nav-tab ${activeTab == 'schedule' ? 'active' : ''}" onclick="switchTab('schedule')">
+                <i class="fas fa-calendar-check"></i> View Schedule
             </div>
         </div>
     </div>
 
-    <main class="main-content">
+    <!-- Main Content -->
+    <main class="main-container">
         <div class="container">
             <div id="successAlert" class="alert alert-success">
                 <i class="fas fa-check-circle"></i>
@@ -868,10 +1173,11 @@
 
             <!-- TAB 1: LIVE AUCTION -->
             <div id="liveTab" class="tab-content ${activeTab == 'live' ? 'active' : ''}">
-                <div class="content-header">
-                    <div class="entries-section">
-                        <label for="liveEntriesSelect">Show</label>
-                        <select id="liveEntriesSelect" name="entries">
+                <!-- Show Entries and Search -->
+                <div class="entries-search-bar">
+                    <div class="entries-control">
+                        <label>Show</label>
+                        <select id="liveEntriesSelect" class="entries-select">
                             <option value="10" selected>10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -879,56 +1185,45 @@
                         </select>
                         <span>entries</span>
                     </div>
-                    
-                    <div class="search-container">
-                        <label for="liveSearchInput">Search:</label>
-                        <div class="search-box">
-                            <input type="text" id="liveSearchInput" placeholder="Search...">
-                            <i class="fas fa-search"></i>
-                        </div>
+                    <div class="search-control">
+                        <label>Search:</label>
+                        <input type="text" id="liveSearchInput" class="search-input" placeholder="">
                     </div>
                 </div>
 
-                <div class="info-section">
-                    <div class="entries-info">
-                        Showing 1 to 1 of 1 entries
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content-message">
-                            <p><strong>Bidders shall be able to view and print the lots and other details related to lots/auction to be put in the auctions or for a particular auction date. This can be done from the new button "-view published data for upcoming auctions", on their home page.</strong></p>
-                            
-                            <p>To View user manual for bidders for Lot Publishing Module, please 
-                                <a href="#" class="link" onclick="openUserManual()"><strong>Click Here.</strong></a>
-                            </p>
-                            
-                            <p>To view brief instructions to Bidders on migration to "Lot Publishing Module" please 
-                                <a href="#" class="link" onclick="openMigrationGuide()"><strong>Click Here.</strong></a>
-                            </p>
-                            
-                            <p class="highlight-text">
-                                To view published data for upcoming auctions, please 
-                                <a href="#" onclick="viewPublishedData()"><strong>Click Here..</strong></a>
-                            </p>
-                        </div>
-                    </div>
+                <!-- Showing Entries Info -->
+                <div class="showing-info">
+                    Showing 1 to 1 of 1 entries
                 </div>
 
-                <div class="pagination-container">
-                    <div class="pagination">
-                        <div class="entries-info-text">
-                            Showing 1 to 1 of 1 entries
-                        </div>
+                <!-- Content Area -->
+                <div class="content-area">
+                    <div class="content-message">
+                        <p><strong>Bidders shall be able to view and print the lots and other details related to lots/auction to be put in the auctions or for a particular auction date. This can be done from the new button "-view published data for upcoming auctions", on their home page.</strong></p>
+                        
+                        <p>To View user manual for bidders for Lot Publishing Module, please 
+                            <a href="#" onclick="openUserManual()"><strong>Click Here.</strong></a>
+                        </p>
+                        
+                        <p>To view brief instructions to Bidders on migration to "Lot Publishing Module" please 
+                            <a href="#" onclick="openMigrationGuide()"><strong>Click Here.</strong></a>
+                        </p>
+                        
+                        <p class="highlight-text">
+                            To view published data for upcoming auctions, please 
+                            <a href="#" onclick="viewPublishedData()"><strong>Click Here..</strong></a>
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- TAB 2: FORTHCOMING AUCTION -->
             <div id="forthcomingTab" class="tab-content ${activeTab == 'forthcoming' ? 'active' : ''}">
-                <div class="content-header">
-                    <div class="entries-section">
-                        <label for="forthcomingEntriesSelect">Show</label>
-                        <select id="forthcomingEntriesSelect" name="entries">
+                <!-- Show Entries and Search -->
+                <div class="entries-search-bar">
+                    <div class="entries-control">
+                        <label>Show</label>
+                        <select id="forthcomingEntriesSelect" class="entries-select">
                             <option value="10" selected>10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -936,121 +1231,111 @@
                         </select>
                         <span>entries</span>
                     </div>
-                    
-                    <div class="search-container">
-                        <label for="forthcomingSearchInput">Search:</label>
-                        <div class="search-box">
-                            <input type="text" id="forthcomingSearchInput" placeholder="Search...">
-                            <i class="fas fa-search"></i>
-                        </div>
+                    <div class="search-control">
+                        <label>Search:</label>
+                        <input type="text" id="forthcomingSearchInput" class="search-input" placeholder="">
                     </div>
                 </div>
 
-                <div class="info-section">
-                    <div class="entries-info">
-                        Showing 1 to 1 of 1 entries
-                    </div>
-
-                    <div class="content-area">
-                        <div class="content-message">
-                            <p><strong>Bidders shall be able to view and print the lots and other details related to lots/auction to be put in the auctions or for a particular auction date. This can be done from the new button "-view published data for upcoming auctions", on their home page.</strong></p>
-                            
-                            <p>To View user manual for bidders for Lot Publishing Module, please 
-                                <a href="#" class="link" onclick="openUserManual()"><strong>Click Here.</strong></a>
-                            </p>
-                            
-                            <p>To view brief instructions to Bidders on migration to "Lot Publishing Module" please 
-                                <a href="#" class="link" onclick="openMigrationGuide()"><strong>Click Here.</strong></a>
-                            </p>
-                            
-                            <p class="highlight-text">
-                                To view published data for upcoming auctions, please 
-                                <a href="#" onclick="viewPublishedData()"><strong>Click Here..</strong></a>
-                            </p>
-                        </div>
-                    </div>
+                <!-- Showing Entries Info -->
+                <div class="showing-info">
+                    Showing 1 to 1 of 1 entries
                 </div>
 
-                <div class="pagination-container">
-                    <div class="pagination">
-                        <div class="entries-info-text">
-                            Showing 1 to 1 of 1 entries
-                        </div>
+                <!-- Content Area -->
+                <div class="content-area">
+                    <div class="content-message">
+                        <p><strong>Bidders shall be able to view and print the lots and other details related to lots/auction to be put in the auctions or for a particular auction date. This can be done from the new button "-view published data for upcoming auctions", on their home page.</strong></p>
+                        
+                        <p>To View user manual for bidders for Lot Publishing Module, please 
+                            <a href="#" onclick="openUserManual()"><strong>Click Here.</strong></a>
+                        </p>
+                        
+                        <p>To view brief instructions to Bidders on migration to "Lot Publishing Module" please 
+                            <a href="#" onclick="openMigrationGuide()"><strong>Click Here.</strong></a>
+                        </p>
+                        
+                        <p class="highlight-text">
+                            To view published data for upcoming auctions, please 
+                            <a href="#" onclick="viewPublishedData()"><strong>Click Here..</strong></a>
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- TAB 3: VIEW SCHEDULE -->
             <div id="scheduleTab" class="tab-content ${activeTab == 'schedule' ? 'active' : ''}">
-                <div class="filter-section">
-                    <div class="section-title">
-                        <i class="fas fa-filter"></i>
-                        <span>Search & Filter Auctions</span>
+                <div class="search-card">
+                    <div class="search-header">
+                        <h3><i class="fas fa-calendar-check me-2"></i>View Auction Schedule</h3>
                     </div>
 
-                    <form id="filterForm">
-                        <div class="filter-grid">
-                            <div class="form-group">
-                                <label for="orgType">Organization Type <span style="color: red;">*</span></label>
-                                <select id="orgType" class="form-control">
-                                    <option value="">-- Select Organization --</option>
-                                    <option value="RAILWAY">Indian Railway</option>
-                                    <option value="DMRC">DMRC</option>
-                                    <option value="OTHERS">Others</option>
-                                </select>
+                    <div class="search-content">
+                        <form id="filterForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="orgType">Organization Type <span class="required">*</span></label>
+                                    <select id="orgType" class="form-control">
+                                        <option value="">-- Select Organization --</option>
+                                        <option value="RAILWAY">Indian Railway</option>
+                                        <option value="DMRC">DMRC</option>
+                                        <option value="OTHERS">Others</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="accountId">Account / Railway Unit</label>
+                                    <select id="accountId" class="form-control">
+                                        <option value="">-- Select Account --</option>
+                                        <c:forEach items="${accountList}" var="account">
+                                            <option value="<c:out value='${account.ACCOUNT_ID}'/>"><c:out value="${account.ACCOUNT_NAME}"/></option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="depotId">Depot</label>
+                                    <select id="depotId" class="form-control">
+                                        <option value="">-- Select Depot --</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="catalogStatus">Auction Status</label>
+                                    <select id="catalogStatus" class="form-control">
+                                        <option value="">-- All Status --</option>
+                                        <option value="LIVE">Live</option>
+                                        <option value="UNDER_DECISION">Under Decision</option>
+                                        <option value="UPCOMING">Upcoming Auction</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="accountId">Account / Railway Unit</label>
-                                <select id="accountId" class="form-control">
-                                    <option value="">-- Select Account --</option>
-                                    <c:forEach items="${accountList}" var="account">
-                                        <option value="<c:out value='${account.ACCOUNT_ID}'/>"><c:out value="${account.ACCOUNT_NAME}"/></option>
-                                    </c:forEach>
-                                </select>
+                                <label>Auction Schedule Date Range</label>
+                                <div class="date-range">
+                                    <input type="date" id="fromDate" class="form-control" placeholder="From Date">
+                                    <div class="date-separator">To</div>
+                                    <input type="date" id="toDate" class="form-control" placeholder="To Date">
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="depotId">Depot</label>
-                                <select id="depotId" class="form-control">
-                                    <option value="">-- Select Depot --</option>
-                                </select>
+                            <div class="action-buttons">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i> Search
+                                </button>
+                                <button type="reset" class="btn btn-secondary" onclick="resetFilters()">
+                                    <i class="fas fa-redo-alt"></i> Reset
+                                </button>
+                                <button type="button" class="btn btn-success" onclick="window.location.href='/'">
+                                    <i class="fas fa-home"></i> Home
+                                </button>
+                                <button type="button" class="btn btn-warning" onclick="window.print()">
+                                    <i class="fas fa-print"></i> Print
+                                </button>
                             </div>
-
-                            <div class="form-group">
-                                <label for="catalogStatus">Auction Status</label>
-                                <select id="catalogStatus" class="form-control">
-                                    <option value="">-- All Status --</option>
-                                    <option value="LIVE">Live</option>
-                                    <option value="UNDER_DECISION">Under Decision</option>
-                                    <option value="UPCOMING">Upcoming Auction</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Auction Schedule Date Range</label>
-                            <div class="date-range">
-                                <input type="date" id="fromDate" class="form-control" placeholder="From Date">
-                                <input type="date" id="toDate" class="form-control" placeholder="To Date">
-                            </div>
-                        </div>
-
-                        <div class="action-buttons">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-search"></i> Search
-                            </button>
-                            <button type="reset" class="btn btn-secondary" onclick="resetFilters()">
-                                <i class="fas fa-redo-alt"></i> Reset
-                            </button>
-                            <button type="button" class="btn btn-success" onclick="window.location.href='/'">
-                                <i class="fas fa-home"></i> Home
-                            </button>
-                            <button type="button" class="btn btn-warning" onclick="window.print()">
-                                <i class="fas fa-print"></i> Print
-                            </button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
 
                 <div id="loadingSpinner" class="loading">
@@ -1058,614 +1343,801 @@
                     <p>Loading auction schedules...</p>
                 </div>
 
-                <div class="table-wrapper">
-                    <table id="resultsTable">
-                        <thead>
-                            <tr>
-                                <th>Schedule No.</th>
-                                <th>Railway Unit</th>
-                                <th>Depot</th>
-                                <th>Catalog Status</th>
-                                <th>Auction Start</th>
-                                <th>Auction End</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            <tr>
-                                <td colspan="7" class="no-data">
-                                    <i class="fas fa-inbox"></i>
-                                    <div>Click Search button to view auction schedules</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!-- Results Section -->
+                <div id="resultsSection" class="results-section" style="display: none;">
+                    <div class="results-header">
+                        <h3>Search Results</h3>
+                        <span class="total-count" id="totalCount">Total: 0</span>
+                    </div>
 
-                <div id="paginationContainer" class="pagination-container">
-                    <div id="pagination" class="pagination"></div>
+                    <!-- Pagination Controls -->
+                    <div class="pagination-controls" id="paginationControls">
+                        <div class="results-info">
+                            <div class="records-per-page">
+                                <label for="recordsPerPage">Show:</label>
+                                <select id="recordsPerPage">
+                                    <option value="5">5 per page</option>
+                                    <option value="10" selected>10 per page</option>
+                                    <option value="25">25 per page</option>
+                                    <option value="50">50 per page</option>
+                                    <option value="100">100 per page</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="pagination-nav">
+                            <div class="page-info" id="pageInfo">Page 1 of 1</div>
+                            <button class="pagination-btn" id="prevPage" disabled>
+                                <i class="fas fa-chevron-left"></i> Previous
+                            </button>
+                            <button class="pagination-btn" id="nextPage" disabled>
+                                Next <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th style="width:50px;">#</th>
+                                    <th style="width:150px;">Schedule No.</th>
+                                    <th style="width:200px;">Railway Unit</th>
+                                    <th style="width:150px;">Depot</th>
+                                    <th style="width:120px;">Status</th>
+                                    <th style="width:150px;">Auction Start</th>
+                                    <th style="width:150px;">Auction End</th>
+                                    <th style="width:180px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <tr>
+                                    <td colspan="8" class="no-data">
+                                        <i class="fas fa-inbox"></i>
+                                        <div>Click Search button to view auction schedules</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bottom Information Section -->
+                    <div class="bottom-info-section">
+                        <div class="showing-info-bottom">
+                            Showing 1 to 10 of 151 entries
+                        </div>
+
+                        <!-- Pagination Numbers -->
+                        <div class="pagination-numbers">
+                            <button class="page-num-btn" disabled>Previous</button>
+                            <button class="page-num-btn active">1</button>
+                            <button class="page-num-btn">2</button>
+                            <button class="page-num-btn">3</button>
+                            <button class="page-num-btn">4</button>
+                            <button class="page-num-btn">5</button>
+                            <span class="page-dots">...</span>
+                            <button class="page-num-btn">16</button>
+                            <button class="page-num-btn">Next</button>
+                        </div>
+
+                        <!-- Bottom Content Messages -->
+                        <div class="bottom-content-message">
+                            <p><strong>Bidders shall be able to view and print the lots and other details related to lots/auction to be put in the auctions or for a particular auction date. This can be done from the new button "-view published data for upcoming auctions", on their home page.</strong></p>
+                            
+                            <p>To View user manual for bidders for Lot Publishing Module, please 
+                                <a href="#" onclick="openUserManual()"><strong>Click Here.</strong></a>
+                            </p>
+                            
+                            <p>To view brief instructions to Bidders on migration to "Lot Publishing Module" please 
+                                <a href="#" onclick="openMigrationGuide()"><strong>Click Here.</strong></a>
+                            </p>
+                            
+                            <p class="highlight-text-bottom">
+                                To view Lot Details and Other information for upcoming auctions, please 
+                                <a href="#" onclick="viewPublishedData()"><strong>Click Here..</strong></a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="#">About IREPS</a>
-                    <a href="#">Disclaimer</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">RTI</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Contact Us</a>
-                </div>
-                <div>
-                    <strong>Developed by:</strong> CRIS (Centre for Railway Information Systems)
-                </div>
-            </div>
+        <img src="${pageContext.request.contextPath}/assets/images/stqc.png" alt="STQC">
+        <img src="${pageContext.request.contextPath}/assets/images/cris.png" alt="CRIS">
+        <div class="footer-text">
+            Centre For Railway Information Systems, Designed, Developed and Hosted by CRIS &nbsp;
+            <strong>Version 7.1.0</strong>
         </div>
     </footer>
 
     <script>
-        const contextPath = '<c:out value="${pageContext.request.contextPath}"/>';
-        let currentPage = 1;
-        let totalPages = 1;
+    const contextPath = '<c:out value="${pageContext.request.contextPath}"/>';
+    const ctx = contextPath;
+    
+    // Global pagination variables
+    let allAuctions = [];
+    let currentPage = 1;
+    let recordsPerPage = 10;
+    let totalPages = 1;
 
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('%c=== PAGE LOADED ===', 'color: green; font-weight: bold; font-size: 14px');
-            console.log('Context Path:', contextPath);
-            console.log('Active Tab:', '${activeTab}');
-            
-            loadInitialAccounts();
-            setupEventListeners();
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('%c=== PAGE LOADED ===', 'color: green; font-weight: bold; font-size: 14px');
+        console.log('Context Path:', contextPath);
+        console.log('Active Tab:', '${activeTab}');
+        
+        loadInitialAccounts();
+        setupEventListeners();
+    });
+
+    function switchTab(tabName) {
+        console.log('%c>>> Switching to tab: ' + tabName, 'color: purple; font-weight: bold');
+        
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        if (tabName === 'live') {
+            document.getElementById('liveTab').classList.add('active');
+            document.querySelectorAll('.nav-tab')[0].classList.add('active');
+            window.history.pushState({}, '', contextPath + '/eps/Eauction/manage.do');
+        } else if (tabName === 'forthcoming') {
+            document.getElementById('forthcomingTab').classList.add('active');
+            document.querySelectorAll('.nav-tab')[1].classList.add('active');
+            window.history.pushState({}, '', contextPath + '/eps/Eauction/forthcoming.do');
+        } else if (tabName === 'schedule') {
+            document.getElementById('scheduleTab').classList.add('active');
+            document.querySelectorAll('.nav-tab')[2].classList.add('active');
+            window.history.pushState({}, '', contextPath + '/eps/Eauction/schedule.do');
+        }
+    }
+
+    function setupEventListeners() {
+        document.getElementById('orgType').addEventListener('change', onOrgTypeChange);
+        document.getElementById('accountId').addEventListener('change', onAccountChange);
+        document.getElementById('filterForm').addEventListener('submit', onFormSubmit);
+        
+        // Records per page change handler
+        document.getElementById('recordsPerPage').addEventListener('change', function() {
+            recordsPerPage = parseInt(this.value);
+            currentPage = 1;
+            updatePaginationInfo();
+            displayCurrentPageData();
         });
 
-        function switchTab(tabName) {
-            console.log('%c>>> Switching to tab: ' + tabName, 'color: purple; font-weight: bold');
-            
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            if (tabName === 'live') {
-                document.getElementById('liveTab').classList.add('active');
-                document.querySelectorAll('.nav-tab')[0].classList.add('active');
-                window.history.pushState({}, '', contextPath + '/eps/Eauction/manage.do');
-            } else if (tabName === 'forthcoming') {
-                document.getElementById('forthcomingTab').classList.add('active');
-                document.querySelectorAll('.nav-tab')[1].classList.add('active');
-                window.history.pushState({}, '', contextPath + '/eps/Eauction/forthcoming.do');
-            } else if (tabName === 'schedule') {
-                document.getElementById('scheduleTab').classList.add('active');
-                document.querySelectorAll('.nav-tab')[2].classList.add('active');
-                window.history.pushState({}, '', contextPath + '/eps/Eauction/schedule.do');
+        // Previous button click
+        document.getElementById('prevPage').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePaginationInfo();
+                displayCurrentPageData();
             }
-        }
+        });
 
-        function setupEventListeners() {
-            document.getElementById('orgType').addEventListener('change', onOrgTypeChange);
-            document.getElementById('accountId').addEventListener('change', onAccountChange);
-            document.getElementById('filterForm').addEventListener('submit', onFormSubmit);
-            
-            document.getElementById('liveSearchInput').addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch('live', this.value);
+        // Next button click
+        document.getElementById('nextPage').addEventListener('click', function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePaginationInfo();
+                displayCurrentPageData();
+            }
+        });
+    }
+
+    function loadInitialAccounts() {
+        console.log('%c>>> Loading Initial Accounts', 'color: blue; font-weight: bold');
+        
+        fetch(contextPath + '/eps/Eauction/getAccounts')
+            .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Content-Type:', response.headers.get('content-type'));
+                
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
                 }
-            });
-            
-            document.getElementById('forthcomingSearchInput').addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    performSearch('forthcoming', this.value);
-                }
-            });
-        }
-
-        function loadInitialAccounts() {
-            console.log('%c>>> Loading Initial Accounts', 'color: blue; font-weight: bold');
-            fetch(contextPath + '/eps/Eauction/getAccounts')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('%c✓ Initial accounts loaded: ' + data.length, 'color: green');
-                    populateAccountDropdown(data);
-                })
-                .catch(error => {
-                    console.error('%c✗ Error loading accounts:', 'color: red', error);
-                    showError('Failed to load accounts');
-                });
-        }
-
-        function onOrgTypeChange() {
-            const orgType = document.getElementById('orgType').value;
-            console.log('%c\n>>> Organization Type Changed: "' + orgType + '"', 'color: blue; font-weight: bold; font-size: 13px');
-
-            const url = contextPath + '/eps/Eauction/getAccounts?orgType=' + encodeURIComponent(orgType);
-            console.log('Fetching URL:', url);
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('%c✓ Accounts loaded for "' + orgType + '": ' + data.length, 'color: green; font-weight: bold');
-                    populateAccountDropdown(data);
-                    document.getElementById('depotId').innerHTML = '<option value="">-- Select Depot --</option>';
-                })
-                .catch(error => {
-                    console.error('%c✗ Error loading accounts:', 'color: red', error);
-                    showError('Failed to load accounts');
-                });
-        }
-
-        function onAccountChange() {
-            const accountId = document.getElementById('accountId').value;
-            console.log('%c>>> Account Changed: ' + accountId, 'color: blue');
-
-            if (!accountId) {
-                document.getElementById('depotId').innerHTML = '<option value="">-- Select Depot --</option>';
-                return;
-            }
-
-            const url = contextPath + '/eps/Eauction/getDepots?accountId=' + encodeURIComponent(accountId);
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('%c✓ Depots loaded: ' + data.length, 'color: green');
-                    populateDepotDropdown(data);
-                })
-                .catch(error => {
-                    console.error('%c✗ Error loading depots:', 'color: red', error);
-                    showError('Failed to load depots');
-                });
-        }
-
-        function populateAccountDropdown(data) {
-            const select = document.getElementById('accountId');
-            select.innerHTML = '<option value="">-- Select Account --</option>';
-
-            if (data && data.length > 0) {
-                data.forEach(item => {
-                    const option = document.createElement('option');
-                    option.value = escapeHtml(item.ACCOUNT_ID);
-                    option.textContent = item.ACCOUNT_NAME;
-                    select.appendChild(option);
-                });
-                console.log('✓ Account dropdown populated with ' + data.length + ' items');
-            }
-        }
-
-        function populateDepotDropdown(data) {
-            const select = document.getElementById('depotId');
-            select.innerHTML = '<option value="">-- Select Depot --</option>';
-
-            if (data && data.length > 0) {
-                data.forEach(item => {
-                    const option = document.createElement('option');
-                    option.value = escapeHtml(item.DEPOT_ID);
-                    option.textContent = item.DEPOT_NAME;
-                    select.appendChild(option);
-                });
-                console.log('✓ Depot dropdown populated with ' + data.length + ' items');
-            }
-        }
-
-        function onFormSubmit(e) {
-            e.preventDefault();
-            currentPage = 1;
-            searchAuctions();
-        }
-
-        function searchAuctions() {
-            showLoading(true);
-            clearAlerts();
-
-            const params = new URLSearchParams({
-                accountId: document.getElementById('accountId').value || '',
-                depotId: document.getElementById('depotId').value || '',
-                catalogStatus: document.getElementById('catalogStatus').value || '',
-                fromDate: document.getElementById('fromDate').value || '',
-                toDate: document.getElementById('toDate').value || '',
-                page: currentPage,
-                pageSize: 10
-            });
-
-            console.log('%c>>> Searching Auctions', 'color: purple; font-weight: bold');
-            console.log('Search params:', Object.fromEntries(params));
-
-            fetch(contextPath + '/eps/Eauction/searchSchedule', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: params
+                return response.text(); // ✅ Read as text first
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('✓ Search response:', data);
-                showLoading(false);
-
-                if (data.success) {
-                    displayResults(data);
-                    showSuccess('Found ' + data.totalCount + ' auction schedule(s)');
+            .then(text => {
+                console.log('Raw response length:', text.length);
+                console.log('Raw response (first 200 chars):', text.substring(0, 200));
+                
+                // ✅ Check if response is empty
+                if (!text || text.trim().length === 0) {
+                    throw new Error('Empty response from server');
+                }
+                
+                // ✅ Try to parse JSON
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    console.error('JSON Parse Error:', e);
+                    console.error('Response text:', text);
+                    throw new Error('Invalid JSON response from server');
+                }
+                
+                console.log('Parsed data:', data);
+                
+                // ✅ Handle new response format with success/data structure
+                if (data.success && data.data) {
+                    console.log('%c✓ Accounts loaded: ' + data.count, 'color: green');
+                    populateAccountDropdown(data.data);
+                } else if (Array.isArray(data)) {
+                    // ✅ Handle old format (direct array)
+                    console.log('%c✓ Accounts loaded (legacy format): ' + data.length, 'color: green');
+                    populateAccountDropdown(data);
                 } else {
-                    showError(data.error || 'Search failed');
-                    document.getElementById('tableBody').innerHTML = 
-                        '<tr><td colspan="7" class="no-data"><i class="fas fa-exclamation-circle"></i><div>' + 
-                        escapeHtml(data.error || 'No results found') + '</div></td></tr>';
+                    console.warn('Unexpected data format:', data);
+                    showError('Unexpected data format from server');
                 }
             })
             .catch(error => {
-                console.error('✗ Search error:', error);
-                showLoading(false);
-                showError('Search failed: ' + error.message);
+                console.error('%c✗ Error loading accounts:', 'color: red', error);
+                showError('Failed to load accounts: ' + error.message);
             });
+    }
+
+    function onOrgTypeChange() {
+        const orgType = document.getElementById('orgType').value;
+        console.log('%c>>> Organization Type Changed: "' + orgType + '"', 'color: blue; font-weight: bold');
+
+        const url = contextPath + '/eps/Eauction/getAccounts?orgType=' + encodeURIComponent(orgType);
+        console.log('Fetching URL:', url);
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.text(); // ✅ Read as text first
+            })
+            .then(text => {
+                console.log('Raw response:', text.substring(0, 200));
+                
+                if (!text || text.trim().length === 0) {
+                    throw new Error('Empty response from server');
+                }
+                
+                const data = JSON.parse(text);
+                
+                // ✅ Handle both response formats
+                if (data.success && data.data) {
+                    console.log('%c✓ Accounts loaded: ' + data.count, 'color: green');
+                    populateAccountDropdown(data.data);
+                } else if (Array.isArray(data)) {
+                    console.log('%c✓ Accounts loaded: ' + data.length, 'color: green');
+                    populateAccountDropdown(data);
+                }
+                
+                document.getElementById('depotId').innerHTML = '<option value="">-- Select Depot --</option>';
+            })
+            .catch(error => {
+                console.error('%c✗ Error loading accounts:', 'color: red', error);
+                showError('Failed to load accounts: ' + error.message);
+            });
+    }
+
+    function onAccountChange() {
+        const accountId = document.getElementById('accountId').value;
+        console.log('%c>>> Account Changed: ' + accountId, 'color: blue');
+
+        if (!accountId) {
+            document.getElementById('depotId').innerHTML = '<option value="">-- Select Depot --</option>';
+            return;
         }
 
-        // ⭐⭐⭐ CRITICAL FUNCTION: Display Results with 4 Action Buttons ⭐⭐⭐
-        function displayResults(data) {
-            const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = '';
+        const url = contextPath + '/eps/Eauction/getDepots?accountId=' + encodeURIComponent(accountId);
 
-            if (!data.results || data.results.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="7" class="no-data">' +
-                    '<i class="fas fa-search"></i><div>No auction schedules found</div></td></tr>';
-                document.getElementById('paginationContainer').style.display = 'none';
-                return;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.text(); // ✅ Read as text first
+            })
+            .then(text => {
+                if (!text || text.trim().length === 0) {
+                    throw new Error('Empty response from server');
+                }
+                
+                const data = JSON.parse(text);
+                
+                // ✅ Handle both response formats
+                if (data.success && data.data) {
+                    console.log('%c✓ Depots loaded: ' + data.count, 'color: green');
+                    populateDepotDropdown(data.data);
+                } else if (Array.isArray(data)) {
+                    console.log('%c✓ Depots loaded: ' + data.length, 'color: green');
+                    populateDepotDropdown(data);
+                }
+            })
+            .catch(error => {
+                console.error('%c✗ Error loading depots:', 'color: red', error);
+                showError('Failed to load depots: ' + error.message);
+            });
+    }
+
+    function populateAccountDropdown(data) {
+        const select = document.getElementById('accountId');
+        select.innerHTML = '<option value="">-- Select Account --</option>';
+
+        if (data && data.length > 0) {
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = escapeHtml(item.ACCOUNT_ID);
+                option.textContent = item.ACCOUNT_NAME;
+                select.appendChild(option);
+            });
+            console.log('✓ Account dropdown populated with ' + data.length + ' items');
+        } else {
+            console.warn('No account data to populate');
+        }
+    }
+
+    function populateDepotDropdown(data) {
+        const select = document.getElementById('depotId');
+        select.innerHTML = '<option value="">-- Select Depot --</option>';
+
+        if (data && data.length > 0) {
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = escapeHtml(item.DEPOT_ID);
+                option.textContent = item.DEPOT_NAME;
+                select.appendChild(option);
+            });
+            console.log('✓ Depot dropdown populated with ' + data.length + ' items');
+        } else {
+            console.warn('No depot data to populate');
+        }
+    }
+
+    function onFormSubmit(e) {
+        e.preventDefault();
+        currentPage = 1;
+        searchAuctions();
+    }
+
+    function searchAuctions() {
+        showLoading(true);
+        clearAlerts();
+
+        const params = new URLSearchParams({
+            accountId: document.getElementById('accountId').value || '',
+            depotId: document.getElementById('depotId').value || '',
+            catalogStatus: document.getElementById('catalogStatus').value || '',
+            fromDate: document.getElementById('fromDate').value || '',
+            toDate: document.getElementById('toDate').value || '',
+            page: currentPage,
+            pageSize: recordsPerPage
+        });
+
+        console.log('%c>>> Searching Auctions', 'color: purple; font-weight: bold');
+        console.log('Search params:', Object.fromEntries(params));
+
+        fetch(contextPath + '/eps/Eauction/searchSchedule', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params
+        })
+        .then(response => {
+            console.log('Response status:', response.status);
+            console.log('Content-Type:', response.headers.get('content-type'));
+            
+            if (!response.ok) {
+                throw new Error('HTTP ' + response.status + ': ' + response.statusText);
             }
+            return response.text(); // ✅ Read as text first
+        })
+        .then(text => {
+            console.log('Raw response length:', text.length);
+            console.log('Raw response (first 500 chars):', text.substring(0, 500));
+            
+            showLoading(false);
+            
+            // ✅ Check if response is empty
+            if (!text || text.trim().length === 0) {
+                throw new Error('Empty response from server');
+            }
+            
+            // ✅ Try to parse JSON
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                console.error('JSON Parse Error:', e);
+                console.error('Response was:', text);
+                
+                // ✅ Check if it's HTML error page
+                if (text.includes('<html>') || text.includes('<!DOCTYPE')) {
+                    throw new Error('Server returned HTML instead of JSON. Check server logs for errors.');
+                } else {
+                    throw new Error('Invalid JSON response from server');
+                }
+            }
+            
+            console.log('✓ Parsed data:', data);
 
-            data.results.forEach(auction => {
-                const row = document.createElement('tr');
+            if (data.success) {
+                allAuctions = data.results || [];
+                displayResults(data);
+                showSuccess('Found ' + data.totalCount + ' auction schedule(s)');
+            } else {
+                showError(data.error || 'Search failed');
+                document.getElementById('tableBody').innerHTML = 
+                    '<tr><td colspan="8" class="no-data"><i class="fas fa-exclamation-circle"></i><div>' + 
+                    escapeHtml(data.error || 'No results found') + '</div></td></tr>';
+                document.getElementById('resultsSection').style.display = 'none';
+            }
+        })
+        .catch(error => {
+            console.error('%c✗ Search error:', 'color: red; font-weight: bold', error);
+            showLoading(false);
+            showError('Search failed: ' + error.message);
+            document.getElementById('resultsSection').style.display = 'none';
+        });
+    }
+
+    function displayResults(data) {
+        document.getElementById('resultsSection').style.display = 'block';
+        
+        if (!data.results || data.results.length === 0) {
+            document.getElementById('tableBody').innerHTML = 
+                '<tr><td colspan="8" class="no-data">' +
+                '<i class="fas fa-search"></i><div>No auction schedules found</div></td></tr>';
+            document.getElementById('paginationControls').style.display = 'none';
+            return;
+        }
+
+        allAuctions = data.results;
+        updatePaginationInfo();
+        displayCurrentPageData();
+    }
+
+    function updatePaginationInfo() {
+        const totalRecords = allAuctions.length;
+        totalPages = Math.ceil(totalRecords / recordsPerPage);
+        
+        document.getElementById('totalCount').textContent = 'Total: ' + totalRecords;
+        document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages;
+        
+        document.getElementById('prevPage').disabled = currentPage <= 1;
+        document.getElementById('nextPage').disabled = currentPage >= totalPages;
+        
+        document.getElementById('paginationControls').style.display = totalPages > 0 ? 'flex' : 'none';
+    }
+
+    function displayCurrentPageData() {
+        const startIndex = (currentPage - 1) * recordsPerPage;
+        const endIndex = Math.min(startIndex + recordsPerPage, allAuctions.length);
+        const currentPageData = allAuctions.slice(startIndex, endIndex);
+
+        let rows = '';
+        if (currentPageData.length > 0) {
+            currentPageData.forEach((auction, index) => {
+                const globalIndex = startIndex + index + 1;
                 const statusClass = getStatusClass(auction.catalogStatusLabel);
                 const statusLabel = auction.catalogStatusLabel || 'N/A';
 
-                // Column 1: Schedule Number
-                const tdSchedule = document.createElement('td');
-                const strongSchedule = document.createElement('strong');
-                strongSchedule.textContent = auction.scheduleNo || '';
-                tdSchedule.appendChild(strongSchedule);
-
-                // Column 2: Railway Unit
-                const tdAccount = document.createElement('td');
-                tdAccount.textContent = auction.accountName || '';
-
-                // Column 3: Depot
-                const tdDepot = document.createElement('td');
-                tdDepot.textContent = auction.depotName || '';
-
-                // Column 4: Status Badge
-                const tdStatus = document.createElement('td');
-                const spanStatus = document.createElement('span');
-                spanStatus.className = 'status-badge ' + statusClass;
-                spanStatus.innerHTML = '<i class="fas fa-circle"></i> ';
-                const statusText = document.createTextNode(statusLabel);
-                spanStatus.appendChild(statusText);
-                tdStatus.appendChild(spanStatus);
-
-                // Column 5: Auction Start
-                const tdStart = document.createElement('td');
-                tdStart.textContent = auction.auctionStartDatetime || '';
-
-                // Column 6: Auction End
-                const tdEnd = document.createElement('td');
-                tdEnd.textContent = auction.auctionEndDatetime || 'N/A';
-
-                // Column 7: ACTION BUTTONS (4 buttons)
-                const tdActions = document.createElement('td');
-                const actionDiv = document.createElement('div');
-                actionDiv.className = 'action-icons';
-                
-                // ====== BUTTON 1: VIEW (Blue) - Uniform E-Sale Conditions PDF ======
-                const viewIcon = document.createElement('div');
-                viewIcon.className = 'action-icon icon-view';
-                viewIcon.title = 'View Uniform E-Sale Conditions';
-                viewIcon.innerHTML = '<i class="fas fa-eye"></i>';
-                viewIcon.onclick = function() { 
-                    viewUniformSalePDF(); 
-                };
-                
-                // ====== BUTTON 2: PRINT (Yellow) ======
-                const printIcon = document.createElement('div');
-                printIcon.className = 'action-icon icon-print';
-                printIcon.title = 'Print';
-                printIcon.innerHTML = '<i class="fas fa-print"></i>';
-                printIcon.onclick = function() { 
-                    printAuction(auction.scheduleNo); 
-                };
-                
-                // ====== BUTTON 3: EMAIL (Purple) ======
-                const emailIcon = document.createElement('div');
-                emailIcon.className = 'action-icon icon-email';
-                emailIcon.title = 'Email';
-                emailIcon.innerHTML = '<i class="fas fa-envelope"></i>';
-                emailIcon.onclick = function() { 
-                    emailAuction(auction.scheduleNo); 
-                };
-                
-                // ====== BUTTON 4: DOWNLOAD (Green) - Catalog Specific PDF ======
-                const downloadIcon = document.createElement('div');
-                downloadIcon.className = 'action-icon icon-download';
-                downloadIcon.title = 'Download Catalog PDF';
-                downloadIcon.innerHTML = '<i class="fas fa-download"></i>';
-                
-                // Check if catalog PDF is available
-                const catalogId = auction.catalogId;
-                const catFilePath = auction.catFilePath;
-                
-                console.log('Row data - Schedule:', auction.scheduleNo, 'CatalogID:', catalogId, 'PDF:', catFilePath);
-                
-                if (catalogId && catalogId !== -5 && catalogId !== '-5' && catFilePath && catFilePath.trim() !== '') {
-                    // PDF available - enable download
-                    downloadIcon.onclick = function() { 
-                        downloadCatalogPDF(catalogId, catFilePath, auction.scheduleNo); 
-                    };
-                } else {
-                    // PDF not available - disable button
-                    downloadIcon.style.opacity = '0.5';
-                    downloadIcon.style.cursor = 'not-allowed';
-                    downloadIcon.title = 'PDF not available';
-                    downloadIcon.onclick = function() {
-                        showError('Catalog PDF not available for this auction');
-                    };
-                }
-                
-                // Add all 4 buttons
-                actionDiv.appendChild(viewIcon);
-                actionDiv.appendChild(printIcon);
-                actionDiv.appendChild(emailIcon);
-                actionDiv.appendChild(downloadIcon);
-                tdActions.appendChild(actionDiv);
-
-                // Append all columns
-                row.appendChild(tdSchedule);
-                row.appendChild(tdAccount);
-                row.appendChild(tdDepot);
-                row.appendChild(tdStatus);
-                row.appendChild(tdStart);
-                row.appendChild(tdEnd);
-                row.appendChild(tdActions);
-
-                tbody.appendChild(row);
+                rows += '<tr>' +
+                    '<td style="text-align:center;">' + globalIndex + '</td>' +
+                    '<td><strong>' + escapeHtml(auction.scheduleNo || '') + '</strong></td>' +
+                    '<td>' + escapeHtml(auction.accountName || '') + '</td>' +
+                    '<td>' + escapeHtml(auction.depotName || '') + '</td>' +
+                    '<td><span class="status-badge ' + statusClass + '"><i class="fas fa-circle"></i> ' + 
+                    escapeHtml(statusLabel) + '</span></td>' +
+                    '<td>' + escapeHtml(auction.auctionStartDatetime || '') + '</td>' +
+                    '<td>' + escapeHtml(auction.auctionEndDatetime || 'N/A') + '</td>' +
+                    '<td>' + generateActionButtons(auction) + '</td>' +
+                    '</tr>';
             });
+        } else {
+            rows = '<tr><td colspan="8" class="no-data">No records found</td></tr>';
+        }
+        
+        document.getElementById('tableBody').innerHTML = rows;
 
-            totalPages = data.totalPages || 1;
-            document.getElementById('paginationContainer').style.display = totalPages > 1 ? 'block' : 'none';
-            generatePagination();
+        if (allAuctions.length > 0) {
+            const showingText = 'Showing ' + (startIndex + 1) + ' to ' + endIndex + ' of ' + allAuctions.length + ' entries';
+            document.querySelector('.showing-info-bottom').textContent = showingText;
+            updatePaginationButtons();
+        }
+    }
+
+    function updatePaginationButtons() {
+        const paginationContainer = document.querySelector('.pagination-numbers');
+        paginationContainer.innerHTML = '';
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-num-btn';
+        prevBtn.textContent = 'Previous';
+        prevBtn.disabled = currentPage <= 1;
+        prevBtn.onclick = function() {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePaginationInfo();
+                displayCurrentPageData();
+            }
+        };
+        paginationContainer.appendChild(prevBtn);
+
+        const maxPagesToShow = 5;
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+        if (endPage - startPage < maxPagesToShow - 1) {
+            startPage = Math.max(1, endPage - maxPagesToShow + 1);
         }
 
-        // ================================================================
-        // ⭐⭐⭐ ACTION BUTTON FUNCTIONS - 4 BUTTONS ⭐⭐⭐
-        // ================================================================
-
-        // BUTTON 1: VIEW - Static Uniform E-Sale Conditions PDF
-        function viewUniformSalePDF() {
-            console.log('%c>>> BUTTON 1: Opening Uniform E-Sale Conditions PDF', 'color: green; font-weight: bold; font-size: 14px');
-            
-            const uniformSalePdfUrl = 'https://trial.ireps.gov.in/ireps/upload/resources/Uniform_E_Sale_condition.pdf';
-            
-            console.log('Static PDF URL:', uniformSalePdfUrl);
-            window.open(uniformSalePdfUrl, '_blank');
-            showSuccess('Opening Uniform E-Sale Conditions PDF...');
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = 'page-num-btn' + (i === currentPage ? ' active' : '');
+            pageBtn.textContent = i;
+            pageBtn.onclick = function() {
+                currentPage = i;
+                updatePaginationInfo();
+                displayCurrentPageData();
+            };
+            paginationContainer.appendChild(pageBtn);
         }
 
-        // BUTTON 2: PRINT
-        function printAuction(scheduleNo) {
-            console.log('%c>>> BUTTON 2: Print Auction', 'color: orange; font-weight: bold', scheduleNo);
-            window.print();
+        if (endPage < totalPages) {
+            const dots = document.createElement('span');
+            dots.className = 'page-dots';
+            dots.textContent = '...';
+            paginationContainer.appendChild(dots);
+
+            const lastBtn = document.createElement('button');
+            lastBtn.className = 'page-num-btn';
+            lastBtn.textContent = totalPages;
+            lastBtn.onclick = function() {
+                currentPage = totalPages;
+                updatePaginationInfo();
+                displayCurrentPageData();
+            };
+            paginationContainer.appendChild(lastBtn);
         }
 
-        // BUTTON 3: EMAIL
-        function emailAuction(scheduleNo) {
-            console.log('%c>>> BUTTON 3: Email Auction', 'color: purple; font-weight: bold', scheduleNo);
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-num-btn';
+        nextBtn.textContent = 'Next';
+        nextBtn.disabled = currentPage >= totalPages;
+        nextBtn.onclick = function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePaginationInfo();
+                displayCurrentPageData();
+            }
+        };
+        paginationContainer.appendChild(nextBtn);
+    }
+
+    function generateActionButtons(auction) {
+        const catalogId = auction.catalogId;
+        const catFilePath = auction.catFilePath;
+        const scheduleNo = auction.scheduleNo;
+        
+        let buttons = '<div class="action-icons">';
+        
+        buttons += '<div class="action-icon icon-view" title="View Uniform E-Sale Conditions" ' +
+            'onclick="viewUniformSalePDF()">' +
+            '<i class="fas fa-eye"></i></div>';
+        
+        buttons += '<div class="action-icon icon-print" title="Print" ' +
+            'onclick="printAuction(\'' + escapeHtml(scheduleNo) + '\')">' +
+            '<i class="fas fa-print"></i></div>';
+        
+        buttons += '<div class="action-icon icon-email" title="View Catalog Details" ' +
+            'onclick="viewCatalogDetails(\'' + catalogId + '\', \'' + escapeHtml(scheduleNo) + '\')">' +
+            '<i class="fas fa-list-alt"></i></div>';
+        
+        const pdfAvailable = catalogId && catalogId !== -5 && catalogId !== '-5' && 
+                            catFilePath && catFilePath.trim() !== '';
+        
+        if (pdfAvailable) {
+            buttons += '<div class="action-icon icon-download" title="Download Catalog PDF" ' +
+                'onclick="downloadCatalogPDF(\'' + catalogId + '\', \'' + escapeHtml(catFilePath) + '\', \'' + 
+                escapeHtml(scheduleNo) + '\')">' +
+                '<i class="fas fa-download"></i></div>';
+        } else {
+            buttons += '<div class="action-icon icon-download" title="PDF not available" ' +
+                'style="opacity:0.5; cursor:not-allowed;" ' +
+                'onclick="showError(\'Catalog PDF not available for this auction\')">' +
+                '<i class="fas fa-download"></i></div>';
+        }
+        
+        buttons += '</div>';
+        return buttons;
+    }
+
+    // ================================================================
+    // ACTION BUTTON FUNCTIONS
+    // ================================================================
+
+    function viewUniformSalePDF() {
+        console.log('%c>>> BUTTON 1: Opening Uniform E-Sale Conditions PDF', 'color: green; font-weight: bold');
+        const uniformSalePdfUrl = 'https://trial.ireps.gov.in/ireps/upload/resources/Uniform_E_Sale_condition.pdf';
+        window.open(uniformSalePdfUrl, '_blank');
+        showSuccess('Opening Uniform E-Sale Conditions PDF...');
+    }
+
+    function printAuction(scheduleNo) {
+        console.log('%c>>> BUTTON 2: Print Auction', 'color: orange; font-weight: bold', scheduleNo);
+        window.print();
+    }
+
+    function viewCatalogDetails(catalogId, scheduleNo) {
+        console.log('%c>>> BUTTON 3: View Catalog Details', 'color: purple; font-weight: bold');
+        console.log('Catalog ID:', catalogId, 'Schedule No:', scheduleNo);
+        
+        if (!catalogId || catalogId === -5 || catalogId === '-5' || catalogId == -5) {
+            showError('Catalog details not available for this auction');
+            console.warn('⚠ Invalid catalog ID:', catalogId);
+            return;
+        }
+        
+        const viewUrl = contextPath + '/eps/Eauction/viewCatalogDetails.do?catalogId=' + 
+                        encodeURIComponent(catalogId) + '&scheduleNo=' + encodeURIComponent(scheduleNo);
+        
+        console.log('Opening URL:', viewUrl);
+        window.open(viewUrl, '_blank');
+        showSuccess('Opening catalog details...');
+    }
+
+    function downloadCatalogPDF(catalogId, catFilePath, scheduleNo) {
+        console.log('%c>>> BUTTON 4: Download Catalog PDF', 'color: blue; font-weight: bold');
+        console.log('Catalog ID:', catalogId, 'File Path:', catFilePath);
+        
+        if (!catalogId || catalogId === -5 || catalogId === '-5' || catalogId == -5) {
+            showError('Invalid catalog ID');
+            return;
+        }
+        
+        if (catFilePath && catFilePath.trim() !== '') {
+            const baseUrl = 'https://trial.ireps.gov.in';
+            let fullPdfUrl;
             
-            fetch(contextPath + '/eps/Eauction/emailAuction', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'scheduleNo=' + encodeURIComponent(scheduleNo)
+            if (catFilePath.startsWith('http://') || catFilePath.startsWith('https://')) {
+                fullPdfUrl = catFilePath;
+            } else if (catFilePath.startsWith('/')) {
+                fullPdfUrl = baseUrl + catFilePath;
+            } else {
+                fullPdfUrl = baseUrl + '/' + catFilePath;
+            }
+            
+            console.log('%c✓ Opening Catalog PDF:', 'color: green; font-weight: bold', fullPdfUrl);
+            window.open(fullPdfUrl, '_blank');
+            showSuccess('Opening catalog PDF...');
+            return;
+        }
+        
+        fetch(contextPath + '/eps/Eauction/getCatalogPDF?catalogId=' + catalogId)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.text();
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showSuccess('Email sent for auction: ' + scheduleNo);
+            .then(text => {
+                if (!text || text.trim().length === 0) {
+                    throw new Error('Empty response');
+                }
+                const data = JSON.parse(text);
+                if (data.success && data.pdfUrl) {
+                    window.open(data.pdfUrl, '_blank');
+                    showSuccess('Opening catalog PDF...');
                 } else {
-                    showError('Failed to send email');
+                    showError(data.error || 'PDF not found');
                 }
             })
             .catch(error => {
-                console.error('Email error:', error);
-                showError('Error: ' + error.message);
+                console.error('✗ Error fetching PDF:', error);
+                showError('Failed to load PDF: ' + error.message);
             });
+    }
+
+    function getStatusClass(status) {
+        if (!status) return 'status-draft';
+        const statusStr = String(status).toLowerCase();
+        if (statusStr.includes('closed') || statusStr === '2') return 'status-closed';
+        if (statusStr.includes('live') || statusStr === '1') return 'status-live';
+        if (statusStr.includes('upcoming') || statusStr === '0') return 'status-upcoming';
+        return 'status-draft';
+    }
+
+    function resetFilters() {
+        document.getElementById('filterForm').reset();
+        document.getElementById('depotId').innerHTML = '<option value="">-- Select Depot --</option>';
+        document.getElementById('tableBody').innerHTML = 
+            '<tr><td colspan="8" class="no-data"><i class="fas fa-inbox"></i><div>Click Search to view auction schedules</div></td></tr>';
+        document.getElementById('resultsSection').style.display = 'none';
+        clearAlerts();
+        currentPage = 1;
+        allAuctions = [];
+        console.log('✓ Filters reset');
+    }
+
+    function openUserManual() {
+        const userManualUrl = 'https://trial.ireps.gov.in/ireps/upload/resources/BidderManual_LotPublishing.pdf';
+        window.open(userManualUrl, '_blank');
+        showSuccess('Opening Bidder Manual...');
+    }
+    
+    function openMigrationGuide() {
+        const migrationGuideUrl = 'https://trial.ireps.gov.in/ireps/upload/resources/Bidder_Instructions_Migration_for_lot_publishing.pdf';
+        window.open(migrationGuideUrl, '_blank');
+        showSuccess('Opening Migration Guide...');
+    }
+    
+    function viewPublishedData() {
+        showSuccess('Published data viewer will open');
+    }
+
+    function showLoading(show) {
+        const spinner = document.getElementById('loadingSpinner');
+        if (show) {
+            spinner.classList.add('active');
+        } else {
+            spinner.classList.remove('active');
         }
+    }
 
-        // BUTTON 4: DOWNLOAD - Catalog Specific PDF (Database se)
-        function downloadCatalogPDF(catalogId, catFilePath, scheduleNo) {
-            console.log('%c>>> BUTTON 4: Download Catalog PDF', 'color: blue; font-weight: bold; font-size: 14px');
-            console.log('Catalog ID:', catalogId);
-            console.log('File Path:', catFilePath);
-            console.log('Schedule No:', scheduleNo);
-            
-            // Validate catalog ID
-            if (!catalogId || catalogId === -5 || catalogId === '-5') {
-                showError('Invalid catalog ID');
-                console.warn('⚠ Invalid catalog ID:', catalogId);
-                return;
-            }
-            
-            // If we have the file path, construct full URL
-            if (catFilePath && catFilePath.trim() !== '') {
-                const baseUrl = 'https://trial.ireps.gov.in';
-                let fullPdfUrl;
-                
-                // Check if path is already complete URL
-                if (catFilePath.startsWith('http://') || catFilePath.startsWith('https://')) {
-                    fullPdfUrl = catFilePath;
-                } else if (catFilePath.startsWith('/')) {
-                    // Relative path with leading slash
-                    fullPdfUrl = baseUrl + catFilePath;
-                } else {
-                    // Relative path without slash
-                    fullPdfUrl = baseUrl + '/' + catFilePath;
-                }
-                
-                console.log('%c✓ Opening Catalog PDF:', 'color: green; font-weight: bold', fullPdfUrl);
-                window.open(fullPdfUrl, '_blank');
-                showSuccess('Opening catalog PDF for ' + scheduleNo + '...');
-                return;
-            }
-            
-            // Fallback: If path not in data, fetch from server
-            console.log('⚠ PDF path not in data, fetching from server...');
-            
-            fetch(contextPath + '/eps/Eauction/getCatalogPDF?catalogId=' + catalogId)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Server response:', data);
-                    
-                    if (data.success && data.pdfUrl) {
-                        console.log('%c✓ PDF URL from server:', 'color: green', data.pdfUrl);
-                        window.open(data.pdfUrl, '_blank');
-                        showSuccess('Opening catalog PDF...');
-                    } else {
-                        showError(data.error || 'PDF not found');
-                        console.error('✗ PDF not found for catalog:', catalogId);
-                    }
-                })
-                .catch(error => {
-                    console.error('✗ Error fetching PDF:', error);
-                    showError('Failed to load PDF: ' + error.message);
-                });
-        }
+    function showSuccess(message) {
+        const alert = document.getElementById('successAlert');
+        document.getElementById('successMessage').textContent = message;
+        alert.classList.add('active');
+        setTimeout(function() { alert.classList.remove('active'); }, 4000);
+    }
 
-        // ================================================================
-        // HELPER FUNCTIONS
-        // ================================================================
+    function showError(message) {
+        const alert = document.getElementById('errorAlert');
+        document.getElementById('errorMessage').textContent = message;
+        alert.classList.add('active');
+        setTimeout(function() { alert.classList.remove('active'); }, 5000);
+    }
 
-        function getStatusClass(status) {
-            if (!status) return 'status-draft';
-            const statusStr = String(status).toLowerCase();
-            if (statusStr.includes('closed') || statusStr === '2') return 'status-closed';
-            if (statusStr.includes('live') || statusStr === '1') return 'status-live';
-            if (statusStr.includes('upcoming') || statusStr === '0') return 'status-upcoming';
-            return 'status-draft';
-        }
+    function clearAlerts() {
+        document.getElementById('successAlert').classList.remove('active');
+        document.getElementById('errorAlert').classList.remove('active');
+    }
 
-        function generatePagination() {
-            const pagination = document.getElementById('pagination');
-            pagination.innerHTML = '';
+    function escapeHtml(text) {
+        if (!text) return '';
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+        return String(text).replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
 
-            if (totalPages <= 1) return;
+    function openSidebar() {
+        document.getElementById('mySidebar').style.width = '250px';
+    }
 
-            if (currentPage > 1) {
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'page-btn';
-                prevBtn.textContent = '< Previous';
-                prevBtn.onclick = function(e) {
-                    e.preventDefault();
-                    currentPage--;
-                    searchAuctions();
-                };
-                pagination.appendChild(prevBtn);
-            }
+    function closeSidebar() {
+        document.getElementById('mySidebar').style.width = '0';
+    }
 
-            for (let i = 1; i <= totalPages; i++) {
-                const button = document.createElement('button');
-                button.className = 'page-btn' + (i === currentPage ? ' active' : '');
-                button.textContent = i;
-                button.onclick = function(e) {
-                    e.preventDefault();
-                    currentPage = i;
-                    searchAuctions();
-                };
-                pagination.appendChild(button);
-            }
+    function selectOption(option, el) {
+        console.log('Selected option:', option);
+        document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active-option'));
+        if (el) el.classList.add('active-option');
+        window.location.href = ctx + '/jsp/admin/home/login.jsp?redirect=' + option;
+    }
 
-            if (currentPage < totalPages) {
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'page-btn';
-                nextBtn.textContent = 'Next >';
-                nextBtn.onclick = function(e) {
-                    e.preventDefault();
-                    currentPage++;
-                    searchAuctions();
-                };
-                pagination.appendChild(nextBtn);
-            }
-        }
-
-        function resetFilters() {
-            document.getElementById('filterForm').reset();
-            document.getElementById('depotId').innerHTML = '<option value="">-- Select Depot --</option>';
-            document.getElementById('tableBody').innerHTML = 
-                '<tr><td colspan="7" class="no-data"><i class="fas fa-inbox"></i><div>Click Search to view auction schedules</div></td></tr>';
-            document.getElementById('pagination').innerHTML = '';
-            clearAlerts();
-            currentPage = 1;
-            console.log('✓ Filters reset');
-        }
-
-        function performSearch(tabType, query) {
-            console.log('Searching in ' + tabType + ' tab for:', query);
-            showSuccess('Search functionality for ' + tabType + ' tab will be implemented');
-        }
-
-        function openUserManual() {
-            console.log('Opening user manual...');
-            showSuccess('User manual will open in a new window');
-        }
-        
-        function openMigrationGuide() {
-            console.log('Opening migration guide...');
-            showSuccess('Migration guide will open in a new window');
-        }
-        
-        function viewPublishedData() {
-            console.log('Viewing published data...');
-            showSuccess('Published data viewer will open');
-        }
-
-        function showLoading(show) {
-            const spinner = document.getElementById('loadingSpinner');
-            if (show) {
-                spinner.classList.add('active');
-            } else {
-                spinner.classList.remove('active');
-            }
-        }
-
-        function showSuccess(message) {
-            const alert = document.getElementById('successAlert');
-            document.getElementById('successMessage').textContent = message;
-            alert.classList.add('active');
-            setTimeout(function() { alert.classList.remove('active'); }, 4000);
-        }
-
-        function showError(message) {
-            const alert = document.getElementById('errorAlert');
-            document.getElementById('errorMessage').textContent = message;
-            alert.classList.add('active');
-            setTimeout(function() { alert.classList.remove('active'); }, 5000);
-        }
-
-        function clearAlerts() {
-            document.getElementById('successAlert').classList.remove('active');
-            document.getElementById('errorAlert').classList.remove('active');
-        }
-
-        function escapeHtml(text) {
-            if (!text) return '';
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
-            return String(text).replace(/[&<>"']/g, function(m) { return map[m]; });
-        }
-    </script>
+    function logoutNow() {
+        alert("Logout Successful");
+        window.location.href = ctx + "/logonBody.jsp";
+    }
+</script>
 </body>
 </html>

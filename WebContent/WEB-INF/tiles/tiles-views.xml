@@ -1667,4 +1667,21 @@
 <put-attribute name="title" value="Helpdesk565"/>
 <put-attribute name="body" value="/jsp/admin/Helpdesk/Helpdesk.jsp"/>
 </definition>
+<definition name="NewBidder" extends="base.definition">
+<put-attribute name="title" value="Bidder"/>
+<put-attribute name="body" value="/jsp/admin/Bidder/Bidder.jsp"/>
+</definition>
+<definition name="bidderform" extends="base.definition">
+<put-attribute name="title" value="Bidder"/>
+<put-attribute name="body" value="/jsp/admin/Bidder/NewBidderForm.jsp"/>
+</definition>
+<definition name="bidderSuccess" extends="base.definition">
+<put-attribute name="title" value="Bidder"/>
+<put-attribute name="body" value="/jsp/admin/Bidder/success.jsp"/>
+</definition>
+<definition name="departmentCreation" extends="base.definition">
+    <put-attribute name="title" value="Department Creation" />
+    <put-attribute name="body" value="/jsp/admin/DepartmentCreation/departmentcreation.jsp" />
+</definition>
+
 </tiles-definitions>

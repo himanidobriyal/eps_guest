@@ -96,35 +96,45 @@ public class SearchTenderController {
     }
     
     @PostMapping("/customSearch")
+    
     public String customSearch(@RequestParam Map<String, String> params, Model model) {
-    	  // ✅ PRINT EVERYTHING COMING FROM JSP — ADD HERE
-        System.out.println("===== FRONTEND → CONTROLLER PARAMS =====");
-        params.forEach((k, v) -> System.out.println(k + " = " + v));
-        System.out.println("========================================");
+    	System.out.println("Received Params: " + params);
 
-        // ✅ Load all dropdown values again
+
+        // ✅ Load dropdowns
         List<Organization> organizations = organizationService.getAllOrganizations();
         model.addAttribute("organizations", organizations);
 
-        if (!organizations.isEmpty()) {
-        	String orgCode = params.getOrDefault("orgCode", organizations.get(0).getIntCode());
-        	model.addAttribute("selectedOrg", orgCode);
+        String orgCode = params.getOrDefault("orgCode",
+                organizations.isEmpty() ? "" : organizations.get(0).getIntCode());
 
-        	model.addAttribute("pus", puService.getPUsByOrg(orgCode));
-        	model.addAttribute("departments", departmentService.getDepartmentsByOrg(orgCode));
-        	model.addAttribute("units", unitService.getUnitsForAllWorkAreas(orgCode));
+        model.addAttribute("selectedOrg", orgCode);
 
-        }
+        model.addAttribute("pus", puService.getPUsByOrg(orgCode));
+        model.addAttribute("departments", departmentService.getDepartmentsByOrg(orgCode));
+        model.addAttribute("units", unitService.getUnitsForAllWorkAreas(orgCode));
+
+        // ✅ PRESERVE ALL FORM VALUES
+        model.addAttribute("searchText", params.get("searchText"));
+        model.addAttribute("searchType", params.get("searchType"));
+        model.addAttribute("searchMethod", params.get("searchMethod"));
+        model.addAttribute("workArea", params.get("workArea"));
+        model.addAttribute("puCode", params.get("puCode"));
+        model.addAttribute("deptCode", params.get("deptCode"));
+        model.addAttribute("dateRange", params.get("dateRange"));
+        model.addAttribute("fromDate", params.get("fromDate"));
+        model.addAttribute("toDate", params.get("toDate"));
+        model.addAttribute("tenderType", params.get("tenderType"));
+        model.addAttribute("tenderStatus", params.get("tenderStatus"));
+        model.addAttribute("biddingType", params.get("biddingType"));
 
         // ✅ Execute search
         List<Tender> tenderList = tenderService.getCustomTenders(params);
         model.addAttribute("tenders", tenderList);
 
-        // ✅ Activate custom tab
         model.addAttribute("activeTab", "custom");
 
         return "searchtender";
     }
-
-
 }
+

@@ -348,22 +348,34 @@
     }
 
     .footer {
-        background-color: #05173c;
-        color: white;
-        text-align: center;
-        padding: 20px 10px;
-        font-family: "Segoe UI", sans-serif;
-        font-size: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        transition: background-color 0.3s ease;
-    }
+	background-color: #0b253f;
+	color: white;
+	text-align: center;
+	padding: 16px 10px;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	width: 100%;
+	margin-top: auto;
+	position: relative;
+	background: #05173c !important;   /* Dark blue */
+    background-image: none !important;
+}
 
-    .footer img { height: 50px; vertical-align: middle; }
-    .footer-text { margin-left: 10px; }
+.footer img {
+	height: 50px;
+	width: auto;
+	vertical-align: middle;
+	object-fit: contain;
+}
+
+.footer-text {
+	margin-left: 10px;
+}
 
     @media (max-width: 768px) {
         .content { padding: 30px 15px; }
@@ -446,6 +458,8 @@
                 <option value="hi">Hindi</option>
             </select>
         </div>
+        			<!-- ⭐ REQUIRED for BHASHINI PLUGIN -->
+    <div class="bhashini-plugin-container"></div>
         <a href="${pageContext.request.contextPath}/logon" class="home-icon">
     <i class="fa-solid fa-house"></i>
 </a>
@@ -521,9 +535,20 @@
 			<a href="javascript:void(0)" onclick="selectOption('LearningCenter', this)">Learning Center</a>
 			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)">Banned Firms</a>
 			<a href="javascript:void(0)" onclick="selectOption('Helpdesk', this)">Helpdesk</a>
+			<a href="javascript:void(0)" onclick="selectOption('Bidder', this)">New Bidder(E-Auction Sale)</a>
+			<a href="javascript:void(0)" onclick="selectOption('DepartmentCreation', this)">Department Creation</a>
 			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)"></a>
 		</div>
 <div id="toast">Login Successful!</div>
+<footer class="footer">
+			<img src="${pageContext.request.contextPath}/assets/images/stqc.png" alt="STQC">
+			<img src="${pageContext.request.contextPath}/assets/images/cris.png" alt="CRS">
+
+			<div class="footer-text">
+				Centre For Railway Information Systems, Designed, Developed and Hosted by CRIS &nbsp;
+				<strong>Version 7.1.0</strong>
+			</div>
+		</footer>
 <script>
 
   const ctx = '<%= request.getContextPath() %>';
@@ -588,6 +613,9 @@
           case 'LearningCenter': targetURL = ctx + '/eps/LearningCenter/learn.do'; break;
           case 'Helpdesk': targetURL = ctx + '/eps/Helpdesk/help.do'; break;
           case 'BannedFirms': targetURL = ctx + '/eps/BannedFirms/seen.do'; break;
+          case 'Bidder' : targetURL = ctx + '/eps/Bidder/bid.do' ; break;
+          case 'DepartmentCreation': targetURL = ctx + '/eps/departmentcreation/load.do'; break;
+        	          
           default:
               alert('Invalid redirect option');
               return;
@@ -598,5 +626,11 @@
 </script>
 
 <script src="${pageContext.request.contextPath}/assets/accessibility/accessibility.js" ></script>
+		
+<!-- ⭐ BHASHINI TRANSLATION PLUGIN SCRIPT -->
+<script 
+    src="https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js"
+    language-icon-color="#ffffff">
+</script>
 </body>
 </html>

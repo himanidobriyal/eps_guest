@@ -572,8 +572,9 @@
             border-color: #0984e3;
         }
 
-        .footer {
-	background-color: #05173c;
+        
+.footer {
+	background-color: #0b253f;
 	color: white;
 	text-align: center;
 	padding: 16px 10px;
@@ -587,6 +588,8 @@
 	width: 100%;
 	margin-top: auto;
 	position: relative;
+	background: #05173c !important;   /* Dark blue */
+    background-image: none !important;
 }
 
 .footer img {
@@ -598,8 +601,7 @@
 
 .footer-text {
 	margin-left: 10px;
-}
-        
+}   
 
         /* jQuery UI Autocomplete Styling */
         .ui-autocomplete {
@@ -662,12 +664,69 @@
                 font-size: 11px;
             }
         }
+         .sidebar {
+				height: 100%;
+				width: 0;
+				position: fixed;
+				z-index: 1000;
+				top: 0;
+				left: 0;
+				background-color: #0b253f;
+				overflow-x: hidden;
+				transition: 0.4s;
+				padding-top: 60px;
+			}
+
+			.sidebar a {
+				padding: 12px 20px;
+				text-decoration: none;
+				font-size: 18px;
+				color: #fff;
+				display: block;
+				transition: 0.3s;
+			}
+
+			.sidebar a:hover {
+				background-color: #1e3a8a;
+			}
+
+			.sidebar .closebtn {
+				position: absolute;
+				top: 15px;
+				right: 20px;
+				font-size: 28px;
+				color: white;
+				cursor: pointer;
+			}
+
+			.menu-icon {
+				font-size: 26px;
+				cursor: pointer;
+				margin-left: 15px;
+				color: white;
+			}
+
+			select {
+				appearance: none;
+				background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+				background-repeat: no-repeat;
+				background-position: right 12px center;
+				background-size: 12px;
+				padding-right: 40px;
+			}
+			.sidebar a .dev-note {
+  display: block;
+  font-size: 11px;
+  color: red;
+ 
+  margin-top: 2px;
+}
     </style>
 </head>
 <body>
-    <header class="ireps-header">
+   <header class="ireps-header">
     <div class="left-section">
-   
+    <span class="menu-icon" onclick="openSidebar()">&#9776;</span>
         <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="Logo">
     </div>
     <div class="center-section">
@@ -677,12 +736,11 @@
     <div class="right-section">
         <div class="lang-container">
             <label for="language">Select Your Language</label>
-            <select id="language" class="language-dropdown">
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-            </select>
+            
         </div>
-      <div class="icon-row">
+        			<!-- ⭐ REQUIRED for BHASHINI PLUGIN -->
+    <div class="bhashini-plugin-container"></div>
+     <div class="icon-row">
         <a href="${pageContext.request.contextPath}/logon" class="home-icon">
     <i class="fa-solid fa-house"></i>
 </a>
@@ -690,8 +748,32 @@
             <i class="fa-solid fa-right-from-bracket"></i>
         </a>
 </div>
+
     </div>
 </header>
+<div id="mySidebar" class="sidebar">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+
+			<a href="javascript:void(0)" onclick="selectOption('hightender', this)">High Value Tenders</a>
+    <a href="javascript:void(0)" onclick="selectOption('searchtender', this)">
+        Search Tender
+        
+    </a>
+
+			<a href="javascript:void(0)" onclick="selectOption('itemmaster', this)">Item Master</a>
+			<a href="javascript:void(0)" onclick="selectOption('projection', this)">Procurement Projection</a>
+			<a href="javascript:void(0)" onclick="selectOption('viewireps', this)">View Ireps Document</a>
+			<a href="javascript:void(0)" onclick="selectOption('goods', this)">Goods and Services</a>
+			<a href="javascript:void(0)" onclick="selectOption('auction', this)">Auction Leasing</a>
+			<a href="javascript:void(0)" onclick="selectOption('SPO', this)">Search Purchase Orders</a>
+			<a href="javascript:void(0)" onclick="selectOption('Eauction', this)">E-Auction System</a>
+			<a href="javascript:void(0)" onclick="selectOption('LearningCenter', this)">Learning Center</a>
+			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)">Banned Firms</a>
+			<a href="javascript:void(0)" onclick="selectOption('Helpdesk', this)">Helpdesk</a>
+			<a href="javascript:void(0)" onclick="selectOption('Bidder', this)">New Bidder(E-Auction Sale)</a>
+			<a href="javascript:void(0)" onclick="selectOption('DepartmentCreation', this)">Department Creation</a>
+			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)"></a>
+		</div>
 
     <div class="main-container">
         <div class="search-card">
@@ -837,6 +919,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+    const ctx = '<%= request.getContextPath() %>';
+    let selected = '';
+
+    function selectOption(option, el) {
+    	selected = option;
+
+    	document.querySelectorAll('.sidebar a')
+    		.forEach(link => link.classList.remove('active-option'));
+    	el.classList.add('active-option');
+
+    	// Redirect to dummy login instead of direct function
+    	window.location.href = ctx + '/jsp/admin/home/login.jsp?redirect=' + option;
+
+    }
+
+    function openSidebar() { document.getElementById('mySidebar').style.width = '250px'; }
+    function closeSidebar() { document.getElementById('mySidebar').style.width = '0'; }
+        
         // Dual Range Slider Implementation
         class DualRangeSlider {
             constructor(containerId, min = 0, max = 99999, fromValue = 5, toValue = 99999) {
@@ -1136,5 +1236,10 @@
             });
         });
     </script>
+    <script 
+    src="https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js"
+    language-icon-color="#ffffff">
+</script>
+<script src="${pageContext.request.contextPath}/assets/bhashini/bhashini-init.js"></script>
 </body>
 </html>

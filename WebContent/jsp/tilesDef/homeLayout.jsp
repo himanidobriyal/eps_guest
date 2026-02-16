@@ -1394,10 +1394,7 @@ $(document).ready(function(){
     }
     trackSession();
     
-    if(("<%=profile.getHrmsId()%>")!="" && ("<%=profile.getHrmsToken()%>")!="" ){
-		document.getElementById("hrmsBackBtn").style.display="block";
-	}
-    
+
 	function openpage(url, reqWA){
 		  postRequest(url);
 		}

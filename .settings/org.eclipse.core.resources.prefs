@@ -1,8 +1,9 @@
 eclipse.preferences.version=1
 encoding//WebContent/jsp/admin/BannedFirms/BannedFirms.jsp=UTF-8
+encoding//WebContent/jsp/admin/DepartmentCreation/departmentcreation.jsp=UTF-8
 encoding//WebContent/jsp/admin/Helpdesk/Helpdesk.jsp=UTF-8
 encoding//WebContent/jsp/admin/LearningCenter/LearningCenter.jsp=UTF-8
 encoding//WebContent/jsp/admin/SPO/PurchaseOrderSearch.jsp=UTF-8
-encoding//WebContent/jsp/admin/SearchTender/searchtender.jsp=UTF-8
+encoding//WebContent/jsp/admin/SearchTender/searchtender1.jsp=UTF-8
 encoding//WebContent/jsp/admin/home/logonBody.jsp=UTF-8
 encoding/<project>=UTF-8

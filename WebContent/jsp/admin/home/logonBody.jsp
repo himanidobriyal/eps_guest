@@ -618,30 +618,35 @@
 				border: 1px solid #fecaca;
 			}
 
-			.footer {
-				background-color: #05173c;
-				color: white;
-				text-align: center;
-				padding: 20px 10px;
-				font-family: "Segoe UI", sans-serif;
-				font-size: 15px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-wrap: wrap;
-				gap: 15px;
-				transition: background-color 0.3s ease;
-			}
+.footer {
+	background-color: #0b253f;
+	color: white;
+	text-align: center;
+	padding: 16px 10px;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	width: 100%;
+	margin-top: auto;
+	position: relative;
+	background: #05173c !important;   /* Dark blue */
+    background-image: none !important;
+}
 
-			.footer img {
-				height: 50px;
-				vertical-align: middle;
-			}
+.footer img {
+	height: 50px;
+	width: auto;
+	vertical-align: middle;
+	object-fit: contain;
+}
 
-			.footer-text {
-				margin-left: 10px;
-			}
-
+.footer-text {
+	margin-left: 10px;
+}
 			@media (max-width: 768px) {
 				.content {
 					padding: 30px 15px;
@@ -792,11 +797,33 @@
  
   margin-top: 2px;
 }
+		/* Fix Bhashini floating language button visibility */
+.bhashini-translation-trigger {
+    color: #ffffff !important;          /* white text */
+    background: #1e40af !important;     /* blue button */
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    z-index: 999999 !important;
+}
+
+/* Optional: Add slight shadow */
+.bhashini-translation-trigger {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3) !important;
+}
+
+/* Ensure the button is clickable */
+.bhashini-translation-trigger:hover {
+    background: #3b82f6 !important;
+    color: #fff !important;
+}
 			
 		</style>
 	</head>
 
 	<body>
+	
 		<header class="ireps-header">
 			<div class="left-section">
 				<span class="menu-icon" onclick="openSidebar()">&#9776;</span>
@@ -810,10 +837,9 @@
 
 			<div class="right-section">
 				<label for="language">Select Your Language</label>
-				<select id="language" class="language-dropdown">
-					<option value="en">English</option>
-					<option value="hi">Hindi</option>
-				</select>
+				
+				<!-- ⭐ REQUIRED for BHASHINI PLUGIN -->
+    <div class="bhashini-plugin-container"></div>
 			</div>
 		</header>
 
@@ -823,7 +849,7 @@
 			<a href="javascript:void(0)" onclick="selectOption('hightender', this)">High Value Tenders</a>
     <a href="javascript:void(0)" onclick="selectOption('searchtender', this)">
         Search Tender
-        <br><small class="dev-note">(Under Development)</small>
+        
     </a>
 
 			<a href="javascript:void(0)" onclick="selectOption('itemmaster', this)">Item Master</a>
@@ -831,19 +857,16 @@
 			<a href="javascript:void(0)" onclick="selectOption('viewireps', this)">View Ireps Document</a>
 			<a href="javascript:void(0)" onclick="selectOption('goods', this)">Goods and Services</a>
 			<a href="javascript:void(0)" onclick="selectOption('auction', this)">Auction Leasing</a>
-			<a href="javascript:void(0)" onclick="selectOption('SPO', this)">
-			Search Purchase Orders
-			<br><small class="dev-note">(Under Development)</small>
-			</a>
-			<a href="javascript:void(0)" onclick="selectOption('Eauction', this)">
-			E-Auction System
-			<br><small class="dev-note">(Under Development)</small>
-			</a>
+			<a href="javascript:void(0)" onclick="selectOption('SPO', this)">Search Purchase Orders</a>
+			<a href="javascript:void(0)" onclick="selectOption('Eauction', this)">E-Auction System</a>
 			<a href="javascript:void(0)" onclick="selectOption('LearningCenter', this)">Learning Center</a>
 			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)">Banned Firms</a>
 			<a href="javascript:void(0)" onclick="selectOption('Helpdesk', this)">Helpdesk</a>
+			<a href="javascript:void(0)" onclick="selectOption('Bidder', this)">New Bidder(E-Auction Sale)</a>
+			<a href="javascript:void(0)" onclick="selectOption('DepartmentCreation', this)">Department Creation</a>
 			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)"></a>
 		</div>
+
 		<div class="content">
 			<div class="card">
 				<h1 style="font-size:32px; font-weight:700; margin-bottom:20px; color:#0b253f;">
@@ -887,6 +910,13 @@
 		</script>
 
 		<script src="${pageContext.request.contextPath}/assets/accessibility/accessibility.js"></script>
+		
+<!-- ⭐ BHASHINI TRANSLATION PLUGIN SCRIPT -->
+<script 
+    src="https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js"
+    language-icon-color="#ffffff">
+</script>
+<script src="${pageContext.request.contextPath}/assets/bhashini/bhashini-init.js"></script>
 	</body>
 
 	</html>
