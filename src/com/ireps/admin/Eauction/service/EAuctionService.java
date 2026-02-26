@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class EAuctionService {
      * Get all accounts for initial dropdown load
      */
     public List<Map<String, Object>> getAccounts() {
+    	
+    	
         try {
             System.out.println("Service: getAccounts() called");
             List<Map<String, Object>> accounts = eAuctionDAO.getAllAccounts();
@@ -42,6 +45,38 @@ public class EAuctionService {
             return new ArrayList<>();
         }
     }
+    public List<AuctionSchedule> getLiveAuctions(
+            String accountId,
+            String depotId,
+            String catalogStatus,
+            Date fromDate,
+            Date toDate) {
+
+        try {
+            System.out.println("Service: getLiveAuctions() called");
+
+            List<AuctionSchedule> auctions =
+                    eAuctionDAO.getLiveAuctions(
+                            accountId,
+                            depotId,
+                            catalogStatus,
+                            fromDate,
+                            toDate);
+
+            System.out.println("Service: Returned " + auctions.size() + " auctions");
+
+            return auctions;
+
+        } catch (Exception e) {
+            System.err.println("Error in getLiveAuctions: " + e.getMessage());
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    
+    
+  
 
     /**
      * Get accounts filtered by organization type

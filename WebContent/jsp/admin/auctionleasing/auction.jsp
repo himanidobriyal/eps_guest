@@ -15,6 +15,21 @@
 <html lang="en">
 
 <head>
+<!-- jQuery FIRST -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet"
+href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/accessibility/accessibility.css">
 
@@ -1563,6 +1578,79 @@
 	margin-top: 2px;
 
 	}
+.input-error {
+    border: 2px solid #dc3545 !important;
+    background-color: #fff5f5 !important;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #142850, #0f3057);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0f3057, #091f3c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 48, 87, 0.4);
+}
+
+.btn-secondary {
+    background: #343a40;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background: #23272b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.nav-tab {
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: #d6dce5;
+    color: #142850;
+    font-weight: 700;
+    border: 2px solid #142850;
+    transition: all 0.3s ease;
+}
+
+.nav-tab:hover {
+    background: #142850;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(20, 40, 80, 0.4);
+}
+
+.nav-tab.active {
+    background: linear-gradient(135deg, #142850, #0f3057);
+    color: white;
+    border-color: #0f3057;
+    box-shadow: 0 6px 18px rgba(15, 48, 87, 0.5);
+}
+#searchErrorBox {
+    display: none;
+    color: #b02a37;
+    background: #fdecea;
+    border: 1px solid #dc3545;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #142850 !important;
+    color: white !important;
+    border-radius: 6px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+
 
 </style>
 
@@ -1692,12 +1780,12 @@
 	</div>
 
 
-
-	<form method="get"
-
-	action="${pageContext.request.contextPath}/eps/auction/show.do"
-
-	class="search-form ${auctionType == 'Live' ? 'hide-dates' : ''}">
+<form method="get"
+      action="${pageContext.request.contextPath}/eps/auction/show.do"
+      class="search-form ${auctionType == 'Live' ? 'hide-dates' : ''}">
+      
+<input type="hidden" name="searchClicked" value="true"/>
+	
 
 		
 
@@ -1719,7 +1807,8 @@
 
 	<select id="organisationDropdown" name="orgCode" class="form-select">
 
-	<option value="">-- Select Organisation --</option>
+	<option value="">-- All Organisations --</option>
+	
 
 	<c:forEach var="org" items="${organisations}">
 
@@ -1743,7 +1832,7 @@
 
 	<select id="zoneDropdown" name="zoneCode" class="form-select">
 
-	<option value="">-- Select Zone --</option>
+	<option value="">-- All Zone --</option>
 
 	<c:forEach var="zone" items="${zones}">
 
@@ -1767,7 +1856,7 @@
 
 	<select id="unitDropdown" name="unitCode" class="form-select">
 
-	<option value="">-- Select Unit --</option>
+	<option value="">-- All Unit --</option>
 
 	<c:forEach var="unit" items="${units}">
 
@@ -1791,7 +1880,7 @@
 
 	<select id="categoryDropdown" name="categoryId" class="form-select">
 
-	<option value="">-- Select Category --</option>
+	<option value="">-- All Category --</option>
 
 	<c:forEach var="cat" items="${categories}">
 
@@ -1829,7 +1918,10 @@
 
 	<label>Auction Date From</label> 
 
-	<input type="date" class="form-control" name="fromDate" value="2025-01-01">
+	<%@ page import="java.time.LocalDate" %>
+
+<input type="date" class="form-control" name="fromDate" value="<%= request.getParameter("fromDate") != null ? request.getParameter("fromDate") : LocalDate.now() %>">
+	
 
 	</div>
 
@@ -1837,21 +1929,37 @@
 
 	<label>To</label> 
 
-	<input type="date" class="form-control" name="toDate" value="2025-12-31">
+	<input type="date" class="form-control" name="toDate" value="<%= request.getParameter("toDate") != null ? request.getParameter("toDate") : "" %>">
+	
 
 	</div>
 
 	</div>
 
 	</div>
+	<div id="searchErrorBox" 
+     style="display:none; color:#dc3545; 
+            background:#ffe6e6; 
+            border:1px solid #dc3545; 
+            padding:8px 12px; 
+            border-radius:8px; 
+            margin-bottom:10px; 
+            font-weight:600;">
+</div>
+	
 
 
 
 	<div class="action-buttons">
 
-	<button type="submit" class="btn btn-primary">Search</button>
+	<button type="submit" class="btn btn-primary" id="searchBtn">
+    <i class="bi bi-search"></i> Search
+</button>
 
-	<button type="reset" class="btn btn-secondary">Reset</button>
+<button type="button" class="btn btn-secondary" id="resetBtn">
+    <i class="bi bi-arrow-clockwise"></i> Reset
+</button>
+	
 
 	</div>
 
@@ -1878,7 +1986,7 @@
 	</div>
 
 
-
+<!--  
 	<div class="pagination-controls" id="paginationControls">
 
 	<div class="results-info">
@@ -1921,7 +2029,7 @@
 
 	</div>
 
-	</div>
+	</div>-->
 
 
 
@@ -2039,7 +2147,8 @@
 
 	
 
-	<c:if test="${empty auctions && not empty param.type}">
+	<c:if test="${param.searchClicked == 'true' and empty auctions}">
+	
 
 	<div class="results-section">
 
@@ -2077,9 +2186,9 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  -->
 
 
 
@@ -2120,6 +2229,25 @@ $(document).ready(function() {
 	const searchForm = document.querySelector('.search-form');
 
 	const activeTab = document.querySelector('.nav-tab.active');
+	if ($('#auction-table').length) {
+
+	    $('#auction-table').DataTable({
+	        pageLength: 10,
+	        lengthMenu: [5, 10, 25, 50],
+	        ordering: true,
+	        searching: true,
+	        info: true,
+	        responsive: true,
+	        language: {
+	            emptyTable: "No auctions found matching your criteria."
+	        },
+	        columnDefs: [
+	            { orderable: false, targets: 9 } // Disable sorting on Actions column
+	        ]
+	    });
+
+	}
+
 
 
 
@@ -2215,9 +2343,9 @@ $(document).ready(function() {
 
 	.then(data => {
 
-	zoneDropdown.innerHTML = "<option value=''>-- Select Zone --</option>";
+	zoneDropdown.innerHTML = "<option value=''>-- All Zone --</option>";
 
-	unitDropdown.innerHTML = "<option value=''>-- Select Unit --</option>";
+	unitDropdown.innerHTML = "<option value=''>-- All Unit --</option>";
 
 	data.forEach(zone => {
 
@@ -2229,9 +2357,9 @@ $(document).ready(function() {
 
 	} else {
 
-	zoneDropdown.innerHTML = "<option value=''>-- Select Zone --</option>";
+	zoneDropdown.innerHTML = "<option value=''>-- All Zone --</option>";
 
-	unitDropdown.innerHTML = "<option value=''>-- Select Unit --</option>";
+	unitDropdown.innerHTML = "<option value=''>-- All Unit --</option>";
 
 	}
 
@@ -2272,6 +2400,81 @@ $(document).ready(function() {
 	}
 
 	});
+	
+	
+	// ===============================
+	// ENTERPRISE SEARCH VALIDATION
+	// ===============================
+$('#searchBtn').on('click', function (e) {
+
+    e.preventDefault();
+
+    $('#searchErrorBox').hide().text('');
+    $('.form-control, .form-select').removeClass('input-error');
+
+    let org = $('#organisationDropdown').val().trim();
+    let zone = $('#zoneDropdown').val().trim();
+    let unit = $('#unitDropdown').val().trim();
+    let category = $('#categoryDropdown').val().trim();
+    let catalogInput = $('input[name="catalogNo"]');
+    let catalog = catalogInput.val().trim();
+    let fromDate = $('input[name="fromDate"]').val();
+    let toDate = $('input[name="toDate"]').val();
+
+    catalogInput.val(catalog);
+
+    // 🔒 At least one criteria
+    if (!org && !zone && !unit && !category && !catalog && !fromDate && !toDate) {
+        showError("Please select at least one search criterion.");
+        $('#organisationDropdown').focus();
+        return false;
+    }
+
+    // 🔒 Catalogue format
+    if (catalog) {
+        const regex = /^[A-Za-z0-9-]{3,30}$/;
+        if (!regex.test(catalog)) {
+            showError("Catalogue No must be 3-30 characters and contain only letters, numbers or hyphen (-).");
+            catalogInput.addClass('input-error').focus();
+            return false;
+        }
+    }
+
+    // 🔒 Date validation
+    if (fromDate && toDate && fromDate > toDate) {
+        showError("From Date cannot be greater than To Date.");
+        $('input[name="fromDate"]').addClass('input-error');
+        $('input[name="toDate"]').addClass('input-error');
+        return false;
+    }
+
+    this.disabled = true;
+    this.form.submit();
+});
+$('input, select').on('input change', function () {
+    $(this).removeClass('input-error');
+    $('#searchErrorBox').fadeOut();
+});
+
+
+function showError(message) {
+    $('#searchErrorBox')
+        .text(message)
+        .fadeIn();
+}
+
+function highlightAllFields() {
+    $('.form-control, .form-select').addClass('input-error');
+}
+
+
+$('.form-control, .form-select').on('input change', function () {
+    $(this).removeClass('input-error');
+    $('#searchErrorBox').fadeOut();
+});
+
+
+
 
 
 
@@ -2297,13 +2500,19 @@ $(document).ready(function() {
 
 	if (allRows.length > 0) {
 
-	setupPagination();
+	//setupPagination();
 
-	displayPage(1);
-
-	}
+	//displayPage(1);
 
 	}
+
+	}
+	
+	$('#resetBtn').on('click', function () {
+	    const auctionType = ('${auctionType}'.toLowerCase() || 'live');
+	    window.location.href = window.location.pathname + '?type=' + auctionType;
+	});
+
 
 
 

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
+
+import com.ireps.admin.Eauction.model.AuctionSchedule;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -49,20 +53,68 @@ public class EAuctionController {
      * Show schedule page (Tab 3)
      */
     @GetMapping("/schedule.do")
-    public String showSchedulePage(Model model, HttpServletRequest request) {
+    public String showSchedulePage(
+            @RequestParam(required = false) String accountId,
+            @RequestParam(required = false) String depotId,
+            @RequestParam(required = false) String catalogStatus,
+            @RequestParam(required = false) String fromDate,
+            @RequestParam(required = false) String toDate,
+            @RequestParam(required = false) String searchClicked,
+            Model model) {
+
         try {
+
             logger.info("Loading schedule page");
+
+            // Always load dropdown
             List<Map<String, Object>> accountList = eAuctionService.getAccounts();
             model.addAttribute("accountList", accountList);
             model.addAttribute("activeTab", "schedule");
-            logger.debug("Loaded {} accounts", accountList.size());
+
+            // Only search if searchClicked=true
+            if ("true".equalsIgnoreCase(searchClicked)) {
+
+                logger.info("Search triggered");
+
+                // Convert ALL → null
+                if ("ALL".equalsIgnoreCase(accountId)) accountId = null;
+                if ("ALL".equalsIgnoreCase(depotId)) depotId = null;
+                if ("ALL".equalsIgnoreCase(catalogStatus)) catalogStatus = null;
+
+                // Convert dates
+                java.sql.Date from = null;
+                java.sql.Date to = null;
+
+                if (fromDate != null && !fromDate.isEmpty()) {
+                    from = java.sql.Date.valueOf(fromDate);
+                }
+
+                if (fromDate != null && !fromDate.isEmpty()) {
+                    from = java.sql.Date.valueOf(fromDate);
+                }
+
+                if (toDate != null && !toDate.isEmpty()) {
+                    to = java.sql.Date.valueOf(toDate);
+                }
+
+                // Call DAO via service
+                List<AuctionSchedule> auctions =
+                        eAuctionService.getLiveAuctions(accountId, depotId, catalogStatus, from, to);
+
+                model.addAttribute("auctions", auctions);
+
+                logger.info("Fetched auctions count: {}", auctions.size());
+            }
+
             return JSP_PATH;
+
         } catch (Exception e) {
             logger.error("Error loading schedule page", e);
-            model.addAttribute("error", "Error: " + e.getMessage());
+            model.addAttribute("error", e.getMessage());
             return JSP_PATH;
         }
     }
+
 
     /**
      * Show live auction page (Tab 1)
@@ -149,6 +201,7 @@ public class EAuctionController {
                     accountId, depotId, catalogStatus, fromDate, toDate, page);
 
         try {
+        	
             Map<String, Object> results = eAuctionService.searchAuctionSchedule(
                     accountId, depotId, catalogStatus, fromDate, toDate, page, pageSize);
             

@@ -144,7 +144,7 @@ public class TenderDao {
             cs.setString(12, fromDate);
             cs.setString(13, toDate);
 
-            cs.setInt(14, 25); // ✅ show 25 results
+            cs.setInt(14, 1000); 
             cs.setInt(15, 1);
             cs.setInt(16, 1);
             cs.setInt(17, 0);
@@ -174,6 +174,9 @@ public class TenderDao {
             System.out.println("===================================");
 
             cs.execute();
+            int totalCount = cs.getInt(20);
+            System.out.println("TOTAL RECORDS: " + totalCount);
+
 
             ResultSet rs = (ResultSet) cs.getObject(21);
 

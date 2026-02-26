@@ -313,6 +313,45 @@ body {
  
   margin-top: 2px;
 }
+
+.helpdesk-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+    border-left: 4px solid #0056b3;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.helpdesk-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a2b4c;
+    margin-bottom: 15px;
+}
+.btn-primary-custom {
+    background: linear-gradient(135deg, #004aad, #007bff);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+    background: linear-gradient(135deg, #003080, #0056b3);
+}
+.phone-highlight {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0056b3;
+}
 </style>
 </head>
 <body>
@@ -409,9 +448,9 @@ body {
                     <!-- IREPS Helpdesk -->
                     <div class="helpdesk-section">
                         <h6><strong>IREPS Helpdesk</strong> <span class="text-muted">(for IREPS related queries)</span></h6>
-                        <p><a href="#" class="highlight">Ask a Question</a> – A Query ID will be generated for each query submitted.</p>
-                        <p><a href="#" class="highlight">View Reply to Question</a> – Requires Query ID and Email ID.</p>
-                        <p><a href="#" class="highlight">Request for Change of Digital Signing Certificate</a> – New DSC client name must match user account.</p>
+                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/askquestion.do"> Ask a Question</a> – A Query ID will be generated for each query submitted.</p>
+                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/viewreply.do"> View Reply to Questison</a> – Requires Query ID and Email ID.</p>
+                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/changeDSC.do"> Request for Change of Digital Signing Certificate</a> – New DSC client name must match user account.</p>
 
                         <div class="contact-info">
                             <p><strong>Telephonic Assistance:</strong> <span class="text-primary">011-41385200</span> (10 lines)</p>
