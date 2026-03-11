@@ -2,30 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%
-    String currentURL = request.getRequestURI();
-    String activeTab = "schedule";
-    
-    if (currentURL.contains("manage.do")) {
-        activeTab = "live";
-    } else if (currentURL.contains("forthcoming.do")) {
-        activeTab = "forthcoming";
-    } else if (currentURL.contains("schedule.do")) {
-        activeTab = "schedule";
-    }
-    
-    request.setAttribute("activeTab", activeTab);
-%>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>E-Auction Management | IREPS Portal</title>
+    <title>E-Auction Management | IREPS Portal</title> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        * {
+        * { 
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -212,6 +200,8 @@
             font-size: 14px;
             font-weight: 600;
             position: relative;
+            text-decoration:none;
+			display:block;
         }
 
         .nav-tab:last-child {
@@ -223,7 +213,7 @@
         }
 
         .nav-tab.active {
-            background: #3b82f6;
+            background:linear-gradient(135deg, #1e3a8a, #2563eb);
             color: white;
             box-shadow: inset 0 -3px 0 0 #2563eb;
         }
@@ -251,34 +241,75 @@
 
         /* Search Card */
         .search-card {
-            margin: 20px auto;
+            margin: 10px auto;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(15px);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            overflow: visible;
+            box-shadow: 0 8px 30px rgba(0, 123, 255, 0.35);
+            overflow: hidden;
             max-width: 1400px;
             width: 100%;
             display: flex;
             flex-direction: column;
         }
+        .search-card-fieldset{
+			
+			margin: 10px auto;
+			
+			background: rgba(255,255,255,0.98);
+			
+			border-radius: 20px;
+			
+			padding: 25px;
+			
+			max-width: 1400px;
+			
+			width: 100%;
+			
+			box-shadow: 0 8px 30px rgba(0,123,255,.35);
+			
+			border: none;
+			
+			position: relative;
+			
+			}
+			
+			.search-card-fieldset legend{
+			
+			position: absolute;
+			
+			top: -12px;
+			
+			left: 25px;
+			
+			padding: 2px 10px;
+			
+			font-size: 18px;
+			
+			font-weight: 700;
+			
+			color: #1e3a8a;
+			
+			background: #f8fafc;
+			
+			}
 
         .search-header {
             background: white;
             color: #2c5aa0;
             text-align: center;
             position: relative;
-            border-bottom: 3px solid #2c5aa0;
+            border-bottom: 2px solid #2c5aa0;
         }
 
         .search-header h3 {
-            font-size: 28px;
+            font-size: 20px;
             position: relative;
             z-index: 1;
             letter-spacing: 0.5px;
             margin: 0;
             color: #2c5aa0;
-            padding: 20px;
+            padding: 10px;
         }
 
         .search-content {
@@ -288,8 +319,8 @@
         /* Form Styles */
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px;
+            grid-template-columns:  repeat(3, 1fr);
+            gap: 14px;
             margin-bottom: 12px;
         }
 
@@ -483,7 +514,7 @@
         }
 
         .results-header {
-            background: linear-gradient(135deg, #2c5aa0 0%, #1a4480 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: white;
             padding: 12px 18px;
             border-radius: 12px;
@@ -508,22 +539,19 @@
         }
 
         /* Pagination Controls */
-        .pagination-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 12px 16px;
-            background: linear-gradient(135deg, #f8fbff 0%, #e8f2ff 100%);
-            border-radius: 15px;
-            border: 2px solid rgba(42, 82, 152, 0.1);
-            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.1);
-        }
+       .pagination-controls{
+		    display:flex;
+		    justify-content:space-between;
+		    align-items:center;
+		    gap:15px;
+		    flex-wrap:wrap;
+		}
+
 
         .results-info {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 20px;
         }
 
         .records-per-page {
@@ -533,6 +561,38 @@
             font-weight: 600;
             color: #1e3c72;
         }
+        .page-size-buttons{
+		    display:flex;
+		    gap:10px;
+		    margin-bottom:15px;
+		}
+		
+		.size-btn{
+		    background:linear-gradient(135deg,#1e3a8a,#2563eb);
+		    color:white;
+		    border:none;
+		    padding:10px 18px;
+		    border-radius:12px;
+		    font-weight:700;
+		    cursor:pointer;
+		    box-shadow:0 4px 12px rgba(0,0,0,.2);
+		    transition:.2s;
+		}
+		
+		.size-btn:hover{
+		    transform:translateY(-2px);
+		}
+		
+		.size-btn.active{
+		    background:linear-gradient(135deg,#1e3c72,#2a5298);
+		}
+        
+        
+        #recordsPerPage{
+		    width:80px;
+		    text-align:center;
+		}
+		        
 
         .records-per-page select {
             padding: 7px 11px;
@@ -602,7 +662,7 @@
         }
 
         thead {
-            background: linear-gradient(135deg, #2c5aa0 0%, #1a4480 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
         }
 
         th {
@@ -975,6 +1035,60 @@
         .highlight-text-bottom a:hover {
             text-decoration: underline;
         }
+		        
+		 /* ===== MODERN INFO BOX ===== */
+		
+		.info-box-container{
+    width:100%;
+    max-width:1400px;        /* ⭐ full width */
+    margin:30px auto;
+    display:flex;
+    justify-content:space-between;  /* ⭐ stretch both sides */
+    gap:25px;
+    margin-top:25px;
+}
+
+		
+		.info-box{
+			width:100%;
+			max-width:90%;
+			
+			background:white;
+			border-radius:12px;
+			padding:20px;
+			box-shadow:0 4px 15px rgba(0,0,0,.1);
+			border-left:5px solid;
+			transition:.3s;
+		}
+		
+		.info-box:hover{
+		transform:translateY(-4px);
+		box-shadow:0 8px 25px rgba(0,0,0,.2);
+		}
+		
+		.info-box.blue{
+		border-color:#2563eb;
+		}
+		
+		.info-box.orange{
+		border-color:#f59e0b;
+		}
+		
+		.info-box h4{
+		margin-bottom:10px;
+		color:#1e3a8a;
+		}
+		
+		.info-box a{
+		color:#dc2626;
+		font-weight:600;
+		text-decoration:none;
+		}
+		
+		.info-box a:hover{
+		text-decoration:underline;
+		}
+		        
 
         /* Footer */
         .footer {
@@ -1081,10 +1195,19 @@
                 font-size: 12px;
             }
 
-            .pagination-controls {
-                flex-direction: column;
-                gap: 12px;
-            }
+            .pagination-controls{
+			    display:flex;
+			    justify-content:space-between;
+			    align-items:center;
+			    gap:15px;
+			    flex-wrap:wrap;
+			    margin-bottom:18px;  
+			}
+
+            #tableBody{
+ 				transition: opacity .2s;
+			}
+			
         }
     </style>
 </head>
@@ -1143,22 +1266,6 @@
 			<a href="javascript:void(0)" onclick="selectOption('BannedFirms', this)"></a>
 		</div>
 
-
-    <!-- Navigation Tabs -->
-    <div class="nav-container">
-        <div class="nav-tabs">
-            <div class="nav-tab ${activeTab == 'live' ? 'active' : ''}" onclick="switchTab('live')">
-                <i class="fas fa-circle"></i> Live Auction
-            </div>
-            <div class="nav-tab ${activeTab == 'forthcoming' ? 'active' : ''}" onclick="switchTab('forthcoming')">
-                <i class="fas fa-clock"></i> Forthcoming Auction
-            </div>
-            <div class="nav-tab ${activeTab == 'schedule' ? 'active' : ''}" onclick="switchTab('schedule')">
-                <i class="fas fa-calendar-check"></i> View Schedule
-            </div>
-        </div>
-    </div>
-
     <!-- Main Content -->
     <main class="main-container">
         <div class="container">
@@ -1171,6 +1278,30 @@
                 <span id="errorMessage"></span>
             </div>
 
+			
+			<div class="nav-container">
+
+			    <div class="nav-tabs">
+			
+			        <a href="${pageContext.request.contextPath}/eps/Eauction/manage.do"
+			           class="nav-tab ${activeTab == 'live' ? 'active' : ''}">
+			            <i class="fas fa-circle"></i> Live Auction
+			        </a>
+			
+			        <a href="${pageContext.request.contextPath}/eps/Eauction/forthcoming.do"
+			           class="nav-tab ${activeTab == 'forthcoming' ? 'active' : ''}">
+			            <i class="fas fa-clock"></i> Forthcoming Auction
+			        </a>
+			
+			        <a href="${pageContext.request.contextPath}/eps/Eauction/schedule.do"
+			           class="nav-tab ${activeTab == 'schedule' ? 'active' : ''}">
+			            <i class="fas fa-calendar-check"></i> View Schedule
+			        </a>
+			
+			    </div>
+			
+			</div>
+						
             <!-- TAB 1: LIVE AUCTION -->
             <div id="liveTab" class="tab-content ${activeTab == 'live' ? 'active' : ''}">
                 <!-- Show Entries and Search -->
@@ -1265,78 +1396,115 @@
 
             <!-- TAB 3: VIEW SCHEDULE -->
             <div id="scheduleTab" class="tab-content ${activeTab == 'schedule' ? 'active' : ''}">
-                <div class="search-card">
-                    <div class="search-header">
-                        <h3><i class="fas fa-calendar-check me-2"></i>View Auction Schedule</h3>
-                    </div>
+           
+                
+                	<fieldset class="search-card-fieldset">
+					
+					    <legend>
+					        <i class="fas fa-calendar-check"></i>
+					        View Auction Schedule
+					    </legend>
+                    
+                      <!-- Navigation Tabs -->
+				   
 
                     <div class="search-content">
-                        <form id="filterForm">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="orgType">Organization Type <span class="required">*</span></label>
-                                    <select id="orgType" class="form-control">
-                                        <option value="">-- Select Organization --</option>
-                                        <option value="RAILWAY">Indian Railway</option>
-                                        <option value="DMRC">DMRC</option>
-                                        <option value="OTHERS">Others</option>
-                                    </select>
-                                </div>
+						<form id="filterForm">
+						
+						    <!-- ROW 1 -->
+						    <div class="form-grid">
+						
+						        <div class="form-group">
+						            <label for="orgType">Organization Type <span class="required">*</span></label>
+						            <select id="orgType" class="form-control">
+						                <option value="ALL">All Organizations</option>
+						                <option value="RAILWAY">Indian Railway</option>
+						                <option value="DMRC">DMRC</option>
+						                <option value="OTHERS">Others</option>
+						            </select>
+						        </div>
+						
+						        <div class="form-group">
+						            <label for="accountId">Account / Railway Unit</label>
+						            <select id="accountId" class="form-control">
+						                <option value="ALL">All Accounts</option>
+						                <c:forEach items="${accountList}" var="account">
+						                    <option value="<c:out value='${account.ACCOUNT_ID}'/>">
+						                        <c:out value="${account.ACCOUNT_NAME}"/>
+						                    </option>
+						                </c:forEach>
+						            </select>
+						        </div>
+						
+						        <div class="form-group">
+						            <label for="depotId">Depot</label>
+						            <select id="depotId" class="form-control">
+						                <option value="ALL">All Depots</option>
+						            </select>
+						        </div>
+						
+						    </div>
+						
+						
+						    <!-- ROW 2 -->
+						    <div class="form-grid">
+						
+						        <!-- Auction Status FIRST -->
+						        <div class="form-group">
+						            <label for="catalogStatus">Auction Status</label>
+						            <select id="catalogStatus" class="form-control">
+						                <option value="ALL">All Status</option>
+						                <option value="LIVE">Live</option>
+						                <option value="UNDER_DECISION">Under Decision</option>
+						                <option value="UPCOMING">Upcoming Auction</option>
+						            </select>
+						        </div>
+						
+						
+						        <!-- From Date SECOND -->
+						        <div class="form-group">
+						            <label for="fromDate">From Date</label>
+						            <input type="date" id="fromDate" class="form-control">
+						        </div>
+						
+						
+						        <!-- To Date THIRD -->
+						        <div class="form-group">
+						            <label for="toDate">To Date</label>
+						            <input type="date" id="toDate" class="form-control">
+						        </div>
+						
+						    </div>
+						
+						
+						
+						    <!-- BUTTONS SAME -->
+						    <div class="action-buttons">
+						
+						        <button type="submit" class="btn btn-primary">
+						            <i class="fas fa-search"></i> Search
+						        </button>
+						
+						        <button type="reset" class="btn btn-secondary" onclick="resetFilters()">
+						            <i class="fas fa-redo-alt"></i> Reset
+						        </button>
+						
+						        <button type="button" class="btn btn-success" onclick="window.location.href='/'">
+						            <i class="fas fa-home"></i> Home
+						        </button>
+						
+						        <button type="button" class="btn btn-warning" onclick="window.print()">
+						            <i class="fas fa-print"></i> Print
+						        </button>
+						
+						    </div>
+						
+						</form>
+					
 
-                                <div class="form-group">
-                                    <label for="accountId">Account / Railway Unit</label>
-                                    <select id="accountId" class="form-control">
-                                        <option value="">-- Select Account --</option>
-                                        <c:forEach items="${accountList}" var="account">
-                                            <option value="<c:out value='${account.ACCOUNT_ID}'/>"><c:out value="${account.ACCOUNT_NAME}"/></option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="depotId">Depot</label>
-                                    <select id="depotId" class="form-control">
-                                        <option value="">-- Select Depot --</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="catalogStatus">Auction Status</label>
-                                    <select id="catalogStatus" class="form-control">
-                                        <option value="">-- All Status --</option>
-                                        <option value="LIVE">Live</option>
-                                        <option value="UNDER_DECISION">Under Decision</option>
-                                        <option value="UPCOMING">Upcoming Auction</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Auction Schedule Date Range</label>
-                                <div class="date-range">
-                                    <input type="date" id="fromDate" class="form-control" placeholder="From Date">
-                                    <div class="date-separator">To</div>
-                                    <input type="date" id="toDate" class="form-control" placeholder="To Date">
-                                </div>
-                            </div>
-
-                            <div class="action-buttons">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-search"></i> Search
-                                </button>
-                                <button type="reset" class="btn btn-secondary" onclick="resetFilters()">
-                                    <i class="fas fa-redo-alt"></i> Reset
-                                </button>
-                                <button type="button" class="btn btn-success" onclick="window.location.href='/'">
-                                    <i class="fas fa-home"></i> Home
-                                </button>
-                                <button type="button" class="btn btn-warning" onclick="window.print()">
-                                    <i class="fas fa-print"></i> Print
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                </fieldset>
+                
+                
 
                 <div id="loadingSpinner" class="loading">
                     <div class="spinner"></div>
@@ -1346,23 +1514,52 @@
                 <!-- Results Section -->
                 <div id="resultsSection" class="results-section" style="display: none;">
                     <div class="results-header">
-                        <h3>Search Results</h3>
-                        <span class="total-count" id="totalCount">Total: 0</span>
-                    </div>
+
+					    <h3>Search Results</h3>
+					
+					    <div style="display:flex; align-items:center; gap:15px;">
+					
+					        <!-- ⭐ ENTERPRISE SEARCH BOX -->
+					        <div class="search-control">
+					
+					            <label style="color:white; font-weight:600;">Search:</label>
+					
+					            <input type="text"
+					                   id="scheduleSearchInput"
+					                   class="search-input"
+					                   placeholder=""
+					                   style="
+					                        height:32px;
+					                        border-radius:6px;
+					                        border:none;
+					                        padding:6px 10px;
+					                   ">
+					
+					        </div>
+					
+					        <!-- TOTAL COUNT -->
+					        <span class="total-count" id="totalCount">
+					            Total: 0
+					        </span>
+					
+					    </div>
+					
+					</div>
 
                     <!-- Pagination Controls -->
                     <div class="pagination-controls" id="paginationControls">
                         <div class="results-info">
                             <div class="records-per-page">
-                                <label for="recordsPerPage">Show:</label>
-                                <select id="recordsPerPage">
-                                    <option value="5">5 per page</option>
-                                    <option value="10" selected>10 per page</option>
-                                    <option value="25">25 per page</option>
-                                    <option value="50">50 per page</option>
-                                    <option value="100">100 per page</option>
-                                </select>
-                            </div>
+							    <label>Records Per Page:</label>
+							
+							    <div class="page-size-buttons">
+							        <button type="button" class="size-btn active" data-size="10">10</button>
+							        <button type="button" class="size-btn" data-size="20">20</button>
+							        <button type="button" class="size-btn" data-size="50">50</button>
+
+							    </div>
+							</div>
+                            
                         </div>
                         <div class="pagination-nav">
                             <div class="page-info" id="pageInfo">Page 1 of 1</div>
@@ -1401,41 +1598,68 @@
                     </div>
 
                     <!-- Bottom Information Section -->
-                    <div class="bottom-info-section">
-                        <div class="showing-info-bottom">
-                            Showing 1 to 10 of 151 entries
-                        </div>
-
-                        <!-- Pagination Numbers -->
-                        <div class="pagination-numbers">
-                            <button class="page-num-btn" disabled>Previous</button>
-                            <button class="page-num-btn active">1</button>
-                            <button class="page-num-btn">2</button>
-                            <button class="page-num-btn">3</button>
-                            <button class="page-num-btn">4</button>
-                            <button class="page-num-btn">5</button>
-                            <span class="page-dots">...</span>
-                            <button class="page-num-btn">16</button>
-                            <button class="page-num-btn">Next</button>
-                        </div>
+                    
 
                         <!-- Bottom Content Messages -->
-                        <div class="bottom-content-message">
-                            <p><strong>Bidders shall be able to view and print the lots and other details related to lots/auction to be put in the auctions or for a particular auction date. This can be done from the new button "-view published data for upcoming auctions", on their home page.</strong></p>
-                            
-                            <p>To View user manual for bidders for Lot Publishing Module, please 
-                                <a href="#" onclick="openUserManual()"><strong>Click Here.</strong></a>
-                            </p>
-                            
-                            <p>To view brief instructions to Bidders on migration to "Lot Publishing Module" please 
-                                <a href="#" onclick="openMigrationGuide()"><strong>Click Here.</strong></a>
-                            </p>
-                            
-                            <p class="highlight-text-bottom">
-                                To view Lot Details and Other information for upcoming auctions, please 
-                                <a href="#" onclick="viewPublishedData()"><strong>Click Here..</strong></a>
-                            </p>
-                        </div>
+                       <div class="info-box-container">
+						
+						    <div class="info-box blue">
+						
+						        <h4>
+						            <i class="fas fa-info-circle"></i>
+						            Auction Details
+						        </h4>
+						
+						        <p>
+								Bidders shall be able to view and print the lots and other details related to 
+								lots/auction to be put in the auctions or for a particular auction date. 
+								This can be done from the new button
+								<strong>"View Published Data for upcoming auctions"</strong>
+								on their home page.
+								</p>
+
+						
+						    </div>
+						
+						
+						    <div class="info-box orange">
+						
+						        <h4>
+						            <i class="fas fa-book"></i>
+						            Manual & Instructions
+						        </h4>
+						
+						        <p>
+
+								To View user manual for bidders for Lot Publishing Module, please
+								
+								<a href="#" onclick="openUserManual()">
+								Click Here.
+								</a>
+								
+								<br><br>
+								
+								To view brief instructions to Bidders on migration to "Lot Publishing Module" please
+								
+								<a href="#" onclick="openMigrationGuide()">
+								Click Here.
+								</a>
+								
+								<br><br>
+								
+								To view Lot Details and Other information for upcoming auctions, please
+								
+								<a href="#" onclick="viewPublishedData()">
+								Click Here.
+								</a>
+								
+								</p>
+
+						
+						    </div>
+						
+						</div>
+                       
                     </div>
                 </div>
             </div>
@@ -1469,9 +1693,43 @@
         
         loadInitialAccounts();
         setupEventListeners();
+        
+        document.getElementById("fromDate").addEventListener("click", function(){
+            this.showPicker();
+        });
+
+        document.getElementById("toDate").addEventListener("click", function(){
+            this.showPicker();
+        });
+        
+     // disable To Date initially
+
+        document.getElementById("toDate").disabled = true;
+
+
+        // enable when From Date selected
+
+        document.getElementById("fromDate").addEventListener("change", function(){
+
+            document.getElementById("toDate").disabled = false;
+
+        });
+        
+        document.getElementById("fromDate").addEventListener("change", function(){
+
+            this.style.border = "2px solid #ddd";
+
+        });
+
+
+        document.getElementById("toDate").addEventListener("change", function(){
+
+            this.style.border = "2px solid #ddd";
+
+        });
     });
 
-    function switchTab(tabName) {
+    /*function switchTab(tabName) {
         console.log('%c>>> Switching to tab: ' + tabName, 'color: purple; font-weight: bold');
         
         document.querySelectorAll('.tab-content').forEach(tab => {
@@ -1495,7 +1753,7 @@
             document.querySelectorAll('.nav-tab')[2].classList.add('active');
             window.history.pushState({}, '', contextPath + '/eps/Eauction/schedule.do');
         }
-    }
+    }*/
 
     function setupEventListeners() {
         document.getElementById('orgType').addEventListener('change', onOrgTypeChange);
@@ -1503,30 +1761,88 @@
         document.getElementById('filterForm').addEventListener('submit', onFormSubmit);
         
         // Records per page change handler
-        document.getElementById('recordsPerPage').addEventListener('change', function() {
-            recordsPerPage = parseInt(this.value);
-            currentPage = 1;
-            updatePaginationInfo();
-            displayCurrentPageData();
-        });
+        // Page size buttons click
+		document.querySelectorAll('.size-btn').forEach(btn=>{
+		    btn.addEventListener('click',function(){
+		
+		        document.querySelectorAll('.size-btn')
+		        .forEach(b=>b.classList.remove('active'));
+		
+		        this.classList.add('active');
+		
+		        recordsPerPage = parseInt(this.dataset.size);
+		        currentPage = 1;
+		        searchAuctions();   // ⭐ reload from server
 
+		    });
+		});
+
+        
+		// ⭐ Schedule No automatic search
+
+	/*	let scheduleSearchTimeout;
+
+		document.getElementById('scheduleSearchInput')
+		.addEventListener('input', function(){
+		
+		    clearTimeout(scheduleSearchTimeout);
+		
+		    currentPage = 1;
+		
+		    scheduleSearchTimeout = setTimeout(function(){
+
+		        const value = document.getElementById('scheduleSearchInput').value.trim();
+
+		        // Always search — but controlled
+		        searchAuctions();
+
+		    }, 400);
+
+		});    */
+
+
+
+        
         // Previous button click
         document.getElementById('prevPage').addEventListener('click', function() {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePaginationInfo();
-                displayCurrentPageData();
-            }
-        });
+		    if (currentPage > 1) {
+		        currentPage--;
+		        searchAuctions();   // ⭐ reload from server
+		    }
+		});
+
+
+
 
         // Next button click
         document.getElementById('nextPage').addEventListener('click', function() {
             if (currentPage < totalPages) {
                 currentPage++;
-                updatePaginationInfo();
-                displayCurrentPageData();
+                searchAuctions();   // ⭐ reload from server
             }
         });
+
+	
+     // ⭐ Enterprise Schedule Search
+
+        let searchTimeout;
+
+        document.getElementById('scheduleSearchInput')
+        .addEventListener('input', function(){
+
+            clearTimeout(searchTimeout);
+
+            currentPage = 1;
+
+            searchTimeout = setTimeout(function(){
+
+                searchAuctions();
+
+            }, 400);
+
+        }); 
+        
+
     }
 
     function loadInitialAccounts() {
@@ -1664,7 +1980,7 @@
 
     function populateAccountDropdown(data) {
         const select = document.getElementById('accountId');
-        select.innerHTML = '<option value="">-- Select Account --</option>';
+        select.innerHTML = '<option value="ALL">All Account</option>';
 
         if (data && data.length > 0) {
             data.forEach(item => {
@@ -1681,7 +1997,7 @@
 
     function populateDepotDropdown(data) {
         const select = document.getElementById('depotId');
-        select.innerHTML = '<option value="">-- Select Depot --</option>';
+        select.innerHTML = '<option value="ALL">All Depots</option>';
 
         if (data && data.length > 0) {
             data.forEach(item => {
@@ -1696,10 +2012,96 @@
         }
     }
 
-    function onFormSubmit(e) {
+    /*function onFormSubmit(e) {
         e.preventDefault();
         currentPage = 1;
         searchAuctions();
+    }*/
+    
+    function onFormSubmit(e) {
+
+        e.preventDefault();
+
+        const fromDate = document.getElementById('fromDate').value;
+        const toDate   = document.getElementById('toDate').value;
+        
+     // check invalid date range
+
+     // check invalid date range
+
+        if(fromDate && toDate && toDate < fromDate){
+			
+        	//Sweet Alert
+        	Swal.fire({
+        	    icon: 'error',
+        	    title: 'Invalid Date',
+        	    text: 'To Date cannot be less than From Date',
+        	    confirmButtonColor: '#1e3a8a'
+        	});
+
+            // ⭐ ERROR MESSAGE BAR
+            showError("To Date cannot be less than From Date");
+
+            // ⭐ RED BORDER
+            document.getElementById('toDate').style.border = "2px solid red";
+
+            // ⭐ FOCUS
+            document.getElementById('toDate').focus();
+
+            return;
+        }
+
+        // Reset border first
+        document.getElementById('fromDate').style.border = "2px solid #ddd";
+        document.getElementById('toDate').style.border = "2px solid #ddd";
+
+
+     // ✅ CASE 1: From selected but To empty
+        if (fromDate && !toDate) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'To Date Required',
+                text: 'Please select To Date',
+                confirmButtonColor: '#1e3a8a'
+            });
+
+            showError("Please select To Date");
+
+            document.getElementById('toDate').style.border = "2px solid red";
+
+            document.getElementById('toDate').focus();
+
+            return;
+        }
+
+
+     // ✅ CASE 2: To selected but From empty
+        if (!fromDate && toDate) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'From Date Required',
+                text: 'Please select From Date',
+                confirmButtonColor: '#1e3a8a'
+            });
+
+            showError("Please select From Date");
+
+            document.getElementById('fromDate').style.border = "2px solid red";
+
+            document.getElementById('fromDate').focus();
+
+            return;
+        }
+
+
+        // ✅ CASE 3: valid → allow search
+
+        currentPage = 1;
+
+        searchAuctions();
+
     }
 
     function searchAuctions() {
@@ -1707,11 +2109,13 @@
         clearAlerts();
 
         const params = new URLSearchParams({
-            accountId: document.getElementById('accountId').value || '',
-            depotId: document.getElementById('depotId').value || '',
-            catalogStatus: document.getElementById('catalogStatus').value || '',
+        	orgType: document.getElementById('orgType').value === "ALL" ? "" : document.getElementById('orgType').value,
+        	accountId: document.getElementById('accountId').value === "ALL" ? "" : document.getElementById('accountId').value,
+        	depotId: document.getElementById('depotId').value === "ALL" ? "" : document.getElementById('depotId').value,
+        	catalogStatus: getCatalogStatusValue(),
             fromDate: document.getElementById('fromDate').value || '',
             toDate: document.getElementById('toDate').value || '',
+            scheduleNo: document.getElementById('scheduleSearchInput').value,
             page: currentPage,
             pageSize: recordsPerPage
         });
@@ -1766,6 +2170,7 @@
 
             if (data.success) {
                 allAuctions = data.results || [];
+                window.serverTotalCount = data.totalCount || allAuctions.length;
                 displayResults(data);
                 showSuccess('Found ' + data.totalCount + ' auction schedule(s)');
             } else {
@@ -1783,139 +2188,125 @@
             document.getElementById('resultsSection').style.display = 'none';
         });
     }
+	
+    function getCatalogStatusValue(){
 
+        const status = document.getElementById('catalogStatus').value;
+
+        if(status === "LIVE") return "1";
+
+        if(status === "UNDER_DECISION") return "0";
+
+        if(status === "UPCOMING") return "2";
+
+        return "";
+
+    }
+
+    
     function displayResults(data) {
+
         document.getElementById('resultsSection').style.display = 'block';
-        
+
         if (!data.results || data.results.length === 0) {
-            document.getElementById('tableBody').innerHTML = 
+
+            window.serverTotalCount = 0;
+            totalPages = 0;
+
+            document.getElementById('totalCount').textContent = 'Total: 0';
+
+            document.getElementById('tableBody').innerHTML =
                 '<tr><td colspan="8" class="no-data">' +
                 '<i class="fas fa-search"></i><div>No auction schedules found</div></td></tr>';
+
             document.getElementById('paginationControls').style.display = 'none';
+
             return;
+
         }
 
-        allAuctions = data.results;
+        // ⭐ IMPORTANT — use server pagination values
+        allAuctions = data.results || [];
+        window.serverTotalCount = data.totalCount || allAuctions.length;
+        totalPages = parseInt(data.totalPages || 0);
+        currentPage = data.currentPage || 1;
+
         updatePaginationInfo();
         displayCurrentPageData();
     }
 
+
     function updatePaginationInfo() {
-        const totalRecords = allAuctions.length;
-        totalPages = Math.ceil(totalRecords / recordsPerPage);
-        
-        document.getElementById('totalCount').textContent = 'Total: ' + totalRecords;
-        document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages;
-        
+
+        const totalRecords = window.serverTotalCount || allAuctions.length;
+
+        // ✅ server se aaya totalPages use karo
+        totalPages = totalPages;
+
+        document.getElementById('totalCount').textContent =
+            'Total: ' + totalRecords;
+
+        document.getElementById('pageInfo').textContent =
+            'Page ' + currentPage + ' of ' + totalPages;
+
         document.getElementById('prevPage').disabled = currentPage <= 1;
         document.getElementById('nextPage').disabled = currentPage >= totalPages;
-        
-        document.getElementById('paginationControls').style.display = totalPages > 0 ? 'flex' : 'none';
+
+        document.getElementById('paginationControls').style.display =
+            totalPages > 0 ? 'flex' : 'none';
     }
+
+
+    
 
     function displayCurrentPageData() {
-        const startIndex = (currentPage - 1) * recordsPerPage;
-        const endIndex = Math.min(startIndex + recordsPerPage, allAuctions.length);
-        const currentPageData = allAuctions.slice(startIndex, endIndex);
+
+        if (!allAuctions || allAuctions.length === 0) {
+            document.getElementById('tableBody').innerHTML =
+                '<tr><td colspan="8" class="no-data">No records found</td></tr>';
+            return;
+        }
 
         let rows = '';
-        if (currentPageData.length > 0) {
-            currentPageData.forEach((auction, index) => {
-                const globalIndex = startIndex + index + 1;
-                const statusClass = getStatusClass(auction.catalogStatusLabel);
-                const statusLabel = auction.catalogStatusLabel || 'N/A';
 
-                rows += '<tr>' +
-                    '<td style="text-align:center;">' + globalIndex + '</td>' +
-                    '<td><strong>' + escapeHtml(auction.scheduleNo || '') + '</strong></td>' +
-                    '<td>' + escapeHtml(auction.accountName || '') + '</td>' +
-                    '<td>' + escapeHtml(auction.depotName || '') + '</td>' +
-                    '<td><span class="status-badge ' + statusClass + '"><i class="fas fa-circle"></i> ' + 
-                    escapeHtml(statusLabel) + '</span></td>' +
-                    '<td>' + escapeHtml(auction.auctionStartDatetime || '') + '</td>' +
-                    '<td>' + escapeHtml(auction.auctionEndDatetime || 'N/A') + '</td>' +
-                    '<td>' + generateActionButtons(auction) + '</td>' +
-                    '</tr>';
-            });
-        } else {
-            rows = '<tr><td colspan="8" class="no-data">No records found</td></tr>';
-        }
-        
+        allAuctions.forEach((auction, index) => {
+
+            const globalIndex = (currentPage - 1) * recordsPerPage + index + 1;
+
+            const statusClass = getStatusClass(auction.catalogStatusLabel);
+            const statusLabel = auction.catalogStatusLabel || 'N/A';
+
+            rows += '<tr>' +
+                '<td style="text-align:center;">' + globalIndex + '</td>' +
+                '<td><strong>' + escapeHtml(auction.scheduleNo || '') + '</strong></td>' +
+                '<td>' + escapeHtml(auction.accountName || '') + '</td>' +
+                '<td>' + escapeHtml(auction.depotName || '') + '</td>' +
+                '<td><span class="status-badge ' + statusClass + '"><i class="fas fa-circle"></i> ' +
+                escapeHtml(statusLabel) + '</span></td>' +
+                '<td>' + escapeHtml(auction.auctionStartDatetime || '') + '</td>' +
+                '<td>' + escapeHtml(auction.auctionEndDatetime || 'N/A') + '</td>' +
+                '<td>' + generateActionButtons(auction) + '</td>' +
+                '</tr>';
+        });
+
         document.getElementById('tableBody').innerHTML = rows;
-
-        if (allAuctions.length > 0) {
-            const showingText = 'Showing ' + (startIndex + 1) + ' to ' + endIndex + ' of ' + allAuctions.length + ' entries';
-            document.querySelector('.showing-info-bottom').textContent = showingText;
-            updatePaginationButtons();
-        }
     }
 
-    function updatePaginationButtons() {
-        const paginationContainer = document.querySelector('.pagination-numbers');
-        paginationContainer.innerHTML = '';
 
-        const prevBtn = document.createElement('button');
-        prevBtn.className = 'page-num-btn';
-        prevBtn.textContent = 'Previous';
-        prevBtn.disabled = currentPage <= 1;
-        prevBtn.onclick = function() {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePaginationInfo();
-                displayCurrentPageData();
-            }
-        };
-        paginationContainer.appendChild(prevBtn);
+    
+    
+    
+    function updateTableWithoutScroll(callback){
+        const scrollPos = window.scrollY;
+        const table = document.getElementById('tableBody');
 
-        const maxPagesToShow = 5;
-        let startPage = Math.max(1, currentPage - 2);
-        let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+        table.style.opacity = "0";
 
-        if (endPage - startPage < maxPagesToShow - 1) {
-            startPage = Math.max(1, endPage - maxPagesToShow + 1);
-        }
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageBtn = document.createElement('button');
-            pageBtn.className = 'page-num-btn' + (i === currentPage ? ' active' : '');
-            pageBtn.textContent = i;
-            pageBtn.onclick = function() {
-                currentPage = i;
-                updatePaginationInfo();
-                displayCurrentPageData();
-            };
-            paginationContainer.appendChild(pageBtn);
-        }
-
-        if (endPage < totalPages) {
-            const dots = document.createElement('span');
-            dots.className = 'page-dots';
-            dots.textContent = '...';
-            paginationContainer.appendChild(dots);
-
-            const lastBtn = document.createElement('button');
-            lastBtn.className = 'page-num-btn';
-            lastBtn.textContent = totalPages;
-            lastBtn.onclick = function() {
-                currentPage = totalPages;
-                updatePaginationInfo();
-                displayCurrentPageData();
-            };
-            paginationContainer.appendChild(lastBtn);
-        }
-
-        const nextBtn = document.createElement('button');
-        nextBtn.className = 'page-num-btn';
-        nextBtn.textContent = 'Next';
-        nextBtn.disabled = currentPage >= totalPages;
-        nextBtn.onclick = function() {
-            if (currentPage < totalPages) {
-                currentPage++;
-                updatePaginationInfo();
-                displayCurrentPageData();
-            }
-        };
-        paginationContainer.appendChild(nextBtn);
+        setTimeout(() => {
+            callback();
+            table.style.opacity = "1";
+            window.scrollTo(0, scrollPos);
+        }, 150);
     }
 
     function generateActionButtons(auction) {
@@ -2053,13 +2444,18 @@
 
     function resetFilters() {
         document.getElementById('filterForm').reset();
+        document.getElementById('scheduleSearchInput').value = '';
         document.getElementById('depotId').innerHTML = '<option value="">-- Select Depot --</option>';
+     // ⭐ RESET RED BORDER ALSO
+        document.getElementById('fromDate').style.border = "2px solid #ddd";
+        document.getElementById('toDate').style.border   = "2px solid #ddd";
         document.getElementById('tableBody').innerHTML = 
             '<tr><td colspan="8" class="no-data"><i class="fas fa-inbox"></i><div>Click Search to view auction schedules</div></td></tr>';
         document.getElementById('resultsSection').style.display = 'none';
         clearAlerts();
         currentPage = 1;
         allAuctions = [];
+        searchAuctions(); 
         console.log('✓ Filters reset');
     }
 

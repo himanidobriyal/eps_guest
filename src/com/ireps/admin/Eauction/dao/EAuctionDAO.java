@@ -1,5 +1,5 @@
 package com.ireps.admin.Eauction.dao;
-
+ 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class EAuctionDAO {
 
     /**
      * Get all accounts (initial load for dropdown)
-     */
+     */ 
     public List<Map<String, Object>> getAllAccounts() {
         String sql = "SELECT DISTINCT ACCOUNT_NAME, ACCOUNT_ID " +
                      "FROM IREPS_DEPARTMENT_MASTER " +
@@ -118,8 +118,10 @@ public class EAuctionDAO {
     /**
      * Get live auctions with PDF path
      */
-    public List<AuctionSchedule> getLiveAuctions(String accountId, String depotId, 
-                                                  String catalogStatus, Date fromDate, Date toDate) {
+    public List<AuctionSchedule> getLiveAuctions(String accountId, String depotId,
+            String catalogStatus, Date fromDate, Date toDate,
+            String scheduleNo,
+            int page, int pageSize){
         
         StringBuilder sql = new StringBuilder(
             "SELECT * FROM (" +
@@ -183,11 +185,44 @@ public class EAuctionDAO {
             sql.append("AND TRUNC(X.SORT_COL) <= TRUNC(?) ");
             params.add(new java.sql.Date(toDate.getTime()));
         }
+        
+     // ⭐ ADD THIS FOR SEARCH BY SCHEDULE NO
 
-        sql.append("ORDER BY X.SORT_COL DESC");
+     // ⭐ CORRECT SEARCH — use LIKE instead of =
+
+        if (scheduleNo != null && !scheduleNo.trim().isEmpty()) {
+
+            sql.append("AND UPPER(X.SCHEDULE_NO) LIKE UPPER(?) ");
+
+            params.add("%" + scheduleNo.trim() + "%");
+
+        }
+
+
+     // ⭐ FINAL PAGINATION FIX FOR ORACLE 11g
+
+        int startRow = (page - 1) * pageSize;
+        int endRow = page * pageSize;
+
+        String finalQuery =
+            "SELECT * FROM (" +
+            " SELECT inner_query.*, ROWNUM rn FROM (" +
+            sql.toString() +
+            " ORDER BY X.SORT_COL DESC " +
+            " ) inner_query WHERE ROWNUM <= ?" +
+            ") WHERE rn > ?";
+
+        params.add(endRow);
+        params.add(startRow);
+
+        sql = new StringBuilder(finalQuery);
+
+
 
         try {
             System.out.println("Executing getLiveAuctions");
+            
+
             List<AuctionSchedule> result = jdbcTemplate.query(sql.toString(), params.toArray(), 
                     new AuctionScheduleRowMapper());
             System.out.println("getLiveAuctions returned: " + result.size() + " records");
@@ -202,8 +237,8 @@ public class EAuctionDAO {
     /**
      * Get upcoming auctions
      */
-    public List<AuctionSchedule> getUpcomingAuctions(String accountId, String depotId, 
-                                                      Date fromDate, Date toDate) {
+    public List<AuctionSchedule> getUpcomingAuctions(String accountId, String depotId,
+            Date fromDate, Date toDate, int page, int pageSize) {
         
         StringBuilder sql = new StringBuilder(
             "SELECT * FROM (" +
@@ -263,10 +298,29 @@ public class EAuctionDAO {
             params.add(new java.sql.Date(toDate.getTime()));
         }
 
-        sql.append("ORDER BY X.SORT_COL DESC");
+     // ⭐ FINAL PAGINATION FIX FOR ORACLE 11g
+
+        int startRow = (page - 1) * pageSize;
+        int endRow = page * pageSize;
+
+        String finalQuery =
+            "SELECT * FROM (" +
+            " SELECT inner_query.*, ROWNUM rn FROM (" +
+            sql.toString() +
+            " ORDER BY X.SORT_COL DESC " +
+            " ) inner_query WHERE ROWNUM <= ?" +
+            ") WHERE rn > ?";
+
+        params.add(endRow);
+        params.add(startRow);
+
+        sql = new StringBuilder(finalQuery);
+
+
 
         try {
             System.out.println("Executing getUpcomingAuctions");
+            
             List<AuctionSchedule> result = jdbcTemplate.query(sql.toString(), params.toArray(), 
                     new AuctionScheduleRowMapper());
             System.out.println("getUpcomingAuctions returned: " + result.size() + " records");
