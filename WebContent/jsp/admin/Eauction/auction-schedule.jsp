@@ -2514,7 +2514,7 @@
         };
         return String(text).replace(/[&<>"']/g, function(m) { return map[m]; });
     }
-
+ 
     function openSidebar() {
         document.getElementById('mySidebar').style.width = '250px';
     }
