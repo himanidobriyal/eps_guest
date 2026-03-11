@@ -1,5 +1,5 @@
 package com.ireps.admin.BannedFirms.model;
-
+   
 public class BannedFirms {
     private String letNo;
     private String letDate;

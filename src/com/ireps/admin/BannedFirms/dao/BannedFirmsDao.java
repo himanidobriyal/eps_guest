@@ -1,5 +1,5 @@
 package com.ireps.admin.BannedFirms.dao;
-
+  
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +15,7 @@ public class BannedFirmsDao {
 
 	public BannedFirmsDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
-	}
+	}  
 
 	public List<BannedFirms> getBannedFirmsByType(String type) {
 		String sql = "SELECT let_no, TO_CHAR(let_dt, 'dd/mm/yyyy') let_dt_s, vname, vaddress, subj, duration, "

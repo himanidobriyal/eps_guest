@@ -11,10 +11,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/accessibility/accessibility.css">
 <script src="${pageContext.request.contextPath}/assets/accessibility/accessibility.js" defer></script>	
 <style>
-	* {
+	* {  
 	    margin: 0;
 	    padding: 0;
-	    box-sizing: border-box;
+	    box-sizing: border-box; 
 	}
 	
 	body {
@@ -121,7 +121,7 @@
 	}
 	
 	.search-card {
-	 margin: 20px auto;
+	    margin: 10px auto;
 	    background: rgba(255, 255, 255, 0.98);
 	    backdrop-filter: blur(15px);
 	    border-radius: 20px;
@@ -153,39 +153,46 @@
 	}
 	
 	.search-content {
-	    padding: 20px;
+	    padding:10px 20px 5px 20px;
 	}
 	
 	.search-info {
 	    color: #1565c0;
 	    padding: 4px 0;
-	    margin-bottom: 15px;
+	    margin-bottom: 5px;
 	    font-size: 14px;
 	    line-height: 1.5;
 	}
 	
 	.form-grid {
-	    display: grid;
-	    grid-template-columns: 300px;
-	    gap: 16px;
-	    margin-bottom: 16px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 0;
 	}
+
 	
 	.form-group {
-	    display: flex;
-	    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
 	}
-	
+
 	.form-group label {
 	    font-weight: 600;
 	    color: #2d3436;
-	    margin-bottom: 6px;
+	    margin-bottom: 0;
+	    margin-right: 10px;
+	    white-space: nowrap;
 	    font-size: 14px;
 	    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 	
 	.form-select {
 	    padding: 10px 14px;
+	    width: 220px;
 	    border: 2px solid #ddd;
 	    border-radius: 10px;
 	    font-size: 14px;
@@ -430,12 +437,18 @@
 				padding-right: 40px;
 			}
 			.sidebar a .dev-note {
-  display: block;
-  font-size: 11px;
-  color: red;
- 
-  margin-top: 2px;
-}
+			  display: block;
+			  font-size: 11px;
+			  color: red;
+			 
+			  margin-top: 2px;
+			}
+
+			.ban-icon {
+		    color: #dc3545;
+		    font-size: 28px;
+			}
+			
 </style>
 </head>
 <body>
@@ -495,26 +508,40 @@
 <div class="main-container">
     <div class="search-card">
         <div class="search-header">
-            <h2><i class="bi bi-ban"></i> List of Firms with Whom Business Dealings Have Been Suspended</h2>
+            <h2><i class="bi bi-ban ban-icon"></i> List of Firms with Whom Business Dealings Have Been Suspended</h2>
         </div>
 
         <div class="search-content">
-            <div class="search-info">
-                View list of firms with suspended or banned business dealings with Indian Railways
-            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
 
-            <form method="get" action="${pageContext.request.contextPath}/eps/BannedFirms/seen.do" id="filterForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="typeSelect">Filter Type</label>
-                        <select class="form-select" id="typeSelect" name="type" onchange="document.getElementById('filterForm').submit()">
-                            <option value="all" ${empty selectedType || selectedType == 'all' ? 'selected' : ''}>All</option>
-                            <option value="banned" ${selectedType == 'banned' ? 'selected' : ''}>Banned</option>
-                            <option value="suspended" ${selectedType == 'suspended' ? 'selected' : ''}>Suspended</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
+			    <div class="search-info" style="margin-bottom:0;">
+			        View list of firms with suspended or banned business dealings with Indian Railways
+			    </div>
+			
+			    <form method="get" action="${pageContext.request.contextPath}/eps/BannedFirms/seen.do" id="filterForm" style="margin:0;">
+			        
+			        <div class="form-group" style="display:flex; align-items:center; gap:10px;">
+			            
+			            <label for="typeSelect" style="margin:0;">Filter Type</label>
+			
+			            <select class="form-select" id="typeSelect" name="type"
+			                onchange="document.getElementById('filterForm').submit()"
+			                style="width:150px; height:38px;">
+			
+			                <option value="all" ${empty selectedType || selectedType == 'all' ? 'selected' : ''}>All</option>
+			
+			                <option value="banned" ${selectedType == 'banned' ? 'selected' : ''}>Banned</option>
+			
+			                <option value="suspended" ${selectedType == 'suspended' ? 'selected' : ''}>Suspended</option>
+			
+			            </select>
+			
+			        </div>
+			
+			    </form>
+			
+			</div>
+
         </div>
     </div>
 
