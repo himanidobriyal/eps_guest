@@ -361,7 +361,7 @@ public class EAuctionController {
 
     /**
      * Get auction statistics
-     */
+     */ 
     @GetMapping("/statistics")
     @ResponseBody
     public Map<String, Object> getAuctionStatistics() {

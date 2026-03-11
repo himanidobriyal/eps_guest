@@ -1,5 +1,5 @@
 package com.ireps.admin.procurement.model;
-   
+    
 public class data {
     private String plNo;
     private String nlu;

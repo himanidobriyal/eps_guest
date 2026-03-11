@@ -416,7 +416,7 @@ public class EAuctionService {
             return 0;
         }
     }
-
+ 
     /**
      * Count upcoming auctions
      */

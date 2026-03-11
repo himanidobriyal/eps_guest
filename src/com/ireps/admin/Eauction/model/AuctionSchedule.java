@@ -165,7 +165,7 @@ public class AuctionSchedule implements Serializable {
     public Integer getScheduleStatus() {
         return scheduleStatus;
     }
-
+ 
     public void setScheduleStatus(Integer scheduleStatus) {
         this.scheduleStatus = scheduleStatus;
     }

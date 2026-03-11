@@ -560,7 +560,7 @@ public class EAuctionDAO {
             
             try { auction.setDepotName(rs.getString("DEPOT_NAME")); } 
             catch (Exception e) { auction.setDepotName(null); }
-            
+             
             try { auction.setDepotId(rs.getString("DEPOT_ID")); } 
             catch (Exception e) { auction.setDepotId(null); }
             
