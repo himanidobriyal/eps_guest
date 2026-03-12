@@ -21,7 +21,7 @@ public class AuctionDao {
 
 	// Live Auctions with Dynamic Filters
 	public List<Auction> getLiveAuctions(int page, int pageSize, String orgCode, String zoneCode, String unitCode,
-			String categoryId) {
+			String categoryId,String catalogNo, String fromDate, String toDate) {
 		// Base SQL to get the core auction data
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("SELECT DISTINCT ");
@@ -58,7 +58,7 @@ public class AuctionDao {
 		whereClause.append(
 				" AND cat.depot_id NOT IN (SELECT department_id FROM bv1to1.ireps_department_master WHERE org_code = '01' AND org_zone IN (95, 99)) ");
 		whereClause.append(
-				" AND cat.depot_id IN (SELECT department_id FROM bv1to1.ireps_department_master WHERE org_code = '01') ");
+				" AND cat.depot_id IN (SELECT department_id FROM bv1to1.ireps_department_master ) ");
 
 		// Add dynamic filters if present
 		if (orgCode != null && !orgCode.isEmpty()) {
@@ -101,7 +101,7 @@ public class AuctionDao {
 
 	// Upcoming Auctions with Dynamic Filters
 	public List<Auction> getUpcomingAuctions(int page, int pageSize, String orgCode, String zoneCode, String unitCode,
-			String categoryId) {
+			String categoryId,String catalogNo, String fromDate, String toDate) {
 		// Base SQL to get the core auction data
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("SELECT DISTINCT ");
@@ -140,7 +140,7 @@ public class AuctionDao {
 		whereClause.append(
 				" AND cat.depot_id NOT IN (SELECT department_id FROM bv1to1.ireps_department_master WHERE org_code = '01' AND org_zone IN (95, 99)) ");
 		whereClause.append(
-				" AND cat.depot_id IN (SELECT department_id FROM bv1to1.ireps_department_master WHERE org_code = '01') ");
+				" AND cat.depot_id IN (SELECT department_id FROM bv1to1.ireps_department_master ) ");
 
 		// Add dynamic filters if present
 		if (orgCode != null && !orgCode.isEmpty()) {
@@ -181,7 +181,7 @@ public class AuctionDao {
 
 	// Closed Auctions with Dynamic Filters
 	public List<Auction> getClosedAuctions(int page, int pageSize, String orgCode, String zoneCode, String unitCode,
-			String categoryId) {
+			String categoryId,String catalogNo, String fromDate, String toDate) {
 		// Base SQL to get the core auction data
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("SELECT DISTINCT ");

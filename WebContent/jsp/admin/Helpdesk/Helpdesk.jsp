@@ -43,10 +43,17 @@ body {
 				}
 
 				.center-section {
-					text-align: center;
-					flex: 1;
-					transform: translateX(-70px);
+					  position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 				}
+				.helpdesk-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fafcff;
+    border-radius: 10px;
+}
 
 				.main-title {
 					font-size: 30px;
@@ -352,6 +359,61 @@ body {
     font-weight: 600;
     color: #0056b3;
 }
+/* ===== ACTION GRID ===== */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #f8f9fa, #eef3ff);
+    border: 1px solid #dce3f5;
+    transition: all 0.3s ease;
+    color: #1a2b4c;
+}
+
+.action-card i {
+    font-size: 28px;
+    color: #0056b3;
+}
+
+.action-card h6 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.action-card small {
+    color: #666;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #e6f0ff, #ffffff);
+}
+
+.phone-highlight {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0056b3;
+}
+.section-header {
+    background: linear-gradient(135deg, #2c5aa0, #1a4480);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    border-radius: 20px 20px 0 0;
+    font-size: 22px;
+    font-weight: 600;
+}
 </style>
 </head>
 <body>
@@ -424,7 +486,8 @@ body {
                             User Manuals are available for different modules of IREPS. These manuals can be accessed through
                             Learning Center links available on IREPS Home Page, Bidders' Home Page, and Railway Users' Home Page.
                             Some manuals require login. You are advised to go through these manuals before approaching Helpdesk.
-                            <a href="#" class="highlight">Click Here</a> to go to Learning Centre.
+                            <a href="${pageContext.request.contextPath}/eps/Helpdesk/learningcenter.do" class="highlight"> Click Here </a>
+                            <!-- <a href="#" class="highlight">Click Here</a> to go to Learning Centre. -->
                         </li>
                         <li class="mt-2">
                             Please approach the tendering department for any Tender or Contract specific clarifications.
@@ -448,14 +511,42 @@ body {
                     <!-- IREPS Helpdesk -->
                     <div class="helpdesk-section">
                         <h6><strong>IREPS Helpdesk</strong> <span class="text-muted">(for IREPS related queries)</span></h6>
-                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/askquestion.do"> Ask a Question</a> – A Query ID will be generated for each query submitted.</p>
-                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/viewreply.do"> View Reply to Questison</a> – Requires Query ID and Email ID.</p>
-                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/changeDSC.do"> Request for Change of Digital Signing Certificate</a> – New DSC client name must match user account.</p>
+                       <%--  <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/askquestion.do"> Ask a Question</a> A Query ID will be generated for each query submitted.</p>
+                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/viewreply.do"> View Reply to Questison</a> Requires Query ID and Email ID.</p>
+                        <p><a href="${pageContext.request.contextPath}/eps/Helpdesk/changeDSC.do"> Request for Change of Digital Signing Certificate</a> New DSC client name must match user account.</p>
+ --%>
+ 
+ <div class="action-grid">
 
+    <a href="${pageContext.request.contextPath}/eps/Helpdesk/askquestion.do" class="action-card">
+        <i class="bi bi-chat-dots"></i>
+        <div>
+            <h6>Ask a Question</h6>
+            <small>A Query ID will be generated</small>
+        </div>
+    </a>
+
+    <a href="${pageContext.request.contextPath}/eps/Helpdesk/viewreply.do" class="action-card">
+        <i class="bi bi-reply"></i>
+        <div>
+            <h6>View Reply</h6>
+            <small>Requires Query ID & Email</small>
+        </div>
+    </a>
+
+    <a href="${pageContext.request.contextPath}/eps/Helpdesk/changeDSC.do" class="action-card">
+        <i class="bi bi-shield-lock"></i>
+        <div>
+            <h6>Change Digital Signing Certificate</h6>
+            <small>DSC name must match account</small>
+        </div>
+    </a>
+
+</div>
                         <div class="contact-info">
-                            <p><strong>Telephonic Assistance:</strong> <span class="text-primary">011-41385200</span> (10 lines)</p>
-                            <p><strong>Timings:</strong> 08:00 AM – 07:00 PM</p>
-                            <p class="small-note">(Not available on Sundays and Gazetted Holidays.) <a href="#" class="highlight">Click Here</a> to view holidays.</p>
+                            <p><strong>Telephonic Assistance:</strong> <span class="phone-highlight">011-41385200</span> (10 lines)</p>
+                            <p><strong>Timings:</strong> 08:00 AM - 07:00 PM</p>
+                            <p class="small-note">(Not available on Sundays and Gazetted Holidays.)<a href="${pageContext.request.contextPath}/assets/pdf/List_of_Gazetted_Holidays.pdf"  target="_blank" class="highlight">Click Here</a> to view holidays.</p>
                         </div>
                     </div>
 

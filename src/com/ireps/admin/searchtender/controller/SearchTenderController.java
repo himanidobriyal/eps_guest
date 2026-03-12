@@ -38,25 +38,25 @@ public class SearchTenderController {
         this.unitService = unitService;
         this.tenderService = tenderService;
     }
-
-    // --------- Load Search Tender Page ----------
+    
+    
     @GetMapping("/searchtender.do")
-    public String loadSearchTender(@RequestParam(name = "tab", required = false, defaultValue = "allActive") String tab,
-                                   Model model) {
+    public String loadSearchTender(
+            @RequestParam(name = "tab", required = false, defaultValue = "allActive") String tab,
+            Model model) {
 
-        // Organization dropdown
         List<Organization> organizations = organizationService.getAllOrganizations();
         model.addAttribute("organizations", organizations);
 
-        if (!organizations.isEmpty()) {
-            String defaultOrgCode = organizations.get(0).getIntCode();
-            model.addAttribute("pus", puService.getPUsByOrg(defaultOrgCode));
-            model.addAttribute("departments", departmentService.getDepartmentsByOrg(defaultOrgCode));
-            model.addAttribute("units", unitService.getUnitsForAllWorkAreas(defaultOrgCode));
-            model.addAttribute("selectedOrg", defaultOrgCode);
-        }
-        // ✅ FIX: Agar CUSTOM TAB select hua hai → koi tender list load nahi karni
-     // 🔑 Key change: for 'custom' tab, DO NOT call service; keep list empty.
+        // 🔥 Only preload dropdown lists
+        model.addAttribute("pus", java.util.Collections.emptyList());
+        model.addAttribute("departments", java.util.Collections.emptyList());
+        model.addAttribute("units", java.util.Collections.emptyList());
+
+        // ❌ DO NOT set selectedOrg here
+        model.addAttribute("selectedOrg", "");
+
+        // Tender loading logic
         if ("custom".equalsIgnoreCase(tab)) {
             model.addAttribute("tenders", java.util.Collections.emptyList());
         } else {
@@ -65,9 +65,37 @@ public class SearchTenderController {
         }
 
         model.addAttribute("activeTab", tab);
-        return "searchtender";
-        }
 
+        return "searchtender";
+    }
+
+    // --------- Load Search Tender Page ----------
+	/*
+	 * @GetMapping("/searchtender.do") public String
+	 * loadSearchTender(@RequestParam(name = "tab", required = false, defaultValue =
+	 * "allActive") String tab, Model model) {
+	 * 
+	 * // Organization dropdown List<Organization> organizations =
+	 * organizationService.getAllOrganizations();
+	 * model.addAttribute("organizations", organizations);
+	 * 
+	 * 
+	 * 
+	 * if (!organizations.isEmpty()) { String defaultOrgCode =
+	 * organizations.get(0).getIntCode(); model.addAttribute("pus",
+	 * puService.getPUsByOrg(defaultOrgCode)); model.addAttribute("departments",
+	 * departmentService.getDepartmentsByOrg(defaultOrgCode));
+	 * model.addAttribute("units",
+	 * unitService.getUnitsForAllWorkAreas(defaultOrgCode));
+	 * model.addAttribute("selectedOrg", defaultOrgCode); } // ✅ FIX: Agar CUSTOM
+	 * TAB select hua hai → koi tender list load nahi karni // 🔑 Key change: for
+	 * 'custom' tab, DO NOT call service; keep list empty. if
+	 * ("custom".equalsIgnoreCase(tab)) { model.addAttribute("tenders",
+	 * java.util.Collections.emptyList()); } else { List<Tender> tenderList =
+	 * tenderService.getTenders(tab); model.addAttribute("tenders", tenderList); }
+	 * 
+	 * model.addAttribute("activeTab", tab); return "searchtender"; }
+	 */
 
        
 
