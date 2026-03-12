@@ -48,6 +48,7 @@ public class TenderDao {
             cs.setString(11, ""); // TODTPD
 
             // ✅ Date only in closed tabs
+            //tabType="closed";
             if (tabType.equals("closed") || tabType.equals("closedERA")) {
                 cs.setString(12, "03/09/2025");
                 cs.setString(13, "03/09/2025");
