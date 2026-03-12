@@ -15,18 +15,18 @@ public class AuctionService {
 	private AuctionDao auctionDao;
 
 	public List<Auction> getLiveAuctions(int page, int pageSize, String orgCode, String zoneCode, String unitCode,
-			String categoryId) {
-		return auctionDao.getLiveAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId);
+			String categoryId,String catalogNo, String fromDate, String toDate) {
+		return auctionDao.getLiveAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId,catalogNo,fromDate,toDate);
 	}
 
 	public List<Auction> getUpcomingAuctions(int page, int pageSize, String orgCode, String zoneCode, String unitCode,
-			String categoryId) {
-		return auctionDao.getUpcomingAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId);
+			String categoryId,String catalogNo, String fromDate, String toDate) {
+		return auctionDao.getUpcomingAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId,catalogNo,fromDate,toDate);
 	}
 
 	public List<Auction> getClosedAuctions(int page, int pageSize, String orgCode, String zoneCode, String unitCode,
-			String categoryId) {
-		return auctionDao.getClosedAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId);
+			String categoryId,String catalogNo, String fromDate, String toDate) {
+		return auctionDao.getClosedAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId,catalogNo,fromDate,toDate);
 	}
 
 	public Map<String, Object> getScheduleDetails(int scheduleId) {

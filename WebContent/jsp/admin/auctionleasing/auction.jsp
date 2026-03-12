@@ -1649,6 +1649,81 @@ href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     border-radius: 8px;
     border: 1px solid #ccc;
 }
+/* ===== ENTERPRISE ACTION ICONS ===== */
+
+.action-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dcdcdc;
+    background: #f8f9fa;
+    transition: all 0.25s ease;
+}
+
+/* Hover animation */
+.action-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Catalogue */
+.catalogue-icon:hover {
+    background: #ffc107;
+    border-color: #ffc107;
+}
+
+/* Corrigendum */
+.corrigendum-icon:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Taxes */
+.taxes-icon:hover {
+    background: #28a745;
+    border-color: #28a745;
+}
+
+.action-icon:hover i {
+    color: white !important;
+}
+/* ===== ENTERPRISE TABLE ===== */
+
+.modern-table thead th {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.modern-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.modern-table tbody tr:hover {
+    background: #eef4ff;
+}
+
+.modern-table td {
+    font-size: 13px;
+}
+/* ===== ACCESSIBILITY FOCUS ===== */
+
+button:focus,
+select:focus,
+input:focus,
+a:focus {
+    outline: 2px solid #2a6fd6;
+    outline-offset: 2px;
+}
 
 
 
@@ -1908,10 +1983,13 @@ href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
 	<label>Catalogue No.</label> 
 
-	<input type="text" class="form-control" name="catalogNo"
+	<!-- <input type="text" class="form-control" name="catalogNo"
 
 	placeholder="Enter catalogue number">
-
+ -->
+ <input type="text" class="form-control" name="catalogNo"
+value="${catalogNo}"
+placeholder="Enter catalogue number">
 	</div>
 
 	<div class="date-group">
@@ -1971,7 +2049,8 @@ href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
 
 
-	<c:if test="${not empty auctions}">
+	<c:if test="${(auctionType == 'Closed' and not empty auctions) 
+          or (param.searchClicked == 'true' and auctionType != 'Closed' and not empty auctions)}">
 
 	<div class="results-section" id="resultsDiv">
 

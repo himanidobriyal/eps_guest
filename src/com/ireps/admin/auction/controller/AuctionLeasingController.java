@@ -43,10 +43,17 @@ public class AuctionLeasingController {
 
 	// Main page
 	@GetMapping("/show.do")
-	public String showAuctionsPage(@RequestParam(defaultValue = "live") String type,
-			@RequestParam(defaultValue = "1") int page, @RequestParam(required = false) String orgCode,
-			@RequestParam(required = false) String zoneCode, @RequestParam(required = false) String unitCode,
-			@RequestParam(required = false) String categoryId, Model model) {
+	public String showAuctionsPage(
+	@RequestParam(defaultValue = "live") String type,
+	@RequestParam(defaultValue = "1") int page,
+	@RequestParam(required = false) String orgCode,
+	@RequestParam(required = false) String zoneCode,
+	@RequestParam(required = false) String unitCode,
+	@RequestParam(required = false) String categoryId,
+	@RequestParam(required = false) String catalogNo,
+	@RequestParam(required = false) String fromDate,
+	@RequestParam(required = false) String toDate,
+	Model model){
 
 		List<AuctionOrganisation> organisations = organisationService.getAllOrganisations();
 		model.addAttribute("organisations", organisations);
@@ -66,17 +73,40 @@ public class AuctionLeasingController {
 
 		switch (type.toLowerCase()) {
 		case "upcoming":
-			auctions = auctionService.getUpcomingAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId);
+			auctions = auctionService.getUpcomingAuctions( page,
+			        pageSize,
+			        orgCode,
+			        zoneCode,
+			        unitCode,
+			        categoryId,
+			        catalogNo,
+			        fromDate,
+			        toDate);
 			model.addAttribute("auctionType", "Upcoming");
 			break;
 
 		case "closed":
-			auctions = auctionService.getClosedAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId);
+			auctions = auctionService.getClosedAuctions( page,
+			        pageSize,
+			        orgCode,
+			        zoneCode,
+			        unitCode,
+			        categoryId,
+			        catalogNo,
+			        fromDate,
+			        toDate);
 			model.addAttribute("auctionType", "Closed");
 			break;
 
 		default:
-			auctions = auctionService.getLiveAuctions(page, pageSize, orgCode, zoneCode, unitCode, categoryId);
+			auctions = auctionService.getLiveAuctions( page,pageSize,
+			        orgCode,
+			        zoneCode,
+			        unitCode,
+			        categoryId,
+			        catalogNo,
+			        fromDate,
+			        toDate);
 			model.addAttribute("auctionType", "Live");
 			break;
 		}
@@ -87,7 +117,9 @@ public class AuctionLeasingController {
 		model.addAttribute("selectedZoneCode", zoneCode);
 		model.addAttribute("selectedUnitCode", unitCode);
 		model.addAttribute("selectedCategoryId", categoryId);
-
+		model.addAttribute("catalogNo", catalogNo);
+		model.addAttribute("fromDate", fromDate);
+		model.addAttribute("toDate", toDate);
 		return "auction.definition";
 	}
 
@@ -134,6 +166,7 @@ public class AuctionLeasingController {
 
 		return "auctioncatalogue"; // Tiles name
 	}
+	
 
 	// Taxes modal
 	   @GetMapping("/taxes")
