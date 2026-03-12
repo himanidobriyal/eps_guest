@@ -88,11 +88,9 @@
 .content {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	flex: 1;
-	padding: 60px 20px;
-	min-height: calc(100vh - 200px);
-	background: linear-gradient(135deg, #e0e7ff 0%, #f0f4f8 50%, #dbeafe 100%);
+	align-items: flex-start;
+	padding: 5px 20px 30px 20px;
+	background:linear-gradient(135deg,#c7d2fe,#e0f2fe,#dbeafe);
 	position: relative;
 	overflow: hidden;
 }
@@ -101,7 +99,7 @@
 .content::before {
 	content: '';
 	position: absolute;
-	top: -50%;
+	top: 0;
 	left: -50%;
 	width: 200%;
 	height: 200%;
@@ -127,7 +125,7 @@
 	height: 400px;
 	border-radius: 50%;
 	background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-	top: 10%;
+	top: 40%;
 	right: 5%;
 	animation: pulse 8s ease-in-out infinite;
 	pointer-events: none;
@@ -138,20 +136,29 @@
 	50% { transform: scale(1.1); opacity: 0.3; }
 }
 
-.card {
-	background: white;
-	width: 100%;
-	max-width: 950px;
-	border-radius: 20px;
-	box-shadow: 
-		0 20px 60px rgba(30, 64, 175, 0.15),
-		0 8px 24px rgba(0, 0, 0, 0.08);
-	padding: 70px 60px;
-	border: 1px solid rgba(226, 232, 240, 0.6);
-	position: relative;
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	z-index: 1;
-	animation: slideUp 0.6s ease-out;
+.card{
+margin-top:15px;
+
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.3);
+border-radius:18px;
+
+padding:25px 30px;
+
+width:100%;
+max-width:1100px;
+
+box-shadow:0 20px 45px rgba(0,0,0,0.15);
+
+transition:all .3s ease;
+}
+
+.card:hover{
+transform:translateY(-3px);
+box-shadow:0 25px 55px rgba(0,0,0,0.25);
 }
 
 @keyframes slideUp {
@@ -209,21 +216,13 @@
 }
 
 /* Welcome heading with enhanced styling */
-.card h1 {
-	font-size: 3rem;
-	font-weight: 800;
-	margin-bottom: 30px;
-	color: #0b253f;
-	text-align: center;
-	letter-spacing: -1px;
-	line-height: 1.3;
-	position: relative;
-	padding-bottom: 25px;
-	background: linear-gradient(135deg, #0b253f 0%, #1e40af 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	animation: fadeInDown 0.8s ease-out 0.2s both;
+.card h1{
+font-size:28px;
+font-weight:700;
+color:#1e3a8a;
+margin-bottom:8px;
+background:none;
+-webkit-text-fill-color:#1e3a8a;
 }
 
 @keyframes fadeInDown {
@@ -255,22 +254,16 @@
 	to { width: 100px; }
 }
 
-/* Message box with enhanced design */
-.card p {
-	font-size: 1.25rem;
-	color: #334155;
-	line-height: 1.8;
-	text-align: center;
-	margin: 0;
-	padding: 35px 50px;
-	background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
-	border-radius: 16px;
-	border: 2px solid transparent;
-	background-clip: padding-box;
-	position: relative;
-	overflow: hidden;
-	animation: fadeIn 1s ease-out 0.4s both;
-	transition: all 0.3s ease;
+.card p{
+background:rgba(255,255,255,0.4);
+border-radius:12px;
+padding:10px 15px;
+
+color:#1e293b;
+
+backdrop-filter:blur(6px);
+
+border:1px solid rgba(255,255,255,0.4);
 }
 
 @keyframes fadeIn {
@@ -317,8 +310,8 @@
 .card h1::before {
 	content: '🏛️';
 	display: block;
-	font-size: 3.5rem;
-	margin-bottom: 15px;
+	font-size: 1.8rem;
+	margin-bottom: 5px;
 	animation: bounce 2s ease-in-out infinite;
 }
 
@@ -336,7 +329,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
 	.content {
-		padding: 40px 15px;
+		padding: 20px 20px 30px 20px;
 	}
 
 	.content::after {
@@ -345,24 +338,25 @@
 	}
 
 	.card {
-		padding: 50px 35px;
-		max-width: 95%;
+		padding: 8px 20px;
+		max-width: 800px;
 		border-radius: 16px;
 	}
 
 	.card h1 {
-		font-size: 2.25rem;
-		margin-bottom: 25px;
+		font-size: 24px;
+		margin-bottom: 1px;
+		margin-top: 1px;
 	}
 
 	.card h1::before {
-		font-size: 3rem;
-		margin-bottom: 12px;
+		font-size: 1.4rem;
+		margin-bottom: 1px;
 	}
 
 	.card p {
-		font-size: 1.0625rem;
-		padding: 28px 30px;
+		font-size: 15px;
+		padding: 8px 15px;
 	}
 }
 
@@ -741,8 +735,7 @@
 			}
 
 			.sidebar {
-				height: 100%;
-				width: 0;
+				display:none;
 				position: fixed;
 				z-index: 1000;
 				top: 0;
@@ -818,6 +811,58 @@
     background: #3b82f6 !important;
     color: #fff !important;
 }
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:24px;
+margin-top:30px;
+}
+.service-box{
+
+background:rgba(255,255,255,0.35);
+
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.4);
+
+padding:20px;
+
+border-radius:16px;
+
+display:flex;
+align-items:center;
+gap:14px;
+
+font-size:15px;
+font-weight:600;
+
+cursor:pointer;
+
+transition:all .25s ease;
+
+box-shadow:0 8px 25px rgba(0,0,0,0.1);
+}
+
+.service-box:hover{
+
+transform:translateY(-6px) scale(1.02);
+
+box-shadow:0 20px 40px rgba(30,64,175,0.25);
+
+border-color:#2563eb;
+
+background:rgba(255,255,255,0.55);
+
+}
+
+.service-box i{
+
+font-size:22px;
+
+color:#2563eb;
+
+}
 			
 		</style>
 	</head>
@@ -868,14 +913,90 @@
 		</div>
 
 		<div class="content">
-			<div class="card">
-				<h1 style="font-size:32px; font-weight:700; margin-bottom:20px; color:#0b253f;">
-					Welcome to IREPS Website
-				</h1>
-				<p style="font-size:18px; color:#374151;">
-					Please choose a service from the left sidebar to continue.
-				</p>
-			</div>
+		
+		    <div style="max-width:1100px;width:100%;">
+		
+		        <div class="card" style="margin-bottom:40px;">
+		            <h1>Welcome to IREPS Website</h1>
+		            <p>Please choose a service below to continue.</p>
+		        </div>
+		
+		        <div class="services-grid">
+		
+		            <div class="service-box" onclick="selectOption('hightender',this)">
+		                <i class="fa-solid fa-chart-line"></i>
+		                <span>High Value Tenders</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('searchtender',this)">
+		                <i class="fa-solid fa-search"></i>
+		                <span>Search Tender</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('itemmaster',this)">
+		                <i class="fa-solid fa-box"></i>
+		                <span>Item Master</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('projection',this)">
+		                <i class="fa-solid fa-chart-bar"></i>
+		                <span>Procurement Projection</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('viewireps',this)">
+		                <i class="fa-solid fa-file-lines"></i>
+		                <span>View IREPS Document</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('goods',this)">
+		                <i class="fa-solid fa-cart-shopping"></i>
+		                <span>Goods and Services</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('auction',this)">
+		                <i class="fa-solid fa-gavel"></i>
+		                <span>Auction Leasing</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('SPO',this)">
+		                <i class="fa-solid fa-magnifying-glass"></i>
+		                <span>Search Purchase Orders</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('Eauction',this)">
+		                <i class="fa-solid fa-landmark"></i>
+		                <span>E-Auction System</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('LearningCenter',this)">
+		                <i class="fa-solid fa-graduation-cap"></i>
+		                <span>Learning Center</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('BannedFirms',this)">
+		                <i class="fa-solid fa-ban"></i>
+		                <span>Banned Firms</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('Helpdesk',this)">
+		                <i class="fa-solid fa-headset"></i>
+		                <span>Helpdesk</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('Bidder',this)">
+		                <i class="fa-solid fa-user-plus"></i>
+		                <span>New Bidder (E-Auction Sale)</span>
+		            </div>
+		
+		            <div class="service-box" onclick="selectOption('DepartmentCreation',this)">
+		                <i class="fa-solid fa-building"></i>
+		                <span>Department Creation</span>
+		            </div>
+		
+		        </div>
+		
+		    </div>
+		
 		</div>
 
 
