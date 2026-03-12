@@ -222,7 +222,7 @@
 		margin-left: 6px;
 		font-size: 17px;
 	}
-	
+	 
 	/* TABS STYLING */
 	.search-tabs {
 		display: flex;
