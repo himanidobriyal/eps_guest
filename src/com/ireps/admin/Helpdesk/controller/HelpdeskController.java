@@ -30,4 +30,9 @@ public class HelpdeskController {
     public String changeDSC() {
         return "admin/Helpdesk/changeDSC";
     }
+    @RequestMapping("/learningcenter.do")
+    public String learningCenter() {
+        return "admin/LearningCenter/LearningCenter";
+    }
 }
+

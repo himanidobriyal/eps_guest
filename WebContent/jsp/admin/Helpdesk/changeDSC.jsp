@@ -4080,6 +4080,21 @@ legend {
     border: 1px solid red !important;
     background: #fff5f5 !important;
 }
+	.language-dropdown {
+					background-color: #0b253f;
+					color: white;
+					border: 1px solid #ccc;
+					padding: 6px 12px;
+					border-radius: 4px;
+					font-size: 16px;
+					appearance: none;
+					cursor: pointer;
+					}
+					.lang-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
 
 	</style>
@@ -4275,7 +4290,12 @@ document.getElementById("dscForm").addEventListener("submit", function(e){
 
 </script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script 
+    src="https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js"
+    language-icon-color="#ffffff">
+</script>
+<script src="${pageContext.request.contextPath}/assets/bhashini/bhashini-init.js"></script>
 </body>
 
 
