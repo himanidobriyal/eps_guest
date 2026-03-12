@@ -88,11 +88,21 @@ body {
     text-align: center;
 }
 
-.right-section {
-    flex: 1;
-    text-align: right;
+				.right-section {
+    display: flex;
+    flex-direction: column;  /* stack dropdown and HOME vertically */
+    align-items: flex-end;   /* align both to the right */
+    font-size: 16px;
+    color: white;
+    margin-right: 20px;
+    gap: 8px; /* space between dropdown and HOME */
 }
 
+				.right-section label {
+					color: white;
+					font-weight: 500;
+					margin-right: 8px;
+				}
 .ireps-logo {
     height: 60px;
     width: auto;
@@ -137,6 +147,21 @@ body {
 
 .search-content {
     padding:30px;
+}
+	.language-dropdown {
+					background-color: #0b253f;
+					color: white;
+					border: 1px solid #ccc;
+					padding: 6px 12px;
+					border-radius: 4px;
+					font-size: 16px;
+					appearance: none;
+					cursor: pointer;
+					}
+					.lang-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 /* NORMAL PROFESSIONAL RADIO */
 .criteria-option input[type="radio"] {
@@ -850,6 +875,12 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script 
+    src="https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js"
+    language-icon-color="#ffffff">
+</script>
+<script src="${pageContext.request.contextPath}/assets/bhashini/bhashini-init.js"></script>
 </body>
 
 
