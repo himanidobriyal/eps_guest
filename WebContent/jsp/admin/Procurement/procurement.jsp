@@ -52,6 +52,10 @@
 		background: white;
 		margin: 0;
 		padding: 0;
+	
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
 	}
 	.ireps-header {
 		display: flex;
@@ -138,10 +142,11 @@
 		cursor: pointer;
 		text-decoration: none;
 	}
-	.main-container {
-		max-width: 100%;
-		margin: 0;
-		padding: 0;
+	.main-container{
+	    flex:1;
+	    display:flex;
+	    flex-direction:column;
+	    min-height:calc(100vh - 160px);
 	}
 	.search-card {
 		background: rgba(255, 255, 255, 0.98);
@@ -151,9 +156,10 @@
 		overflow: visible;
 		max-width: 1400px;
 		width: 100%;
-		margin: 20px auto;
+		margin: 20px auto 0 auto;
 		display: flex;
 		flex-direction: column;
+		flex: 1;
 	}
 	
 	/* NEW: Search Header like Item Master */
@@ -426,7 +432,7 @@
 	.results-header h3 {
 		font-size: 22px;
 		font-weight: 700;
-		text-shadow: 0 2px 4px rgba(42, 82, 152, 0.1);)
+		text-shadow: 0 2px 4px rgba(42, 82, 152, 0.1);
 		letter-spacing: 0.5px;
 		margin: 0;
 	}
@@ -653,19 +659,20 @@
 		color: #718096;
 	}
 	
-	.footer {
-		background-color: #0b253f;
-		color: white;
-		text-align: center;
-		padding: 12px 10px;
-		font-size: 14px;
+	.footer{
+	    background-color:#0b253f;
+	    color:white;
+	    text-align:center;
+	    padding:12px 10px;
+	    font-size:14px;
 	
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 12px;
+	    display:flex;
+	    justify-content:center;
+	    align-items:center;
+	    gap:12px;
 	
-		width: 100%;
+	    width:100%;
+	    margin-top:auto;
 	}
 	
 	.footer img {
@@ -1072,7 +1079,7 @@
 
 
 
-		<c:if test="${not empty summary}">
+		<c:if test="${not empty summary and (empty param.tab or param.tab == 'stock')}">
 
 			<div class="results-section" id="resultsSection">
 
@@ -1315,16 +1322,19 @@ document.querySelectorAll(".search-tab").forEach(tab => {
 
  document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
 
-
-
  tab.classList.add("active");
 
  document.getElementById(tab.dataset.tab).classList.add("active");
 
+ /* ⭐ ADD THIS BLOCK */
+ const resultsSection = document.querySelector(".results-section");
+ if(resultsSection){
+     resultsSection.style.display = (tab.dataset.tab === "stock") ? "block" : "none";
+ }
+
  });
 
 });
-
 
 
 function handleDownload(element) {
