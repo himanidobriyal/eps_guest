@@ -493,7 +493,7 @@
         <input type="text" id="captchaInput" value="ABC123" readonly 
                style="padding:8px 12px; border:1px solid #d1d5db; border-radius:4px; font-size:16px; outline:none; background:#e5e7eb; width:120px;">
         
-        <button type="button" id="getOtpBtn" 
+        <button type="button" id="getOtpBtn" disabled title="OTP temporarily disabled for testing"  
                 style="padding:8px 16px; background:#1e40af; color:white; border:1px solid #1e40af; border-radius:4px; cursor:pointer; font-weight:500; font-size:14px; white-space:nowrap;">
                 Get OTP
         </button>
@@ -574,7 +574,7 @@
   });
 
   const form = document.getElementById('loginForm');
-  form.addEventListener('submit', function (event) {
+  /*form.addEventListener('submit', function (event) {
       event.preventDefault();
 
       // ✅ Check if "Get OTP" was clicked
@@ -595,7 +595,11 @@
       }
 
       document.getElementById('otpError').style.display = "none";
-
+    */
+    
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+    
       const params = new URLSearchParams(window.location.search);
       const redirect = params.get('redirect');
       let targetURL = '';
