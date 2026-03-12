@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
+    
 @Repository
 public class ZoneDao {
 
@@ -16,7 +16,7 @@ public class ZoneDao {
 
     public ZoneDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-    }
+    } 
 
     public List<Zone> getZones() {
         String sql = "SELECT DISTINCT ou_code, ou_name FROM bv1to1.ireps_org_units " +

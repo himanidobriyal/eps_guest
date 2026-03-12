@@ -1,11 +1,10 @@
 package com.ireps.admin.Eauction.service;
-
+ 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ import com.ireps.admin.Eauction.model.AuctionSchedule;
  * Handles business logic for auction operations
  * UPDATED: Added catalog details and lot viewing methods for 3rd action button
  * VERSION: 2.2
- */
+ */ 
 @Service
 @Transactional
 public class EAuctionService {
@@ -32,8 +31,6 @@ public class EAuctionService {
      * Get all accounts for initial dropdown load
      */
     public List<Map<String, Object>> getAccounts() {
-    	
-    	
         try {
             System.out.println("Service: getAccounts() called");
             List<Map<String, Object>> accounts = eAuctionDAO.getAllAccounts();
@@ -45,38 +42,6 @@ public class EAuctionService {
             return new ArrayList<>();
         }
     }
-    public List<AuctionSchedule> getLiveAuctions(
-            String accountId,
-            String depotId,
-            String catalogStatus,
-            Date fromDate,
-            Date toDate) {
-
-        try {
-            System.out.println("Service: getLiveAuctions() called");
-
-            List<AuctionSchedule> auctions =
-                    eAuctionDAO.getLiveAuctions(
-                            accountId,
-                            depotId,
-                            catalogStatus,
-                            fromDate,
-                            toDate);
-
-            System.out.println("Service: Returned " + auctions.size() + " auctions");
-
-            return auctions;
-
-        } catch (Exception e) {
-            System.err.println("Error in getLiveAuctions: " + e.getMessage());
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-    }
-
-    
-    
-  
 
     /**
      * Get accounts filtered by organization type
@@ -156,7 +121,7 @@ public class EAuctionService {
      */
     public Map<String, Object> searchAuctionSchedule(String accountId, String depotId, 
                                                      String catalogStatus, String fromDate, 
-                                                     String toDate, int page, int pageSize) {
+                                                     String toDate, String scheduleNo,int page, int pageSize) {
         Map<String, Object> result = new HashMap<>();
 
         try {
@@ -190,33 +155,37 @@ public class EAuctionService {
                     System.err.println("Error parsing to date: " + e.getMessage());
                 }
             }
+         // ⭐ PAGINATION FIX — USE ONLY LIVE AUCTIONS
 
-            // Fetch live auctions
-            List<AuctionSchedule> liveAuctions = eAuctionDAO.getLiveAuctions(
-                    accountId, depotId, catalogStatus, fromDateObj, toDateObj);
-            System.out.println("Live auctions found: " + liveAuctions.size());
+            List<AuctionSchedule> paginatedResults =
+                    eAuctionDAO.getLiveAuctions(
+                            accountId,
+                            depotId,
+                            catalogStatus,
+                            fromDateObj,
+                            toDateObj,
+                            scheduleNo,
+                            page,
+                            pageSize);
 
-            // Fetch upcoming auctions
-            List<AuctionSchedule> upcomingAuctions = eAuctionDAO.getUpcomingAuctions(
-                    accountId, depotId, fromDateObj, toDateObj);
-            System.out.println("Upcoming auctions found: " + upcomingAuctions.size());
+            // ⭐ TOTAL COUNT
 
-            // Combine results
-            List<AuctionSchedule> allAuctions = new ArrayList<>();
-            allAuctions.addAll(liveAuctions);
-            allAuctions.addAll(upcomingAuctions);
+            List<AuctionSchedule> totalList =
+                    eAuctionDAO.getLiveAuctions(
+                            accountId,
+                            depotId,
+                            catalogStatus,
+                            fromDateObj,
+                            toDateObj,
+                            scheduleNo,
+                            1,
+                            999999);
 
-            // Apply pagination
-            int totalCount = allAuctions.size();
-            int offset = (page - 1) * pageSize;
-            int endIndex = Math.min(offset + pageSize, totalCount);
+            int totalCount = totalList.size();
+
             
-            List<AuctionSchedule> paginatedResults = new ArrayList<>();
-            if (totalCount > 0 && offset < totalCount) {
-                paginatedResults = allAuctions.subList(offset, endIndex);
-            }
+            int totalPages = totalCount > 0 ? (int)Math.ceil((double) totalCount / pageSize) : 0;
 
-            int totalPages = totalCount > 0 ? (totalCount + pageSize - 1) / pageSize : 1;
 
             // Convert to Map for JSON response - INCLUDES PDF PATH
             List<Map<String, Object>> resultMaps = new ArrayList<>();
@@ -417,8 +386,8 @@ public class EAuctionService {
      */
     public List<AuctionSchedule> getAllAuctions() {
         try {
-            List<AuctionSchedule> liveAuctions = eAuctionDAO.getLiveAuctions(null, null, null, null, null);
-            List<AuctionSchedule> upcomingAuctions = eAuctionDAO.getUpcomingAuctions(null, null, null, null);
+            List<AuctionSchedule> liveAuctions = eAuctionDAO.getLiveAuctions(null, null, null,null, null, null,1,9999);
+            List<AuctionSchedule> upcomingAuctions = eAuctionDAO.getUpcomingAuctions(null, null, null, null,1,9999);
             
             List<AuctionSchedule> allAuctions = new ArrayList<>();
             allAuctions.addAll(liveAuctions);
@@ -438,7 +407,7 @@ public class EAuctionService {
      */
     public int countLiveAuctions() {
         try {
-            List<AuctionSchedule> liveAuctions = eAuctionDAO.getLiveAuctions(null, null, null, null, null);
+            List<AuctionSchedule> liveAuctions = eAuctionDAO.getLiveAuctions(null, null,null, null, null, null,1,9999);
             int count = liveAuctions != null ? liveAuctions.size() : 0;
             System.out.println("Live auctions count: " + count);
             return count;
@@ -447,13 +416,13 @@ public class EAuctionService {
             return 0;
         }
     }
-
+ 
     /**
      * Count upcoming auctions
      */
     public int countUpcomingAuctions() {
         try {
-            List<AuctionSchedule> upcomingAuctions = eAuctionDAO.getUpcomingAuctions(null, null, null, null);
+            List<AuctionSchedule> upcomingAuctions = eAuctionDAO.getUpcomingAuctions(null, null, null, null,1,9999);
             int count = upcomingAuctions != null ? upcomingAuctions.size() : 0;
             System.out.println("Upcoming auctions count: " + count);
             return count;

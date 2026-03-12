@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Date;
-
-import com.ireps.admin.Eauction.model.AuctionSchedule;
-
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ireps.admin.Eauction.service.EAuctionService;
-
+ 
 @Controller
 @RequestMapping("/eps/Eauction")
 public class EAuctionController {
 
     private static final Logger logger = LoggerFactory.getLogger(EAuctionController.class);
-
+    //test
     @Autowired
     private EAuctionService eAuctionService;
 
@@ -53,68 +49,20 @@ public class EAuctionController {
      * Show schedule page (Tab 3)
      */
     @GetMapping("/schedule.do")
-    public String showSchedulePage(
-            @RequestParam(required = false) String accountId,
-            @RequestParam(required = false) String depotId,
-            @RequestParam(required = false) String catalogStatus,
-            @RequestParam(required = false) String fromDate,
-            @RequestParam(required = false) String toDate,
-            @RequestParam(required = false) String searchClicked,
-            Model model) {
-
+    public String showSchedulePage(Model model, HttpServletRequest request) {
         try {
-
             logger.info("Loading schedule page");
-
-            // Always load dropdown
             List<Map<String, Object>> accountList = eAuctionService.getAccounts();
             model.addAttribute("accountList", accountList);
             model.addAttribute("activeTab", "schedule");
-
-            // Only search if searchClicked=true
-            if ("true".equalsIgnoreCase(searchClicked)) {
-
-                logger.info("Search triggered");
-
-                // Convert ALL → null
-                if ("ALL".equalsIgnoreCase(accountId)) accountId = null;
-                if ("ALL".equalsIgnoreCase(depotId)) depotId = null;
-                if ("ALL".equalsIgnoreCase(catalogStatus)) catalogStatus = null;
-
-                // Convert dates
-                java.sql.Date from = null;
-                java.sql.Date to = null;
-
-                if (fromDate != null && !fromDate.isEmpty()) {
-                    from = java.sql.Date.valueOf(fromDate);
-                }
-
-                if (fromDate != null && !fromDate.isEmpty()) {
-                    from = java.sql.Date.valueOf(fromDate);
-                }
-
-                if (toDate != null && !toDate.isEmpty()) {
-                    to = java.sql.Date.valueOf(toDate);
-                }
-
-                // Call DAO via service
-                List<AuctionSchedule> auctions =
-                        eAuctionService.getLiveAuctions(accountId, depotId, catalogStatus, from, to);
-
-                model.addAttribute("auctions", auctions);
-
-                logger.info("Fetched auctions count: {}", auctions.size());
-            }
-
+            logger.debug("Loaded {} accounts", accountList.size());
             return JSP_PATH;
-
         } catch (Exception e) {
             logger.error("Error loading schedule page", e);
-            model.addAttribute("error", e.getMessage());
+            model.addAttribute("error", "Error: " + e.getMessage());
             return JSP_PATH;
         }
     }
-
 
     /**
      * Show live auction page (Tab 1)
@@ -194,16 +142,19 @@ public class EAuctionController {
             @RequestParam(required = false) String catalogStatus,
             @RequestParam(required = false) String fromDate,
             @RequestParam(required = false) String toDate,
+            @RequestParam(required = false) String scheduleNo,
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
 
         logger.info(">>> Search Request - Account: {}, Depot: {}, Status: {}, From: {}, To: {}, Page: {}", 
-                    accountId, depotId, catalogStatus, fromDate, toDate, page);
+        		scheduleNo, accountId, depotId, catalogStatus, fromDate, toDate, page);
 
         try {
         	
+        	logger.info("Pagination -> page: {}, pageSize: {}", page, pageSize);
+        	
             Map<String, Object> results = eAuctionService.searchAuctionSchedule(
-                    accountId, depotId, catalogStatus, fromDate, toDate, page, pageSize);
+                    accountId, depotId, catalogStatus, fromDate, toDate, scheduleNo,page, pageSize);
             
             logger.info("✓ Search completed - Found {} results", 
                        results.get("totalCount") != null ? results.get("totalCount") : 0);
@@ -410,7 +361,7 @@ public class EAuctionController {
 
     /**
      * Get auction statistics
-     */
+     */ 
     @GetMapping("/statistics")
     @ResponseBody
     public Map<String, Object> getAuctionStatistics() {

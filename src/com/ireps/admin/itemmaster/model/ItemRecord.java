@@ -1,5 +1,7 @@
 package com.ireps.admin.itemmaster.model;
 
+import java.util.List;
+
 public class ItemRecord {
     private long itmRowId;
     private String itemId;
@@ -11,8 +13,10 @@ public class ItemRecord {
     private String subItemFlag;
     private String oldItemId;
     private String oldAaName;
+    
+    // ✅ NEW field
+    private List<SubItemRecord> subItems;
 
-    // getters + setters
     public long getItmRowId(){return itmRowId;}
     public void setItmRowId(long v){this.itmRowId=v;}
     public String getItemId(){return itemId;}
@@ -33,4 +37,8 @@ public class ItemRecord {
     public void setOldItemId(String s){this.oldItemId=s;}
     public String getOldAaName(){return oldAaName;}
     public void setOldAaName(String s){this.oldAaName=s;}
+    
+    // ✅ NEW getter/setter
+    public List<SubItemRecord> getSubItems(){return subItems;}
+    public void setSubItems(List<SubItemRecord> s){this.subItems=s;}
 }

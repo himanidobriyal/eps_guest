@@ -1,5 +1,5 @@
 package com.ireps.admin.procurement.model;
-
+    
 public class data {
     private String plNo;
     private String nlu;
@@ -7,7 +7,7 @@ public class data {
     private double avgBar;
     private int totAac;
     private double aacValue;
-
+  
     // Getters and Setters
     public String getPlNo() { return plNo; }
     public void setPlNo(String plNo) { this.plNo = plNo; }

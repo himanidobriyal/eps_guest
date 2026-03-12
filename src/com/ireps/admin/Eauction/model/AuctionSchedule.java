@@ -2,9 +2,9 @@ package com.ireps.admin.Eauction.model;
 
 import java.io.Serializable;
 import java.util.Date;
-
+  
 public class AuctionSchedule implements Serializable {
-    
+     
     private static final long serialVersionUID = 1L;
     
     private String scheduleNo;
@@ -165,7 +165,7 @@ public class AuctionSchedule implements Serializable {
     public Integer getScheduleStatus() {
         return scheduleStatus;
     }
-
+ 
     public void setScheduleStatus(Integer scheduleStatus) {
         this.scheduleStatus = scheduleStatus;
     }

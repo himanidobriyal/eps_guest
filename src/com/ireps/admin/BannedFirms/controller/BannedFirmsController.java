@@ -1,5 +1,5 @@
 package com.ireps.admin.BannedFirms.controller;
-
+ 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ireps.admin.BannedFirms.dao.BannedFirmsDao;
 import com.ireps.admin.BannedFirms.model.BannedFirms;
-
+ 
 @Controller
 @RequestMapping("/eps/BannedFirms")
 public class BannedFirmsController {
@@ -25,4 +25,5 @@ public class BannedFirmsController {
         model.addAttribute("selectedType", type); // so JSP can remember dropdown state
         return "BannedFirms.definition"; // Tiles definition
     }
-}
+} 
+ 

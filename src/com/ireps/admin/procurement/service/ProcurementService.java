@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
-@Service
+  
+@Service 
 public class ProcurementService {
 
     private final DataDao dataDao;
@@ -18,12 +18,28 @@ public class ProcurementService {
         this.dataDao = dataDao;
         this.zoneDao = zoneDao;
     }
-
+ 
     public List<Zone> getZones() {
-        return zoneDao.getZones();
+        return zoneDao.getZones(); 
     }
 
-    public List<Map<String, Object>> getStockSummary(String plNo, String zone, String description) {
-        return dataDao.fetchStockSummary(plNo, zone, description);
+    // Paginated Data
+    public List<Map<String, Object>> getStockSummary(
+            String plNo,
+            String zone,
+            String description,
+            int offset,
+            int size) {
+
+        return dataDao.fetchStockSummary(plNo, zone, description, offset, size);
+    }
+
+    // Total Count
+    public int getStockSummaryCount(
+            String plNo,
+            String zone,
+            String description) {
+
+        return dataDao.fetchStockSummaryCount(plNo, zone, description);
     }
 }
