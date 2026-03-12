@@ -233,7 +233,7 @@
 		padding: 12px;
 		border-radius: 0;
 	} 
-	 
+	  
 	.search-tab {
 		padding: 10px 16px;
 		background: #e9ecef;
